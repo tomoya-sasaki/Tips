@@ -1,0 +1,28 @@
+---
+title: "Untitled"
+output: html_document
+---
+# Log likelihood and exponential
+
+
+```{r}
+library(matrixStats)
+
+x <- 5
+y <- 10
+
+# probability of being y
+y / (x + y)
+
+# incorrect
+log(y) - log(x + y)
+
+# correct
+exp( log(y) - log(x + y) )
+
+exp( log(y) ) / exp(log( x + y ) )
+
+# use funtion logSumExp
+exp( log(y) - logSumExp(log(x + y)))
+
+```

@@ -1,0 +1,55 @@
+---
+title: "apply and sweep"
+name: "Tomoya Sasaki"
+output: 
+  html_document
+---
+## use of apply
+```{r}
+# prepare data
+x <- data.frame(x = c(1,2,3,4), y = c(10, 15, 20, 20))
+```
+
+```{r}
+# sum each column
+apply(x, MARGIN = 1, sum)
+
+# sum each row
+apply(x, MARGIN = 2, sum)
+
+# use your own function
+# vec 
+f <- function(vec, b, c){
+	return ( dnorm(mean = vec[1] + b, sd = vec[2] + b, c) )
+}
+
+# apply f(dnorm) to each function
+# if you have arguments in your own function, you put it as the last argument of the apply
+# here each row of x is mean and sd of the function f
+# in apply, each row and column of dataframe is regarded as a vector
+apply(x, MARGIN = 1, f, 2, 3)
+```
+
+## use tidyr and dplyr
+```{r, message=FALSE}
+library(tidyverse)
+x %>% 
+	rowwise() %>% # to apply function to each row
+	mutate(dnorm = f(c(x,y), 2, 3)) %>%
+	select(dnorm)
+```
+
+## sweep
+```{r}
+# when you use simple function such as "+", "*", "**", "-", sweep is better than apply because you can add arguments
+y1 <- c(1,2,3,4)
+y2 <- c(1,2)
+```
+
+```{r}
+# subtract y1 from each column in y1
+sweep(x, MARGIN = 1, y1, FUN = "-")
+# subtract y1 from each row in y2
+sweep(x, MARGIN = 2, y2, FUN = "-")
+
+```

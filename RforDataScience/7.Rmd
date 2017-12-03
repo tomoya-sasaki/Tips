@@ -1,0 +1,275 @@
+---
+title: '7'
+output: html_document
+---
+
+```{r setup, message=FALSE}
+library(ggplot2)
+library(tidyverse)
+```
+
+## 7.3 Variation
+```{r}
+diamonds %>% count(cut) # count 
+ggplot(diamonds) + geom_bar(aes(x = cut))
+
+diamonds %>%
+	count(cut_width(carat, .5))
+ggplot(diamonds) + geom_histogram(aes(x = carat), binwidth = .5)
+```
+
+### 7.3.2 Typical values
+```{r}
+diamonds %>% 
+	filter(carat < 3) %>% 
+	ggplot() + 
+		geom_histogram(aes(x = carat), binwidth = .01)
+```
+
+* the plot shows that diamonds whose carat is immidiately below 1 or 2 is very small. this implies that integer is important cutpoints for diamond carat
+
+### 7.3.3 Unusual values
+```{r}
+ggplot(diamonds) + 
+  geom_histogram(mapping = aes(x = y), binwidth = 0.5) +
+  coord_cartesian(ylim = c(0, 50)) # zoom in y 0:50
+
+diamonds %>%
+	filter(y < 3 | y > 20) %>%
+	dplyr::select(price, x, y, z) %>%
+	arrange(y)
+```
+
+### 7.3.4 Exercises
+### 1:2
+```{r}
+ggplot(diamonds, aes(x = x)) +
+	geom_histogram(binwidth = .05)
+
+# price around 1500 does not exist
+```
+
+### 3
+```{r}
+diamonds %>%
+	filter(carat == .99)
+
+diamonds %>%
+	filter(carat == 1)
+
+diamonds %>%
+	mutate(id = row_number()) %>%
+	dplyr::select(x, y, z, id) %>%
+	gather(variable, value, -id) # melt with `x,y,z` without `id` while remaining it as `id`
+  # the first argument(`variable`) take the colnames and the second argument (`value`) takes the values of the argument for each row
+
+diamonds %>%
+	mutate(id = row_number()) %>%
+	dplyr::select(x, y, z, id) %>%
+	gather(variable, value, -id) %>%
+	ggplot(aes(x = value)) + geom_density() + facet_grid(variable ~ .) + geom_rug()
+```
+
+* `geom_rug()` gives you the each case, marginal distibutions
+* `facet_grid` display for each `variable`, you can use `facet_grid(~variable)` instead too
+
+### 4
+```{r}
+ggplot(diamonds) + 
+	geom_histogram(mapping = aes(x = price)) +
+	coord_cartesian(xlim = c(100, 5000), ylim = c(0, 3000))
+ggplot(diamonds) + 
+	geom_histogram(mapping = aes(x = price)) +
+	xlim(100, 5000) + ylim(0, 3000)
+
+```
+
+`coord_cartesian` simply zoom while ` xlim ` and ` ylim ` drop the values  exceed the given limits and draw the graph
+
+
+##########################################
+## 7.4 Missing Value
+
+```{r}
+# return `NA` if the value matches the logical vector in the first argument
+diamonds2 <- diamonds %>%
+  mutate(y = ifelse(y < 3 | y > 20, NA, y))
+
+ggplot(data = diamonds2, mapping = aes(x = x, y = y)) +
+  geom_point() # or alternatively geom_point(na.rm = T)
+```
+
+```{r}
+nycflights13::flights %>%
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = sched_dep_time %/% 100,
+    sched_min = sched_dep_time %/% 100,
+    sched_dep_time = sched_hour + sched_min / 60
+  ) %>%
+  ggplot(mapping = aes(sched_dep_time)) +
+    geom_freqpoly(mapping = aes(color = cancelled), binwidth = 1/4)
+```
+
+### 7.4.1 Exercises
+* In the bar chart (using `geom_bar`), `NA` is regarded as a new category.
+
+## 7.5 Covariation
+### 7.5.1 Acategorical and continuous variable
+```{r}
+# price毎にdensity plotを作成する
+ggplot(data = diamonds, mapping = aes(x = price, y = ..density..)) +
+  geom_freqpoly(mapping = aes(color = cut), binwidth = 500)
+
+# cut毎に、priceの位置をboxplotした
+ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
+  geom_boxplot()
+```
+
+#### 7.5.1.1 Exercises
+#### 1 
+```{r}
+nycflights13::flights %>%
+  mutate(
+    cancelled = is.na(dep_time)
+  ) %>%
+  ggplot(mapping = aes(x = cancelled, y = sched_dep_time)) + geom_boxplot()
+    
+```
+
+#### 3
+```{r}
+ggplot(data = mpg) +
+  geom_boxplot(mapping = aes(x = reorder(class, hwy, FUN = median), y = hwy)) +
+  coord_flip()
+
+```
+
+
+### 7.5.2 Two categorical variables
+```{r}
+ggplot(data = diamonds) +
+  geom_count(mapping = aes(x = cut, y = color))
+```
+
+```{r}
+diamonds %>%
+  count(color, cut) %>%
+  ggplot(mapping = aes(x = color, y = cut)) +
+    geom_tile(mapping = aes(fill = n))
+```
+
+
+#### 7.5.2.1 Excersises
+#### 1 
+```{r}
+# the two codes below provide same results
+diamonds %>%
+  count(color, cut)
+diamonds %>%
+  group_by(color, cut) %>%
+  dplyr::summarise(n = n())
+```
+
+## 2
+```{r}
+nycflights13::flights %>%
+  group_by(month, dest) %>%
+  dplyr::summarise(dep_delay = mean(dep_delay, na.rm = T)) %>%
+  group_by(dest) %>% # この前でungroup()してもいい
+  filter(n() == 12) # 12のフライトがあるdestのみを抽出 = 毎月フライトがあるdestを抽出。上記でgroup_by
+```
+
+
+### 7.5.3 Two continuous variables
+```{r}
+ggplot(data = diamonds) + 
+  geom_point(mapping = aes(x = carat, y = price), alpha = .01)
+```
+
+#### 7.5.3.1 Exercises
+#### 1
+```{r}
+# one option
+# cut_width determine the cut points for changing color 
+# in this example by 0.3 each, [0.45, 0.75], [0.75, 1.05]
+ggplot(data = diamonds) +
+  geom_freqpoly(aes(x = price, color = cut_width(carat, .3)))
+```
+
+```{r}
+ggplot(data = diamonds) +
+  geom_freqpoly(aes(x = price, y = ..density.., color = cut_width(carat, .3)))
+```
+
+```{r}
+# another option
+# cut_number determine the cut points based on the number of observation in each cluster
+# in this case, each cluster of the size (carat) has 10 observations
+ggplot(data = diamonds) +
+  geom_freqpoly(aes(x = price, color = cut_number(carat, 10)))
+```
+
+```{r}
+ggplot(data = diamonds) +
+  geom_freqpoly(aes(x = price, y = ..density..,  color = cut_number(carat, 10)))
+
+```
+
+#### 2
+```{r}
+# `x` of boxplot control the number to be plot
+# `y` of boxplot control the partion
+# weird
+ggplot(data = diamonds) +
+  geom_boxplot(aes(x = carat, y = cut_number(price, 10)))
+
+
+# good
+ggplot(data = diamonds) +
+  geom_boxplot(aes(y = carat, x = cut_number(price, 10))) +
+  coord_flip()
+```
+
+
+#### 4
+```{r}
+# hexagonal heatmap 
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_hex() +
+  facet_wrap(~ cut, ncol = 1) 
+```
+
+## 7.6
+```{r}
+library(modelr)
+
+mod <- lm(log(price) ~ log(carat), diamonds)
+
+diamonds3 <- diamonds %>%
+  add_residuals(mod) %>%
+  mutate(resid = exp(resid))
+
+ggplot(diamonds3) +
+  geom_point(mapping = aes(x = carat, y = resid))
+```
+
+
+* you can find that once you remove the strong relationship between carat and price, that is to remove the effect of carat on the price, you can see the similar pattern across differenent `cut`.
+
+```{r}
+ggplot(diamonds3) +
+  geom_boxplot(aes(x = cut, y = resid))
+```
+
+* there seems to be strong correlation between carat and cut?
+```{r}
+ggplot(diamonds3) +
+  geom_boxplot(aes(x = cut, y = carat))
+```
+
+```{r}
+ggplot(diamonds3) +
+  geom_boxplot(aes(x = cut, y = price))
+
+```

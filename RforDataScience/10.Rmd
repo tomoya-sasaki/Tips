@@ -1,0 +1,188 @@
+---
+title: '10, '
+output: html_document
+---
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+
+# 10 Tibble
+```{r}
+# create tibble
+tibble(
+  x = 1:5,
+  y = 1,
+  z = x^2 + y
+)
+```
+
+## the column name is flexible
+```{r}
+tb <- tibble(
+  `:)` = "smile",
+  ` ` = "space",
+  `2000` = "number"
+)
+print(tb)
+
+df <- data.frame(
+  ":)" = "smile",
+  " " = "space",
+  "2000" = "number"
+)
+# see the difference between tb and df
+print(df)
+
+```
+
+```{r}
+tribble(
+  ~x, ~y, ~z, # you need `~`
+  #--|--|----
+  "a", 2, 3.6,
+  "b", 1, 8.5
+)
+```
+
+## choose the element in tibble
+```{r}
+df <- tibble(
+  x = runif(5),
+  y = rnorm(5)
+)
+
+# output is vector
+df$x
+df[["x"]]
+
+# output is still tibble
+df["x"]
+```
+
+
+# 11 Data import
+
+## general use
+* you can skip the meta dataline in the first `n` rows/lines with `skip = n`
+* you can handle the data without column names using `colnames = FALSE`
+* you can use `na = "<sth>"` to specifies the value that are used to represnt missing value in your file, this case <sth>
+
+## comparison with base R
+* faster
+* does not convert character to vectors and so on...
+
+## excersize 2
+```{r}
+# 2
+union(names(formals(read_csv)), names(formals(read_tsv)))
+```
+
+## excersize 4
+```{r}
+x <- "x,y\n1,'a,b'"
+read_delim(x, ",", quote = "'")
+read_csv(x)
+```
+
+
+## eccersize 5
+```{r}
+read_csv("a,b\n1,2,3\n4,5,6")
+
+read_csv("a,b,c\n1,2\n1,2,3,4")
+
+read_csv("a,b\n\"1")
+
+read_csv("a,b\n1,2\na,b")
+
+read_csv("a;b\n1;3")
+read_csv2("a;b\n1;3") # this works
+```
+
+## 11.3 parsing a vector
+```{r}
+parse_integer(c("1", "2", "3"))
+```
+
+```{r}
+x  <- parse_integer(c("1", "abc", "123.45", "."), na = ".")
+# if you get warn, the failues would be missing in the output
+x
+# see problems
+problems(x)
+```
+
+#### examples of parse
+```{r}
+parse_number("It cost $123.45")
+```
+
+
+```{r}
+charToRaw("Hadley")
+```
+
+
+#### the problem with encoding
+```{r}
+x1 <- "El Ni\xf1o was particularly bad this year" # Latin1 style
+x2 <- "\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd" # shift-jis style
+
+parse_character(x1, locale = locale(encoding = "Latin1"))
+parse_character(x2, locale = locale(encoding = "Shift-JIS"))
+
+# you can "guess" the encoding
+guess_encoding(charToRaw(x1))
+```
+
+
+```{r}
+
+fruit <- c("apple", "banana")
+parse_factor(c("apple", "banana", "bananana"), levels = fruit)
+```
+
+
+### date and time
+```{r}
+parse_datetime("2010-10-01T2010")
+parse_datetime("20101010")
+
+```
+
+
+```{r}
+parse_date("2010-10-01")
+parse_date("2010/10/01")
+
+```
+
+
+
+```{r}
+library(hms)
+parse_time("01:10 am")
+parse_time("20:10:01")
+```
+
+```{r}
+parse_date("01/02/15", "%m/%d/%y")
+
+parse_date("01/02/15", "%d/%m/%y")
+
+parse_date("01/02/15", "%y/%m/%d")
+
+parse_time("01/15/30", "%H/%M/%OS")
+
+```
+
+
+### 11.3.5 Excercize 
+```{r}
+# 2
+
+locale(decimal_mark = ".", grouping_mark = ".")
+```
+

@@ -1,0 +1,222 @@
+---
+title: "BDA_chap11"
+output: html_document
+---
+
+
+```{r, message=FALSE}
+rm(list = ls())
+library(ggplot2)
+library(tidyverse)
+set.seed(1)
+```
+
+## p 277
+
+```{r}
+y1 <- 0
+y2 <- 0
+rho <- .8
+
+BDAchap11 <- function(y1, y2, rho, theta1, theta2){
+  mean1 <- y1 + rho * (theta2 - y2)
+  new1 <- rnorm(1, mean1, 1 - rho^2)
+  mean2 <- y2 + rho * (new1 - y1) # don't forget to use newly sampled theta1
+  new2 <- rnorm(1, mean2, 1 - rho^2)
+  return(list("theta_new1" = new1, "theta_new2" = new2))
+}
+
+SampleTheta <- function(y, rho, theta){
+  new <- rnorm(1, y + rho * (theta - y), 1 - rho^2)
+  return(new)
+}
+
+
+n <- 500
+```
+
+
+## sampling stage
+### initial parameter theta1 = theta2 = 2.5
+```{r}
+theta1 <- 2.5
+theta2 <- 2.5
+
+databox1 <- data.frame(theta1 = rep(NA, n+1), theta2 = rep(NA, n+1) , pattern = rep(1, n+1))
+databox1[1, 1] <- theta1
+#databox1[1, 2] <- theta2
+
+for (i in 1:n ){
+  theta_new1 <- databox1[i,1]
+  theta_new2 <- databox1[i,2]
+  new <- BDAchap11(y1, y2, rho, theta_new1, theta_new2)
+  databox1[i+1, 1] <- new[1]
+  databox1[i+1, 2] <- new[2]
+}
+```
+
+### initial parameter theta1= 2.5, theta2 = -2.5
+```{r}
+theta1 <- 2.5
+theta2 <- -2.5
+
+databox2 <- data.frame(theta1 = rep(NA, n+1), theta2 = rep(NA, n+1) , pattern = rep(2, n+1))
+databox2[1, 1] <- theta1
+databox2[1, 2] <- theta2
+
+for (i in 1:n ){
+  theta_new1 <- databox2[i,1]
+  theta_new2 <- databox2[i,2]
+  new <- BDAchap11(y1, y2, rho, theta_new1, theta_new2)
+  databox2[i+1, 1] <- new[1]
+  databox2[i+1, 2] <- new[2]
+}
+
+```
+
+
+### initial parameter theta1= -2.5, theta2 = 2.5
+```{r}
+theta1 <- -2.5
+theta2 <- 2.5
+
+databox3 <- data.frame(theta1 = rep(NA, n+1), theta2 = rep(NA, n+1) , pattern = rep(3, n+1))
+databox3[1, 1] <- theta1
+databox3[1, 2] <- theta2
+
+for (i in 1:n ){
+#  print(i)
+  theta_new1 <- databox3[i,1]
+  theta_new2 <- databox3[i,2]
+  new <- BDAchap11(y1, y2, rho, theta_new1, theta_new2)
+  databox3[i+1, 1] <- new[1]
+  databox3[i+1, 2] <- new[2]
+#  print(theta_new1)
+  #print(new[1])
+}
+```
+
+
+### initial parameter theta1= -2.5, theta2 = -2.5
+```{r}
+theta1 <- -2.5
+theta2 <- -2.5
+
+databox4 <- data.frame(theta1 = rep(NA, n+1), theta2 = rep(NA, n+1) , pattern = rep(4, n+1))
+databox4[1, 1] <- theta1
+databox4[1, 2] <- theta2
+
+for (i in 1:n ){
+#  print(i)
+  theta_new1 <- databox4[i,1]
+  theta_new2 <- databox4[i,2]
+  new <- BDAchap11(y1, y2, rho, theta_new1, theta_new2)
+  databox4[i+1, 1] <- new[1]
+  databox4[i+1, 2] <- new[2]
+#  print(theta_new1)
+  #print(new[1])
+}
+```
+
+## Draw figure
+
+```{r}
+datafull <- bind_rows(databox1, databox2, databox3, databox4)
+datafull2 <- bind_rows(databox1[301:500,], databox2[301:500,], databox3[301:500,], databox4[301:500,])
+datafull$pattern <- as.factor(datafull$pattern)
+datafull2$pattern <- as.factor(datafull2$pattern)
+```
+
+
+## Plot for pattern 1
+```{r}
+ggplot(databox1[1:5,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox1[401:500,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox1, aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+
+```
+
+
+## plot for pattern 2
+```{r}
+ggplot(databox2[1:5,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox2[401:500,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox2, aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+```
+
+## plot for pattern 3
+```{r}
+ggplot(databox3[1:5,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox3[401:500,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox3, aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+```
+
+## plot for pattern 4
+```{r}
+ggplot(databox4[1:5,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox4[401:500,], aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+ggplot(databox4, aes(x = theta1, y = theta2)) + 
+  geom_point() +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+```
+
+
+## plot merging all patterns
+```{r}
+ggplot(datafull, aes(x = theta1, y = theta2)) + 
+  geom_point(aes(color = pattern), alpha = .4) +
+  xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+
+ggplot(datafull2, aes(x = theta1, y = theta2)) + 
+  geom_point(aes(color = pattern), alpha = .4) +
+    xlim(c(-4, 4)) + 
+  ylim(c(-4, 4))
+
+
+```
+
