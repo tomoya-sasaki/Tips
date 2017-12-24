@@ -1,0 +1,307 @@
+% Seeded LDA Model 1
+%~/.vim/ftplugin/EngTex.tex
+\documentclass[10.5pt,letterpaper]{article}
+
+%% === margins ===
+\addtolength{\hoffset}{-0.8in} \addtolength{\voffset}{-0.8in}
+\addtolength{\textwidth}{1.6in} \addtolength{\textheight}{1.6in}
+%% === basic packages ===
+\usepackage{latexsym,multirow}
+\usepackage{amssymb,amsmath, bm}
+\usepackage{graphicx}
+% \usepackage[dvipdfmx]{graphicx}\usepackage[dvipdfmx]{graphicx}
+
+%% === bibliography packages ===
+\usepackage{natbib}
+\bibliographystyle{pa}
+%% === hyperref options ===
+% \usepackage{color}
+\usepackage[pdftex, bookmarksopen=true, bookmarksnumbered=true,
+pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0 1}]{hyperref}
+\usepackage{colortbl}
+\usepackage{subfigure}
+
+% === dcolumn package ===
+\usepackage{dcolumn}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+% === theorem package ===
+\usepackage{theorem}
+\theoremstyle{plain}
+\theoremheaderfont{\scshape}
+\newtheorem{theorem}{theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newcommand{\qed}{\hfill \ensuremath{\Box}}
+\newcommand{\indep}{\mbox{$\perp\!\!\!\perp$}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+%\graphicspath{{./figure/}}
+% ==== rotating package ===
+\usepackage{rotating}
+
+% ==== dotted lines in tables ===
+%\usepackage{arydshln}
+
+% == spacing between sections and subsections
+\usepackage[compact]{titlesec}
+%\usepackage{times}
+
+\allowdisplaybreaks
+
+% == packages to draw the model figure
+\usepackage{tikz}
+\usetikzlibrary{bayesnet}
+
+% == put figure here
+\usepackage{float}
+
+% == multi- column
+\usepackage{multicol}
+
+\def\tightlist{
+	\itemsep1pt
+	\parskip1pt
+	\parsep1pt
+	\itemindent10pt
+}
+\renewcommand{\labelitemii}{$\triangleright$}
+
+\renewcommand{\contentsname}{ }
+
+\usepackage{bigints}
+\usepackage{bbm} % for a indicator function
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%% === submission
+\newcommand{\blind}{0}
+
+% === new commands ===
+\newcommand{\E}{\mathbb{E}}
+\newcommand\dist{\buildrel\rm d\over\sim}
+\newcommand\ind{\stackrel{\rm indep.}{\sim}}
+\newcommand\iid{\stackrel{\rm i.i.d.}{\sim}}
+\newcommand\logit{{\rm logit}}
+\renewcommand\r{\right}
+\renewcommand\l{\left}
+
+\newcommand{\kprime}{k^{'}}
+\newcommand{\zdel}{\mathbf{z}^{\backslash d,i}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\boldeta}{\boldsymbol{\eta}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bsigma}{\boldsymbol{\sigma}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\blambda}{\boldsymbol{\lambda}}
+\newcommand{\bphi}{\boldsymbol{\phi}}
+\newcommand{\bpsi}{\boldsymbol{\psi}}
+\newcommand{\bpi}{\boldsymbol{\pi}}
+\newcommand{\bh}{\mathbf{h}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\rmDir}{{\rm Dir}}
+\newcommand{\rmMulti}{{\rm Multi}}
+\newcommand{\rmBeta}{{\rm Beta}}
+\newcommand{\rmBern}{{\rm Bern}}
+\newcommand{\rmGamma}{{\rm Gamma}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\bone}{\mathbf{1}}
+\newcommand{\p}{\prime}
+
+\newcommand{\blurb}[1]{\footnotesize \flushleft #1}
+\newcommand{\pre}[1]{\texttt{#1}}
+\newcommand{\R}{\textbf{\textsf{R}}}
+
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+\newcommand\spacingset[1]{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize}
+
+\spacingset{1.25}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\if0\blind
+
+\title{Note on Minka ``Estimating a Dirichlet distribution''}
+\author{Tomoya Sasaki}
+\date{\today}
+\maketitle
+
+\noindent\rule{17.5cm}{1.7pt}
+\vspace{-1.8cm}
+\tableofcontents
+\noindent\rule{17.5cm}{1.7pt}
+
+\section{Estimating a Dirichlet distribution}
+\subsection{Basic setting}
+
+Let $\bp$ denote a random vector each of which elements sum to 1 and $\balpha$ a parameter vector of the Dirichlet distribution.
+\begin{align}
+& P( \bp | \balpha ) \sim \cD( \alpha_1,\cdots , \alpha_K) = 
+ \frac{ \Gamma(\sum_{k=1}^K \alpha_k)}{\prod_{k=1}^K \Gamma(\alpha_k)} \prod_{k=1}^K p_k^{\alpha_k - 1} \\
+& \textrm{where} \quad \sum_{k=1}^{n} p_k = 1  \quad \textrm{and} \quad p_k > 0
+\end{align}
+
+We maximize $p(D | \balpha) = \prod_{i=1}^N p(\bp_i | \balpha)$ where $D = \{ \bp_1, \cdots, \bp_N \}$.
+\begin{align}
+\log p(D | \balpha ) =& \log \left( \prod_{i=1}^N p (\bp_i | \balpha) \right) \\
+	=& \sum_{i=1}^N \log \left( \frac{ \Gamma(\sum_{k=1}^K \alpha_k)}{\prod_{k=1}^K \Gamma(\alpha_k)} \prod_{k=1}^K p_{ik}^{\alpha_k - 1} \right) \\
+	=& \sum_{i=1}^N \left\{ \log \left( \Gamma(\sum_{k=1}^K \alpha_k) \right) - \log \left( \prod_{k=1}^K \Gamma(\alpha_k) \right) + \log \left( \prod_{k=1}^K p_{ik}^{\alpha_k - 1} \right) \right\} \\
+	=& N  \log \left( \Gamma(\sum_{k=1}^K \alpha_k) \right) - N \sum_{k=1}^K \log \left( \Gamma(\alpha_k) \right) 
++ \sum_{i=1}^N  \sum_{k=1}^K (\alpha_k - 1) \log p_{ik}  \\
+	=& N  \log \left( \Gamma(\sum_{k=1}^K \alpha_k) \right) - N \sum_{k=1}^K \log \left( \Gamma(\alpha_k) \right) 
++ N  \sum_{k=1}^K (\alpha_k - 1) \log  \bar{p_{k}} \label{log1} \\
+	\textrm{where} & \quad \log \bar{p_k}  = \frac{1}{N} \sum_{i=1}^N \log p_{ik} 
+\end{align}
+
+The objective function $p(D | \balpha )$ is convex in $\balpha$ since the Dirichlet distribution is in the exponential family.
+This implies that the likelihood function is unimodal and the maximum can be found by a simple search.
+
+\subsection{Estimate $\alpha$ by MLE (1): A fixed-point iteration}
+
+The gradient of the log-likelihood with respect to each $\alpha_k$ can be written as follows.
+\begin{align}
+	g_k =& \frac{\partial \log p(D | \balpha) }{\partial \alpha_k} \\
+	= & N  \frac{\partial}{\partial \alpha_k} \log \left( \Gamma(\sum_{k=1}^K \alpha_k) \right) 
+- N \frac{\partial}{\partial \alpha_k} \sum_{k=1}^K  \log \left( \Gamma(\alpha_k) \right) 
++ N \frac{\partial}{\partial \alpha_k} \sum_{k=1}^K  (\alpha_k - 1) \log \bar{p_{k}}  \\
+	= & N \left\{ \Psi( \sum_{k=1}^K \alpha_k ) - \Psi(\alpha_k) + \log \bar{p_k} \right\}\\
+	\quad \textrm{where} \quad & \Psi(x) = \frac{\partial \log \Gamma(x) }{\partial x}
+\end{align}
+Recall that $ \frac{\partial}{ \partial x_i}  \sum_{i=1}^N x_i  = x_i$ since all factors in $\sum_{i=1}^N x_i$ other than $x_i$ disappear when you take derivative with respect to $x_i$.
+
+We want to show $\Psi(\alpha_k^{new}) = \Psi(\sum_{k=1}^K \alpha_k^{old} ) + \log \bar{p_k} $ .
+Using the inequality in Appendix A in Minka's techinical report to the first factor of \eqref{log1}, we obtain following inequality.
+Note that here we regard $\alpha_k^{old}$ constant here.
+
+\begin{align}
+	&\frac{\log p(D | \balpha) }{N} \\
+	= & \log \left[ \Gamma \left( \sum_{k=1}^K \alpha_k^{old}  \right)
+\exp \left\{ \sum_{k=1}^K (\alpha_k - \alpha_k^{old} ) \Psi \left( \sum_{k=1}^K \alpha_k^{old} \right) \right\} \right]
+- \sum_{k=1}^K \log \Gamma(\alpha_k) + \sum_{k=1}^K (\alpha_k -1 ) \log \bar{p_k}  \\
+	=& \left(\sum_{k=1}^K \alpha_k \right) \Psi \left( \sum_{k=1}^K \alpha_k^{old} \right) - \sum_{k=1}^K \log \Gamma(\alpha_k) + \sum_{k=1}^K (\alpha_k -1 ) \log \bar{p_k}  + \textrm{const} (\alpha_k^{old})
+\end{align}
+
+By taking derivative respect to $\alpha_k$ and set to zero to obtain the equation above.
+\begin{align}
+& \frac{\partial}{\partial \alpha_k} \left[ \left(\sum_{k=1}^K \alpha_k \right) \Psi \left( \sum_{k=1}^K \alpha_k^{old} \right) - \sum_{k=1}^K \log \Gamma(\alpha_k) + \sum_{k=1}^K (\alpha_k -1 ) \log \bar{p_k}  + \textrm{const} (\alpha_k^{old}) \right] \\
+= & \Psi \left( \sum_{k=1}^K \alpha_k^{old} \right) - \Psi(\alpha_k) + \log\bar{p_k} = 0\\
+& \therefore \quad \Psi(\alpha_k^{new}) = \Psi(\sum_{k=1}^K \alpha_k^{old} ) + \log\bar{p_k}  \\
+& \qquad \Leftrightarrow  \alpha_k^{new} = \Psi^{-1} \left( \Psi(\sum_{k=1}^K \alpha_k^{old} ) + \log\bar{p_k}  \right)
+\end{align}
+
+\subsection{Estimate $\alpha$ by MLE (2): Newton iteration}
+
+Newton itertion is a method to obtain $x$ which satisfies $f(x) = 0$.
+The second order of Taylor expansion of $f(x)$ at $x^*$ is
+\begin{align}
+f(x) = f(x^*) + \frac{\partial f(x^*) }{\partial x} (x - x^*) + O((x-x^*)^2).
+\end{align}
+Ignoring the second order degree and higher, and inputing $f(x) = 0$, we obtain following equation, which is the update equation for Newton iteration method.
+\begin{align}
+& 0 = f(x^*) + \frac{\partial f(x^*) }{\partial x} (x - x^*)\\
+& \Leftrightarrow x = x^* - \left( \frac{\partial f(x^*) }{\partial x} \right)^{-1} f(x^*) \label{newtonex}
+\end{align}
+In the following procedure $f(x)$ is equivalent to $\frac{\partial \log p(D| \balpha)}{\partial \alpha}$.
+
+First, we take the second-derivatives(Hessian matrix) of the loglikelihood (which is equivalent to $\frac{\partial f(x) }{\partial x}$) since our target function is $\frac{\partial \log p(D| \balpha)}{\partial \alpha}$ and we want to obtain $\alpha$ with $\frac{\partial \log p(D| \balpha)}{\partial \alpha}= 0$ .
+
+\begin{align}
+\frac{\partial^2 \log p(D| \balpha) }{\partial^2 \alpha_k} = N \left\{ \Psi^\prime \left( \sum_{k=1}^K \alpha_k \right) - \Psi^\prime \left( \alpha_k \right) \right\}\\
+\frac{\partial^2 \log p(D| \balpha) }{\partial \alpha_k \partial \alpha_j } = N  \Psi^\prime \left( \sum_{k=1}^K \alpha_k \right) \quad \textrm{where $k \neq j$}
+\end{align}
+or 
+\begin{align}
+\frac{\partial^2 \log p(D| \balpha) }{\partial \alpha_k \partial \alpha_j} = 
+\underbrace{N \Psi^\prime \left( \sum_{k=1}^K \alpha_k \right)}_{(a)} \underbrace{- N\Psi^\prime \left( \alpha_k \right) \delta(j-k)}_{(b)} \label{hes}
+\end{align}
+Note that $\Psi^\prime$ is known as the trigamma function and $\delta$ as the indicator function.
+We define each component of the Hessian as $h_{kj} = {\frac{\partial^2 \log p(D| \balpha) }{\partial \alpha_k \partial \alpha_j}}$ and $g_k = \frac{\partial \log p(D| \balpha)}{\partial \alpha_k}$.
+The Hessian can be written in matrix form as follows.
+\begin{align}
+\bH = & \bQ + \bone \bone ^\top z \\
+q_{jk} = & - N \Psi^\p (\alpha_k) \delta(j-k) & \textrm{$(b)$ in the equation \eqref{hes}}\\
+z =& N \Psi^\p (\sum_{k=1}^K \alpha_k) & \textrm{$(a)$ in the equation \eqref{hes}}
+\end{align}
+
+Using the equation \eqref{newtonex}, 
+\begin{align}
+\balpha^{new} = \balpha^{old} - \bH^{-1} \bg \label{newton}
+\end{align}
+
+We examine second part in the right side of the equation \eqref{newton}. Note that $\bH$ and $\bg$ are function of $\alpha^{old}$.
+
+\begin{align}
+\bH^{-1} \bg = & ( \bQ + \bone \bone ^\top z)^{-1} \bg \label{hes1} \\
+= & \bQ^{-1} \bg - \frac{\bQ^{-1} \bone \bone ^\top \bQ^{-1} \bg}{\frac{1}{z} + \bone^\top \bQ^{-1} \bone} \label{hes2} \\
+=& \bQ^{-1} \bg - \bQ^{-1} \bone \left( \frac{\bone^\top \bQ^{-1} \bg }{\frac{1}{z} + \bone^\top \bQ^{-1} \bone} \right) \\
+= & \bQ^{-1} (\bg - \bone b)
+\end{align}
+where
+\begin{align}
+b = \frac{\displaystyle \bone \bQ^{-1} \bg }{\displaystyle \frac{1}{z} + \bone^\top \bQ^{-1} \bone}
+= \frac{\displaystyle \sum_{j=1}^J \frac{g_j}{q_{jj}} }{\displaystyle \frac{1}{z} + \sum_{j=1}^J \frac{1}{q_{jj}}}
+\end{align}
+From \eqref{hes1} to \eqref{hes2}, we utilize following matrix property,
+\begin{align}
+( \bA + \bB \bC^\top)^{-1} = \bA^{-1} - \frac{\bA^{-1} \bB \bC^\top \bA^{-1}}{1 + \bC^\top \bA^{-1} \bB}
+\end{align}
+where $\bA$ as a $p \times p$ regular matrix and $\bB$ and $\bC$ as $p \times 1$ vectors which compose a regular matrix $\bA + \bB^\top \bC$.
+
+Each component of $\bH^{-1} \bg$ can be written as follows.
+\begin{align}
+[\bH^{-1} \bg]_k =& [\bQ^{-1} ( \bg - \bone b)]_k \\
+=& \sum_{j=1}^J q_{kj}^{-1} ( g_k - b) \\
+=& \sum_{j=1}^J \frac{\delta(j-k)}{- N \Psi^\p (\alpha_k)} ( g_k - b) \\
+=& \frac{ g_k - b}{- N \Psi^\p (\alpha_k)} 
+\end{align}
+
+\section{Appendix}
+\subsection{Useful property of inverse of digamma function}
+To compute a high-accuracy solution to $\Psi(x) = y$, use following formula.
+\begin{align}
+\Psi^{-1}(y) \approx \begin{cases}
+\exp(y) + \frac{1}{2} \quad  \textrm{if $y\geq -2.22$} \\
+-\frac{1}{y - \Psi(1)} \quad  \textrm{if $y \leq -2.22$} \\
+\end{cases}
+\end{align}
+Then, you implement the Newton method using the following equation.
+\begin{align}
+& x^{new} = x^{old} = \frac{\Psi(x) - y}{ \Psi^\prime(x) }
+\end{align}
+Note that $\Psi^\prime$ is known as a trigamma function. 
+\section{Useful reference}
+\begin{itemize}
+\item
+\url{https://endymecy.gitbooks.io/spark-ml-source-analysis/content/\%E8\%81\%9A\%E7\%B1\%BB/LDA/docs/dirichlet.pdf}
+\item
+\url{https://qiita.com/research-PORT-INC/items/9e83a49f9b07eaccef6b} (Japanese)
+\end{itemize}
+
+\end{document}
