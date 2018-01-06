@@ -1,7 +1,22 @@
 # ggplot
+## `geom_vline` and legend
+* If you want to make legend, you need to put the variables in `aes(xintercept=)`.
+* However, `geom_vline` allows length 1 or the same length as the data. Otherwise you will get a following error.
+```
+>>> plot + geom_vline(aes(xintercept = c(1,2,3))
+Error: Aesthetics must be either length 1 or the same as the data (53940): xintercept
+```
+* You need to add one by one.
+```
+>>> plot + geom_vline(aes(xintercept = c(1))) + 	
+	geom_vline(aes(xintercept = c(2))) + 
+    geom_vline(aes(xintercept = c(3)))
+```
+ 
+
 ## ggjoy
 * See [here](https://simplystatistics.org/2017/07/13/the-joy-of-no-more-violin-plots/)
-*Produce a stack histogram for each group
+* Produce a stack histogram for each group
 * Alternative for so-called the violin plot?
 
 ## data format
@@ -84,6 +99,7 @@ date_breaks("1 week"), date_breaks("10 years"), date_breaks("5 days") etc
 ```
 
 ## Whole Themes
+* My template
 ```
 ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"), 
 	panel.grid.major = element_line(colour = NA), 
