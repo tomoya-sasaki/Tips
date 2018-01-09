@@ -1,5 +1,10 @@
 # Terminal
 
+## Count the length of row
+```
+$ wc -l <filename>
+```
+
 ## Obtain full path in terminal
 ```
 $ pwd
