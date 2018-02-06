@@ -104,12 +104,7 @@ e.g. `jpegoptim --strip-all --max=90 test.jpg`
 # Use Gmail in China
 http://kinto-un.hatenablog.com/entry/2015/02/15/152313
 
-# Markdown
-## Markdown Cheatsheet
-Please check [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+# Finder easier path
+* Use [Finderpath][1]
 
-## To use keyboard-like character
-Check [here](https://meta.askubuntu.com/questions/707/how-to-use-keyboard-icon-in-markdown).
-
-# Shortcuts
-* Change windows within an application: <kbd>command</kbd> + <kbd>F1</kbd>
+[1]:https://bahoom.com/finderpath/
