@@ -2,3 +2,8 @@
 ```
 $ brew update imagemagick@6
 ```
+
+* check version
+```
+$ identify -version
+```

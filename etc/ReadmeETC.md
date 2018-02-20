@@ -1,4 +1,8 @@
 # Terminal
+## Check Core
+Reference [here][0]
+
+* `nproc --all`: Command `nproc` prints the number of processing units available to the current process, which may be less than the number of online processors.
 
 ## Count the length of row
 ```
@@ -57,10 +61,73 @@ create directory and set sty file (e.g. STYLE.sty)
 * https://texwiki.texjp.org/?LaTeX%E5%85%A5%E9%96%80%2F%E5%90%84%E7%A8%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E5%88%A9%E7%94%A8
 * http://demmys.hatenablog.com/entry/2012/06/06/234808
 
-## Create and remove file through terminal
+## Handling file through terminal
 * create files: `touch [filename]`
 * remove files: `rm -Rf [filename]` or `rm -R [filename]`
 * move files: at the directory where the file exists`mv [filename] [destination]`
+* (In `zsh`) move first 100 files: `$ mv -- *([1,100]) /other/location/`
+* You can also change name of file by `mv`: `$ mv "old location" "new location"`
+* double dots to move up the directory: `$ cd ..`
+* double dots to move directory part 2
+ 
+```
+- home
+	- sub1 - sub1_1
+	- sub2 - sub2_1
+```
+To move from `sub2` to `sub1_1`
+
+```
+~/sub1_1 $ cd ../sub1/sub1_1
+```
+
+To move from `sub2_1` to `sub1_1`
+
+```
+~/sub2_1 $ cd ../../sub1/sub1_1
+```
+
+## ssh connections
+* How to connect
+```
+$ usrname@ipaddress
+or 
+$ usrname@hostname
+```
+
+* How to download and upload files
+__Be sure that you have to be at your local environment__
+
+```
+# local to remote
+scp /local/file/path usrname@host:/save/path
+scp /local/test.txt user@remoteHost:/home/user/tmp/
+
+# remote to local
+scp usrname@host:/moving/file/path /local/path 
+scp user@remoteHost:/home/user/test.txt /local/path
+
+# moving whole directory
+scp -r user@remoteHost:/remote/dir /local/dir
+```
+
+## Install pip in remote computer locally
+* Reference [here][2].
+
+1. Download `wget https://bootstrap.pypa.io/get-pip.py`
+2. `python get-pip.py --user`. This will install pip to your local directory `(.local/bin)`.
+3. Set path. Write `PATH=$PATH:~/.local/bin` in your `.bash_profile`.
+
+## Install pyenv in remote computer locally
+* Reference [here][3], [here][4], [here][5].
+
+1. `$ git clone https://github.com/pyenv/pyenv.git ~/.pyenv`. Be aware of your directory installing the `pip`.
+2. `$ echo 'export PYENV_ROOT="/home/usrname/.pyenv"' >> ~/.bash_profile`. I changed `$HOME/.pyenv` to `/home/usrname/.pyenv`. `usrname` part could be any directory.
+3. `$ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile`.
+4. `$ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile`
+5. `source .bash_profile`
+6. Start! (`$ pyenv` will show you the options).
+
 
 ## Read text files in terminal with less
 ### Options
@@ -88,7 +155,9 @@ create directory and set sty file (e.g. STYLE.sty)
 * `Shift + >`: ファイルの最後に移動
 
 ### Reference
-https://hydrocul.github.io/wiki/commands/less.html
+[here](https://hydrocul.github.io/wiki/commands/less.html)
+
+
 
 # Dealing with pics
 ## Jpegoptim
@@ -107,4 +176,9 @@ http://kinto-un.hatenablog.com/entry/2015/02/15/152313
 # Finder easier path
 * Use [Finderpath][1]
 
+[0]:https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line
 [1]:https://bahoom.com/finderpath/
+[2]:https://gist.github.com/saurabhshri/46e4069164b87a708b39d947e4527298
+[3]:https://github.com/pyenv/pyenv
+[4]:https://github.com/Shusei-E/Code_Tips/blob/master/MacOS/SettingEnvironment.md
+[5]:https://qiita.com/maskedw/items/aaa2fd7abfd493cf2820

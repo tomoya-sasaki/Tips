@@ -3,9 +3,11 @@
 A dictionary is a data structure that maps one value to another (key and value). You can use curly braces ( {} ) to define dictionary.
 In the case below, `a` and `b` are the keys and `apple` and `banana` are the values.
 See [here](1).
+
 ```
 >>> d1 = {'a': 'apple', 'b' : 'banana'}
 ```
+
 # Extract data
 ## Extract values
 ```
@@ -31,4 +33,12 @@ dict_items([('a', 'apple'), ('b', 'banana')])
 k a v apple
 k b v banana
 ```
+
+## Obtain the key with maximum value
+
+```
+stats = {'a':1000, 'b':3000, 'c': 100}
+max(stats, key=stats.get)
+```
+
 [1]:https://qiita.com/shinjikoike/items/9f0f7ae716bce77a1b8a

@@ -179,3 +179,10 @@ shutil.move('old path', 'new path)
 ## Extend or append a vector
 * `append` argument in `list` object is faster than imputing `numpy` object
 
+## Zip a file
+
+```
+import shutil
+shutil.make_archive(output_filename, 'zip', dir_name)
+```
+
