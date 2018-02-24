@@ -160,19 +160,21 @@ shutil.move('old path', 'new path)
 # Speed
 ## Calculate sqrt
 * Using `x**.5` is faster than `numpy.sqrt(x)`
+
 ```
->>> start = time.time()
->>> for i in range(100000):
->>>     np.sqrt(10000)
->>> end = time.time()
->>> print(end - start)
+start = time.time()
+for i in range(100000):
+    np.sqrt(10000)
+end = time.time()
+print(end - start)
+
 0.14058399200439453
 
->>> start = time.time()
->>> for i in range(100000):
->>>     10000 ** .5
->>> end = time.time()
->>> print(end - start)
+start = time.time()
+for i in range(100000):
+    10000 ** .5
+end = time.time()
+print(end - start)
 0.008305072784423828
 ```
 
@@ -185,4 +187,19 @@ shutil.move('old path', 'new path)
 import shutil
 shutil.make_archive(output_filename, 'zip', dir_name)
 ```
+# Setting `pyenv`
+* On cluster computer
 
+1. First install `pyenv` without `sudo`
+
+```
+git clone git://github.com/yyuu/pyenv.git ~/.pyenv
+```
+
+2. Then add following lines in `.bash_profile`
+```
+export PYENV_ROOT="/home/tomoyas/.pyenv"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+```

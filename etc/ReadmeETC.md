@@ -9,6 +9,11 @@ Reference [here][0]
 $ wc -l <filename>
 ```
 
+## Count the number of files
+```
+$ ls | wc -l
+```
+
 ## Obtain full path in terminal
 ```
 $ pwd
@@ -24,6 +29,14 @@ When you use directory with space, you have to add `\` before the space.
 e.g. `sudo emacs .bash_profile` or `sudo vi .bash_profile`
 2. add the PATH
 e.g. `export PATH=$PATH:[PATH you want to add]`
+If you add as follows, you can read anything in `./local/bin`
+
+```
+# User specific environment and startup programs
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+PATH=$PATH:~/.local/bin
+```
+
 3. when you use emacs, use `command + x` and `command + c` to finish editing and save
 4. then don't forget to put `source ~/.bash_profile` 
 5. check PATH with `printenv PATH`

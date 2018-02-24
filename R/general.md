@@ -97,6 +97,7 @@ tapply(d$x, d$y, mean)
 >> 1.5 2.5 2.5
 ```
 `1 10 2`という並びを`1 2 10`にしたいとき
+
 ```
 factor_level = c("1", "2", "10")
 # sortして　作り直す
@@ -121,3 +122,41 @@ Output
 ```
 1.003 sec elapsed
 ```
+
+# Print
+## Avoid Scientific notation
+* Check [here][1]
+
+```
+# one solution is to 
+options(scipen=999)
+```
+
+## sprintf
+* You can also use `sprintf` to avoid scientific notation.
+
+```
+# %s for string
+sprintf("Current working dir: %s", wd)
+
+# %d for integer
+sprintf("Current working dir: %d", id)
+
+# %f for numeric
+sprintf("Current working dir: %f", value)
+
+# to show the width and precision
+sprintf("precision %.*f", 3, pi)
+[1] "precision 3.142"
+
+sprintf("width '%*.3f'", 8, pi)
+[1] "width '   3.142'"
+
+# you can also control precision with the value before "f"
+# if you want to control both width and precision, use the following expression
+sprintf("width '%*.5f'", 8, pi)
+[1] "width ' 3.14159'"
+```
+
+
+[1]:https://stackoverflow.com/questions/9397664/force-r-not-to-use-exponential-notation-e-g-e10
