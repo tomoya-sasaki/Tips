@@ -35,5 +35,16 @@ url.match(/^http:\/\/hoge.com\/(.*?)\//)
 任意の1文字の繰り返しを最短で切り上げるため、(.*)に「?」を入れます。
 すると、期待通りに「hoge」だけ取れるようになりました。
 
+## Extract only alphabet
+
+```
+st = "1234567890sdfghjkl"
+word1 = "".join(re.findall("[a-zA-Z]+", st))
+
+word1
+sdfghjkl
+```
+
+
 [A]:http://www.geocities.jp/m_hiroi/light/python04.html
 [B]:http://qiita.com/ha_g1/items/d41febac011df4601544

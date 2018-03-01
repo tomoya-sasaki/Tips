@@ -187,6 +187,17 @@ print(end - start)
 import shutil
 shutil.make_archive(output_filename, 'zip', dir_name)
 ```
+
+## Read word file
+* `textract` package can deal with both `.doc` and `docx` files.
+* This package supports other types as well. For the detail see [here][1]
+* You need `swig` to install. Install by `$ brew install swig` or `$ sudo apt-get swig` before `pip install textract`.
+
+```
+import textract
+text = textract.process("path/to/file.extension")
+```
+
 # Setting `pyenv`
 * On cluster computer
 
@@ -203,3 +214,5 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 ```
+
+[1]:https://textract.readthedocs.io/en/stable/
