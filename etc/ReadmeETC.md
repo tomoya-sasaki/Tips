@@ -14,7 +14,7 @@ $ wc -l <filename>
 $ ls | wc -l
 ```
 
-## Obtain full path in terminal
+## Obtain current path in terminal
 ```
 $ pwd
 ```
