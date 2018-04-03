@@ -17,4 +17,12 @@ git checkout -b new_local_branch -t origin/new_remote_branch
 git branch -a 
 ```
 
+## When you change to gitignore was not reflected
+
+```
+$ git rm -r --cached .
+$ git add .
+```
+
+
 [1]:https://git-scm.com/docs/git-checkout
