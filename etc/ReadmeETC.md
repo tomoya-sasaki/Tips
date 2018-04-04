@@ -183,6 +183,10 @@ e.g. `jpegoptim --strip-all --max=90 test.jpg`
 * `--max=90`: 90% of the quality
 * `*.jpg`: set wild card to optimize multiple files
 
+## When you want to use ColorSync
+* Right click the PDF file you desire to work with and then select "Open with..."
+* Select the "Colorsync Utility" application
+
 # Use Gmail in China
 http://kinto-un.hatenablog.com/entry/2015/02/15/152313
 
