@@ -1,23 +1,24 @@
-# R code tips
-
-## Implement R in terminal
+# Implement R in terminal
 For detail, check [here](http://qiita.com/doskin/items/5e3877f110af244f7b59)
+
 ```
 R --vanilla --slave < file_name.R
 ```
+
 * `--vanilla`: このオプションを付けると、R がこれまでに保存していたオブジェクトを使用しないプレーンな状態で実行する
 * `--slave`: このオプションを付けると、R の出力を標準出力に出力しない
 
 
-## Open R in English in terminal
+# Open R in English in terminal
 * Type `LC_ALL=en_US.UTF-8 R` to start R
 * See [here](https://stackoverflow.com/questions/19781008/r-language-setting-cant-be-change-with-default-writes-command-on-mac), [here](https://stackoverflow.com/questions/12642651/in-r-how-to-get-error-messages-in-english), or [here](https://stackoverflow.com/questions/13575180/how-to-change-language-settings-in-r). See [here](http://qiita.com/methane/items/dac75ef5019b311a0f10) for some details of `LC_ALL`
 
 
-## Save and Load
-### Use Rdata
+# Save and Load
+## Use Rdata
 * `save(list=ls(), file = "[filename].Rdata"` to save the all objects in the console (plot, data.frame, etc)
 * If you want to save specific objects (e.g. `df` and `elapsed_time`) then you use `save(list = c("df", "elapsed_time"), file = "[filename].Rdata")` to save the objects
+* To load, use `load("[filename].Rdata")`
 
 ### Use other objects
 * See [here](http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/) or [here](https://www.trifields.jp/how-to-save-or-read-object-in-r-1397).
@@ -25,12 +26,21 @@ R --vanilla --slave < file_name.R
 ```
 res <- lm(y~x)
 
-## Write object
-saveRDS(res, file = "lm.obj")
+## `rds` object
+###Write object
 
-## Read object
+```
+saveRDS(res, file = "lm.obj")
+```
+
+### Read object
+
+```
 obj2 <- readRDS("lm.obj")
 ```
+### When you have trouble using `readRDS`
+* You also can use `load()` to read `rds` object.
+
 
 ## Regular Expression, print family?
 ### sprintf
@@ -156,6 +166,19 @@ sprintf("width '%*.3f'", 8, pi)
 # if you want to control both width and precision, use the following expression
 sprintf("width '%*.5f'", 8, pi)
 [1] "width ' 3.14159'"
+```
+
+# Logical
+## Check `value == integer(0)
+
+```
+value = integer(0)
+
+identical(value, integer(0))
+# [1] TRUE
+
+is.integer(value) && length(value) == 0
+# [1] TRUE
 ```
 
 

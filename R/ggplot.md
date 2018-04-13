@@ -115,3 +115,16 @@ ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"),
 	legend.title = element_blank(),
 	legend.key.size = unit(1.5, "cm"))
 ```
+
+# Small tips
+
+## Finish with `NULL`
+
+```
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(alpha = 0.6) +
+  NULL
+```
+
+If you finish your ggplot with `NULL`, you can easily cut & paste or change the order of 
