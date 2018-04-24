@@ -1,4 +1,8 @@
 # Terminal
+## `fg` and `bg`
+* place a job in front or background
+* `bg` or <kbd>ctrl</kbd>+<kbd>z</kbd>
+
 ## Check Core
 Reference [here][0]
 
@@ -192,6 +196,15 @@ http://kinto-un.hatenablog.com/entry/2015/02/15/152313
 
 # Finder easier path
 * Use [Finderpath][1]
+
+# Convert html to pdf or img
+
+```
+$ wkhtmltopdf [html file] [name of pdf file]
+$ wkhtmltoimage [html file] [name of img file]
+```
+
+
 
 [0]:https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line
 [1]:https://bahoom.com/finderpath/

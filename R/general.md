@@ -82,6 +82,28 @@ obj2 <- readRDS("lm.obj")
 	> sprintf("%.100s", "abcde")
 	[1] "abcde"
 	```
+### Use `sprintf` inside a loop
+* Use `cat`
+
+	```
+	for (i in 1:5){
+		cat(sprintf("i = %d", i))
+	}
+	```
+	
+
+### Avoid exponential notation
+* For one shot change
+
+```
+format(1810032000, scientific = FALSE)
+```
+
+* Force to change with options
+
+```
+options("scipen"=-100, "digits"=4)
+```
 
 ### colr
 * To manipulate colnames and rownames. See `colr.R`.
@@ -181,5 +203,14 @@ is.integer(value) && length(value) == 0
 # [1] TRUE
 ```
 
+# Potpourri
+## Odd and even
+* 50 odd numbers and 50 even numbers
+
+```
+(1:50)*2 - 1
+
+(1:50)*2
+```
 
 [1]:https://stackoverflow.com/questions/9397664/force-r-not-to-use-exponential-notation-e-g-e10

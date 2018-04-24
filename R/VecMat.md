@@ -33,3 +33,12 @@ x
 which(x %in% c(2,4))
 # [1]  2  5  9 10
 ```
+
+## Find the nearest value in a vector and return that ID
+* Check which value in vector `x` is closet to `14`
+
+```
+x <- c(1, 6, 12, 28, 33) 
+which.min(abs(x - 14))
+
+```
