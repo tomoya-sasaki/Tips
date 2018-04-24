@@ -91,8 +91,40 @@ obj2 <- readRDS("lm.obj")
 	}
 	```
 	
+## sprintf
+* You can also use `sprintf` to avoid scientific notation.
 
-### Avoid exponential notation
+```
+# %s for string
+sprintf("Current working dir: %s", wd)
+
+# %d for integer
+sprintf("Current working dir: %d", id)
+
+# %f for numeric
+sprintf("Current working dir: %f", value)
+
+# to show the width and precision
+sprintf("precision %.*f", 3, pi)
+[1] "precision 3.142"
+
+sprintf("width '%*.3f'", 8, pi)
+[1] "width '   3.142'"
+
+# you can also control precision with the value before "f"
+# if you want to control both width and precision, use the following expression
+sprintf("width '%*.5f'", 8, pi)
+[1] "width ' 3.14159'"
+```
+
+### Use latex in R plots
+* `latex2exp` parses and converts LaTeX math formulas to R’s plotmath expressions. For detail, see [here][latexexp]
+
+```
+TeX('$\\alpha^\\beta$')
+```
+### Avoid scientific/exponential notation
+* Check [here][1]
 * For one shot change
 
 ```
@@ -155,40 +187,6 @@ Output
 1.003 sec elapsed
 ```
 
-# Print
-## Avoid Scientific notation
-* Check [here][1]
-
-```
-# one solution is to 
-options(scipen=999)
-```
-
-## sprintf
-* You can also use `sprintf` to avoid scientific notation.
-
-```
-# %s for string
-sprintf("Current working dir: %s", wd)
-
-# %d for integer
-sprintf("Current working dir: %d", id)
-
-# %f for numeric
-sprintf("Current working dir: %f", value)
-
-# to show the width and precision
-sprintf("precision %.*f", 3, pi)
-[1] "precision 3.142"
-
-sprintf("width '%*.3f'", 8, pi)
-[1] "width '   3.142'"
-
-# you can also control precision with the value before "f"
-# if you want to control both width and precision, use the following expression
-sprintf("width '%*.5f'", 8, pi)
-[1] "width ' 3.14159'"
-```
 
 # Logical
 ## Check `value == integer(0)
@@ -214,3 +212,4 @@ is.integer(value) && length(value) == 0
 ```
 
 [1]:https://stackoverflow.com/questions/9397664/force-r-not-to-use-exponential-notation-e-g-e10
+[latexexp]:https://cran.r-project.org/web/packages/latex2exp/vignettes/using-latex2exp.html
