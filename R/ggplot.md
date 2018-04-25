@@ -100,6 +100,7 @@ date_breaks("1 week"), date_breaks("10 years"), date_breaks("5 days") etc
 
 ## Whole Themes
 * My template
+
 ```
 ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"), 
 	panel.grid.major = element_line(colour = NA), 
