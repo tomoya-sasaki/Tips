@@ -31,5 +31,33 @@ $ git rm -r --cached .
 $ git add .
 ```
 
+# Errors
+
+## Cannot pull
+* Following error
+ 
+```
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> tomoya
+```
+
+* Try this
+
+```
+$ git pull origin master
+$ git push -u origin master
+```
+
+"The first cmd pull remote to local master branch, the second push to remote. -u means add upstream (tracking) reference, which solve the problem" ([ref][3])
+
+
 [1]:https://stackoverflow.com/questions/26042390/git-add-asterisk-vs-git-add-period
 [2]:https://git-scm.com/docs/git-checkout
+[3]:https://stackoverflow.com/questions/12054223/git-new-user-trying-to-do-pull-and-getting-some-confusing-messages

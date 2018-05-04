@@ -113,7 +113,7 @@ $ usrname@hostname
 ```
 
 * How to download and upload files
-__Be sure that you have to be at your local environment__
+* __Be sure that you have to be at your local environment__
 
 ```
 # local to remote
@@ -204,6 +204,8 @@ $ wkhtmltopdf [html file] [name of pdf file]
 $ wkhtmltoimage [html file] [name of img file]
 ```
 
+# Bash
+* bash のワイルドカードの「*」には隠しファイル（ドットファイル）は含まれません
 
 
 [0]:https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line
