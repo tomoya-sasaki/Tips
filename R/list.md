@@ -17,9 +17,14 @@ Ex <- Example[c("TypeCountry","Freedom", "Equality")]
 ```
 
 ## Select using vector
+
 ```
+## Choose 5, 7, 9th elements of the list
 mylist[c(5,7,9)]
 ```
+
+## Name the list
+
 
 ## Find unique component
 * For detail, see [here][1]
@@ -27,5 +32,17 @@ mylist[c(5,7,9)]
 ```
 unique(unlist(x, use.names = FALSE))
 ```
+
+## Append a new element to list
+
+```
+## use rlist function
+library(rlist)
+
+ll <- list(a = 1, b =2)
+
+list.append(ll, c = 3)
+```
+
 
 [1]:https://stackoverflow.com/questions/3879522/finding-unique-values-from-a-list

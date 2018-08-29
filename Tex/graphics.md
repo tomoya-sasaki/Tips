@@ -53,3 +53,28 @@
 
 % When you want outer frame box
 \fbox{\raisebox{-30mm}{\includegraphics[width=35mm]{aaaa.eps}}}
+```
+
+## Manually add caption
+* Also effective in beamer, where you cannot use minipage
+
+```
+\documentclass{beamer}
+\begin{document}
+\begin{frame}
+\begin{columns}[T] % align columns
+\begin{column}{.48\textwidth}
+\color{red}\rule{\linewidth}{4pt}
+
+Left Part
+\end{column}%
+\hfill%
+\begin{column}{.48\textwidth}
+\color{blue}\rule{\linewidth}{4pt}
+
+Right Part
+\end{column}%
+\end{columns}
+\end{frame}
+\end{document}
+```

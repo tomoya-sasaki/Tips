@@ -46,3 +46,11 @@ $y[[2]]
 
 ...
 ```
+
+## The problem not yet resolved
+
+```
+Error in sendMaster(try(lapply(X = S, FUN = FUN, ...), silent = TRUE)) : 
+  write error, closing pipe to the master
+```
+https://stackoverflow.com/questions/21486658/warnings-suppressed-with-mclapply-in-r/21486716

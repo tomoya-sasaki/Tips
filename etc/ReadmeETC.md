@@ -112,17 +112,18 @@ or
 $ usrname@hostname
 ```
 
-* How to download and upload files
+* How to transfer files
 * __Be sure that you have to be at your local environment__
 
 ```
-# local to remote
-scp /local/file/path usrname@host:/save/path
-scp /local/test.txt user@remoteHost:/home/user/tmp/
+# Syntax 
+scp [options] username1@source_host:directory1/filename1 username2@destination_host:directory2/filename2
 
-# remote to local
+# Example
+# you can skip the account of the host computer 
+# if you are logged in
 scp usrname@host:/moving/file/path /local/path 
-scp user@remoteHost:/home/user/test.txt /local/path
+scp /local/path user@remoteHost:/home/user/test.txt 
 
 # moving whole directory
 scp -r user@remoteHost:/remote/dir /local/dir

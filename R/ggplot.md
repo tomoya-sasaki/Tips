@@ -117,6 +117,22 @@ ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"),
 	legend.key.size = unit(1.5, "cm"))
 ```
 
+# Legend
+* You need to use identical name and labels values for both shape and colour scale.
+
+```
+## Examples
+## Even when you use different color types and size types, you can integrate them
+g <- ggplot(binded_plot, aes(x = X2, y = X3, group = X5)) + 
+		geom_line(aes(size = X5, color = X5) )+ 
+		scale_size_manual(name = "# of topics", 
+		label = c("K + 8*K sLDA", "K + 9*K sLDA", "K + 10*K sLDA", "K + 8*K LDA", "K + 9*K LDA", "K + 10*K LDA"),
+		values = c(.6, 1.2, 2, .6, 1.2, 2)) +
+		scale_color_manual(name = "# of topics", 
+		label = c("K + 8*K sLDA", "K + 9*K sLDA", "K + 10*K sLDA", "K + 8*K LDA", "K + 9*K LDA", "K + 10*K LDA"), 
+		values=c("red", "red", "red", "blue", "blue", "blue"))
+```
+
 # Small tips
 
 ## Finish with `NULL`

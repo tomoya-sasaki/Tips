@@ -1,3 +1,6 @@
+# Table of Contents
+1. [Implement R in terminal](# Implement R in terminal)
+
 # Implement R in terminal
 For detail, check [here](http://qiita.com/doskin/items/5e3877f110af244f7b59)
 
@@ -189,7 +192,7 @@ Output
 
 
 # Logical
-## Check `value == integer(0)
+## Check `value == integer(0)`
 
 ```
 value = integer(0)
@@ -209,6 +212,46 @@ is.integer(value) && length(value) == 0
 (1:50)*2 - 1
 
 (1:50)*2
+```
+
+## `.Last.value` 
+* The value of the internal evaluation of a top-level R expression is always assigned to .Last.value (in package:base) before further processing (e.g., printing).
+* You can obtain the last evaluation.
+
+## Detach packages
+
+```
+detachAllPackages <- function() {
+
+  basic.packages <- c("package:stats",
+  "package:graphics",
+  "package:grDevices",
+  "package:utils",
+  "package:datasets",
+  "package:methods",
+  "package:base")
+
+  package.list <- search()[ifelse(unlist(gregexpr("package:",search()))==1,TRUE,FALSE)]
+
+  package.list <- setdiff(package.list,basic.packages)
+
+  if (length(package.list)>0)  for (package in package.list) detach(package, character.only=TRUE)
+
+}
+
+detachAllPackages()
+```
+
+## Compare a utility to compare two R objects
+
+```
+all.equal()
+```
+
+## To delete the `attr` (`names`)
+
+```
+unname(obj)
 ```
 
 [1]:https://stackoverflow.com/questions/9397664/force-r-not-to-use-exponential-notation-e-g-e10
