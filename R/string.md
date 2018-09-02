@@ -75,3 +75,29 @@ cleanHTML <- function(html_string){
 }
 ```
 
+8. Remove punctuation
+
+```
+gsub("[[:punct:]]", "", text	)
+```
+
+
+8. Merge Multiple spaces to single space; remove trailing/leading spaces
+
+```
+string <- "  Hi buddy   what's up   Bro "
+library(stringr)
+str_replace(gsub("\\s+", " ", str_trim(string)), "B", "b")
+# [1] "Hi buddy what's up bro"
+```
+
+9. Removing duplicate words in a string in R
+
+```
+str <- "How do I best try and try and try and find?"
+d <- unlist(strsplit(str, split=" "))
+
+
+paste(unique(d), collapse = ' ')
+
+```
