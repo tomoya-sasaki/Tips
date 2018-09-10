@@ -31,6 +31,12 @@ $ git rm -r --cached .
 $ git add .
 ```
 
+* If you do not want to remove all cash,
+
+```
+$ git rm -r --cached [file_name]
+```
+
 # Errors
 
 ## Cannot pull
