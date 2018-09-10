@@ -205,6 +205,23 @@ is.integer(value) && length(value) == 0
 ```
 
 # Potpourri
+
+## Notification
+
+```
+system("say Just finished!")
+# then the computer will speak "Just finished"
+system("say -v Kathy Just finished!")
+# this time, Kathy (some other voice) will speak
+
+library(beepr)
+beep()
+# beep
+
+browseURL('https://www.youtube.com/watch?v=QH2-TGUlwu4')
+# open a URL (this one is Hikaru Utada "wait and see")
+```
+
 ## Odd and even
 * 50 odd numbers and 50 even numbers
 

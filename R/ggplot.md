@@ -63,6 +63,7 @@ ggplot(data, aes(x = exp_A)) + scale_x_continuous(trans="log")
 
 ## Scales for date/time data
 Basic
+
 ```
 scale_x_date(name = waiver(), breaks = waiver(), date_breaks = waiver(),
   labels = waiver(), date_labels = waiver(), minor_breaks = waiver(),
@@ -94,6 +95,7 @@ scale_y_time(name = waiver(), breaks = waiver(), minor_breaks = waiver(),
 
 ```
 The arguments you could add in `date_breaks`.
+
 ```
 date_breaks("1 week"), date_breaks("10 years"), date_breaks("5 days") etc
 ```
@@ -133,8 +135,17 @@ g <- ggplot(binded_plot, aes(x = X2, y = X3, group = X5)) +
 		values=c("red", "red", "red", "blue", "blue", "blue"))
 ```
 
-# Small tips
+Aesthetics can be set or mapped within a ggplot call.
+An aesthetic defined within aes(...) is mapped from the data, and a legend created. An aesthetic may also be set to a single value, by defining it outside aes(). In this case, it appears you wish to set alpha = 0.8 and map colour = group (no legend).
+To do this, place the alpha = 0.8 outside the aes() definition.
 
+```
+g <- ggplot(df, aes(x = x, y = y, group = group))
+g <- g + geom_line(aes(colour = group))
+g <- g + geom_point(aes(colour = group), alpha = 0.8)
+```
+
+# Small tips
 ## Finish with `NULL`
 
 ```
