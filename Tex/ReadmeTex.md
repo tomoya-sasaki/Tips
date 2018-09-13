@@ -37,5 +37,14 @@ See [here](1)
 # Texmaker
 See [here](2)
 
+# General stuff
+## To make math symbols in section title bold
+
+```
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+```
+
 [1]:http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202
 [2]:http://blog.livedoor.jp/ti5942/?p=63
