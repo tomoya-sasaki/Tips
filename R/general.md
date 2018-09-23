@@ -26,8 +26,10 @@ R --vanilla --slave < file_name.R
 ### Use other objects
 * See [here](http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/) or [here](https://www.trifields.jp/how-to-save-or-read-object-in-r-1397).
 * The method below can contain only one objects, but this method doesn't save both the object and its name, rather it just saves a representation of the object. As a result, the saved object can be loaded into a named object within R that is different from the name it had when originally serialized.
+
 ```
 res <- lm(y~x)
+```
 
 ## `rds` object
 ###Write object
@@ -41,6 +43,7 @@ saveRDS(res, file = "lm.obj")
 ```
 obj2 <- readRDS("lm.obj")
 ```
+
 ### When you have trouble using `readRDS`
 * You also can use `load()` to read `rds` object.
 
@@ -85,6 +88,7 @@ obj2 <- readRDS("lm.obj")
 	> sprintf("%.100s", "abcde")
 	[1] "abcde"
 	```
+	
 ### Use `sprintf` inside a loop
 * Use `cat`
 
