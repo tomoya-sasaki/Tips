@@ -8,7 +8,17 @@
 | すべて閉じる| Command + k, Command + 1 |
 | すべて開く| Command + k, Command + j |
 
-カンマで区切られているショートカットは、Command + kの後にCommand + 1を押します。つまりCommandは2回押すことになります。    
+カンマで区切られているショートカットは、Command + kの後にCommand + 1を押します。つまりCommandは2回押すことになります。 
+
+## Move between panes
+
+The keyboard shortcut to toggle between panes?
+
+```
+cmd-k, cmd-left/cmd-right moves the focus left or right
+ctrl-1 moves to pane 1
+ctrl-2 moves to pane 2
+```
 
 # How to multiple panels
 ## Set new layout
