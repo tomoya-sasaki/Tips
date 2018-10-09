@@ -155,4 +155,18 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   NULL
 ```
 
-If you finish your ggplot with `NULL`, you can easily cut & paste or change the order of 
+If you finish your ggplot with `NULL`, you can easily cut & paste or change the order of each argument.
+
+## Fit weighted regression
+
+```
+wtdlm <- lm(mpg ~ hp, data = mtcars, weights = cyl)
+mp <- as.data.frame(cbind(hp = mtcars$hp, predict(wtdlm, interval = 'confidence')))
+# Base plot
+p1 <- ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point(aes(size = cyl))
+# Add the fitted model + confidence envelope
+p1 + geom_line(data = mp, aes(x = hp, y = fit), size = 1, color = 'blue') +
+	geom_line(data = mp, aes(x = hp, y = lwr), color = 'gray80') +
+	geom_line(data = mp, aes(x = hp, y = upr), color = 'gray80') +
+	geom_ribbon(data = mp, aes(x = hp, ymin = lwr, ymax = upr), alpha = 0.1)
+```

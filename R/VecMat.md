@@ -53,6 +53,14 @@ do.call(cbind, lapply(x, is.nan))
 data123[is.nan(data123)] <- 0
 ```
 
+## Replace `Inf`wit zeros
+
+```
+data[data == Inf] <- 0
+data[data == -Inf] <- 0
+```
+
+
 # vector
 ## find index of an element in vector
 
