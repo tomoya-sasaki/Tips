@@ -41,6 +41,17 @@ vocabulary[vocabulary$id %in% n_occur$Var1[n_occur$Freq > 1],]
 # id has some dupliates
 duplicates <- as.character(dd$id[duplicated(dd$id)])
 dd2 <- dd[dd$id %in% duplicates, ]
+```
+
+* Alternative context
+
+```
+df <- data.frame(a = c(1,2,3,4,1,5,6,4,2,1))
+
+duplicated(df) | duplicated(df, fromLast = TRUE)
+
+duplicated(df) | duplicated(df, fromLast = TRUE)
+#[1]  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
 
 ```
 
@@ -60,6 +71,54 @@ data[data == Inf] <- 0
 data[data == -Inf] <- 0
 ```
 
+
+## Rank
+
+* How to get column name of the variable with the top 10 highest values?
+
+```
+# idea 1
+> DF <- data.frame(V1=c(2,8,1),V2=c(7,3,5),V3=c(9,6,4))
+k <- 2
+
+mx <- t(apply(DF,1,function(x)names(DF)[sort(head(order(x,decreasing=TRUE),k))]))
+> mx
+     [,1] [,2]
+[1,] "V2" "V3"
+[2,] "V1" "V3"
+[3,] "V2" "V3"
+
+# idea 2
+set.seed(1)
+df <- data.frame(matrix(runif(600*10), ncol = 600))
+
+foo <- function(x, names) {
+  ord <- order(x, decreasing = TRUE)[1:5]
+  names[ord]
+}
+
+nams <- colnames(df)
+apply(df, 1, foo, names = nams)
+
+# idea 3
+set.seed(123)
+d <- data.frame(
+  x   = runif(90),
+  grp = gl(3, 30))
+
+d %>%
+  group_by(grp) %>%
+  top_n(n = 5, wt = x)
+```
+
+* Rank per row over multiple columns in R
+
+```
+d <- matrix(c(11, 21, 35, 3, 2, 1, 22, 12, 66, 2, 3, 1, 44, 22, 12, 1, 2, 3), nrow = 3, ncol = 6, byrow = T)
+colnames(d) <- c("V1", "V2", "V3", "NewVariable_V1", "NewVariable_V2", "NewVariable_V3")
+
+data.frame(d, t(apply(-d, 1, rank, ties.method='min')))
+```
 
 # vector
 ## find index of an element in vector

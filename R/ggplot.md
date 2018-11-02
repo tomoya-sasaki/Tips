@@ -170,3 +170,5 @@ p1 + geom_line(data = mp, aes(x = hp, y = fit), size = 1, color = 'blue') +
 	geom_line(data = mp, aes(x = hp, y = upr), color = 'gray80') +
 	geom_ribbon(data = mp, aes(x = hp, ymin = lwr, ymax = upr), alpha = 0.1)
 ```
+
+## 
