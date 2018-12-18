@@ -18,6 +18,18 @@ $ wc -l <filename>
 $ ls | wc -l
 ```
 
+## Open Finder
+
+* Open home directory
+```
+$ open ~ 
+```
+
+* Open current directory
+```
+$ open .
+```
+
 ## Obtain current path in terminal
 ```
 $ pwd

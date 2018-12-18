@@ -72,7 +72,7 @@ data[data == -Inf] <- 0
 ```
 
 
-## Rank
+## Ranking values
 
 * How to get column name of the variable with the top 10 highest values?
 
@@ -111,13 +111,23 @@ d %>%
   top_n(n = 5, wt = x)
 ```
 
-* Rank per row over multiple columns in R
+* Ranking per row over multiple columns in R
 
 ```
 d <- matrix(c(11, 21, 35, 3, 2, 1, 22, 12, 66, 2, 3, 1, 44, 22, 12, 1, 2, 3), nrow = 3, ncol = 6, byrow = T)
 colnames(d) <- c("V1", "V2", "V3", "NewVariable_V1", "NewVariable_V2", "NewVariable_V3")
 
 data.frame(d, t(apply(-d, 1, rank, ties.method='min')))
+```
+
+## Diagnoal matrix
+
+```
+> diag(1, nrow = 3, ncol = 3)
+     [,1] [,2] [,3]
+[1,]    1    0    0
+[2,]    0    1    0
+[3,]    0    0    1
 ```
 
 # vector

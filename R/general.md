@@ -1,5 +1,12 @@
 # Table of Contents
 1. [Implement R in terminal](# Implement R in terminal)
+2. [Open R in English in terminal](# Open R in English in terminal)
+3. [Save and Load](# Save and Load)
+4. [Write files](# Write filess)
+5. [Regular Expression, print family?](# Regular Expression, print family?)
+6. [Measure running time](# Measure running time)
+7. [Potpourri](# # Potpourri)
+
 
 # Implement R in terminal
 For detail, check [here](http://qiita.com/doskin/items/5e3877f110af244f7b59)
@@ -47,8 +54,17 @@ obj2 <- readRDS("lm.obj")
 ### When you have trouble using `readRDS`
 * You also can use `load()` to read `rds` object.
 
+# Write files
+## Write as csv
+* `write.csv()` cannont ignore column names.
+* If you want to ignore column names, you can use `write.table()` instead.
 
-## Regular Expression, print family?
+## Write as text
+* `write()` and `write.lines()` forced to write `\n` in the last lines.
+
+
+
+# Regular Expression, print family
 ### sprintf
 #### basic format
 * `sprintf("%f", int)`: Count and print the string from left (from right if negative) until a decimal point, default number is 6. If the string is more than 6, it keep the string and if less it create 0 or space.
@@ -150,13 +166,7 @@ options("scipen"=-100, "digits"=4)
 ### formattr
 * To manipulate (join) strings. See `formattr.R`.
 
-# Write file
-## Write as csv
-* `write.csv()` cannont ignore column names.
-* If you want to ignore column names, you can use `write.table()` instead.
 
-## Write as text
-* `write()` and `write.lines()` forced to write `\n` in the last lines.
 
 # Class
 ## factor
@@ -195,8 +205,11 @@ Output
 ```
 
 
-# Logical
-## Check `value == integer(0)`
+# Potpourri
+
+
+## Logical
+### Check `value == integer(0)`
 
 ```
 value = integer(0)
@@ -207,8 +220,6 @@ identical(value, integer(0))
 is.integer(value) && length(value) == 0
 # [1] TRUE
 ```
-
-# Potpourri
 
 ## Notification
 

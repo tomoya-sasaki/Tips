@@ -19,3 +19,10 @@ output: html_document
 ```
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 ```
+
+## Unicode issue
+
+"Standard LaTeX can’t handle raw Unicode characters like √, but XeLaTeX can. Add latex_engine: xelatex to your YAML front matter: output: pdf_document: latex_engine: xelatex" [here][1]
+
+
+[1]:https://community.rstudio.com/t/tidyverse-1-2-1-knitting-to-pdf-issue/2880

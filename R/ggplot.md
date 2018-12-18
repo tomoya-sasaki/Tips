@@ -2,11 +2,14 @@
 ## `geom_vline` and legend
 * If you want to make legend, you need to put the variables in `aes(xintercept=)`.
 * However, `geom_vline` allows length 1 or the same length as the data. Otherwise you will get a following error.
+
 ```
 >>> plot + geom_vline(aes(xintercept = c(1,2,3))
 Error: Aesthetics must be either length 1 or the same as the data (53940): xintercept
 ```
+
 * You need to add one by one.
+
 ```
 >>> plot + geom_vline(aes(xintercept = c(1))) + 	
 	geom_vline(aes(xintercept = c(2))) + 
