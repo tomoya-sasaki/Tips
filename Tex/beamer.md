@@ -1,8 +1,12 @@
 # General tips
-* Japanese:[here][1], [here][2]
+* Japanese:[here][1], [here][2], or [here][3].
+
+# Theme
+* Choose from [here][4].
 
 # Overlay
 * In the following code, characteristics of each animal appear one by one
+
 ```
 \documentclass{beamer}
 
@@ -64,5 +68,24 @@
 \end{textblock*}
 ```
 
+# Format
+## Remove footer
+
+```
+% gets rid of bottom navigation bars
+\setbeamertemplate{footline}[frame number]{}
+
+% gets rid of bottom navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% gets rid of footer
+% will override 'frame number' instruction above
+% comment out to revert to previous/default definitions
+\setbeamertemplate{footline}{}
+```
+
 [1]:http://ayapin-film.sakura.ne.jp/LaTeX/Slides/guide4beamer.pdf
 [2]:http://neurodynamics.jp/etc/beamer
+[3]:https://en.wikibooks.org/wiki/LaTeX/Presentations#Themes
+[4]:http://deic.uab.es/~iblanes/beamer_gallery/
+

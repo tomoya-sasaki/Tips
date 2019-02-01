@@ -3,6 +3,7 @@
 # Beamer
 ## When you want to use `minipage` in beamer
 * use `\begin{column}`
+
 ``` 
 \begin{columns}[T]
 	\begin{column}{0.48\textwidth}
@@ -16,6 +17,7 @@
 # `ascmac.sty`
 When you use `itembox` or `screen` with `Xelatex` or `LuaLatex` (maybe applicable to other systems as well).
 See [here](1)
+
 ```
 \usepackage{ascmac}
 \newdimen\tbaselinshift
@@ -24,12 +26,14 @@ See [here](1)
 
 # `titlesec.sty`
 * If you want to change the font size of each section
+
 ```
 \titleformat*{\section}{\LARGE\bfseries}
 \titleformat*{\subsection}{\Large\bfseries}
 \titleformat*{\subsubsection}{\large\bfseries}
 ```
 * If you want to stuck the space between the sections
+
 ```
 \usepackage[compact]{titlesec}
 ```
