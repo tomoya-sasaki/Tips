@@ -55,6 +55,21 @@ duplicated(df) | duplicated(df, fromLast = TRUE)
 
 ```
 
+## Find common elements
+
+
+```
+a <- c(1,3,5,7,9)
+b <- c(3,6,8,9,10)
+c <- c(2,3,4,5,7,9)
+# works fine 
+intersect(intersect(a,b),c)
+
+# more clever way if you have many vectors
+Reduce(intersect, list(a,b,c))
+```
+
+
 ## Replace `Nan` with zeros
 
 ```
@@ -162,4 +177,56 @@ which.min(abs(x - 14))
 
 ```
 
+# Dataframe
+## Create a new column with 
+You can add a sequence of numbers very easily with
+
+```
+data$ID <- seq.int(nrow(data))
+```
+
+Of course it will have no real meaning so it might not be of use in analysis.
+
+If you are already using library(tidyverse), you can use
+
+```
+data <- tibble::rowid_to_column(data, "ID")
+```
+Check [here][2]
+
+## Assign column names to a function
+
+```
+df <- data.frame(A=1:10, B=2:11, C=3:12)
+fun1 <- function(x, column){
+  max(x[,column])
+}
+fun1(df, "B")
+fun1(df, c("B","A"))
+```
+
+There's no need to use substitute, eval, etc.
+You can even pass the desired function as a parameter:
+
+```
+fun1 <- function(x, column, fn) {
+  fn(x[,column])
+}
+fun1(df, "B", max)
+```
+
+Alternatively, using `[[`  also works for selecting a single column at a time:
+
+```
+df <- data.frame(A=1:10, B=2:11, C=3:12)
+fun1 <- function(x, column){
+  max(x[[column]])
+}
+fun1(df, "B")
+```
+
+
+
+
 [1]:https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
+[2]:https://stackoverflow.com/questions/23518605/add-an-index-numeric-id-column-to-large-data-frame

@@ -38,6 +38,7 @@ Example: `www.google.com/search?q=vilnius&hl=lt`
 
 2. Pages in specified language: `lr=lang_`
 Example: `www.google.com/search?q=vilnius&lr=lang_lt`
+(Japanese: `ja`, English: `en`)
 
 3. Pages originating from specified country: `cr=country`
 Example: `www.google.com/search?q=vilnius&cr=countryLT`

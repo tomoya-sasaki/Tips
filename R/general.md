@@ -286,5 +286,14 @@ all.equal()
 unname(obj)
 ```
 
+## Extract file name as character
+
+```
+a <- data.frame()
+deparse(substitute(a))
+[1] "a"
+```
+
+
 [1]:https://stackoverflow.com/questions/9397664/force-r-not-to-use-exponential-notation-e-g-e10
 [latexexp]:https://cran.r-project.org/web/packages/latex2exp/vignettes/using-latex2exp.html

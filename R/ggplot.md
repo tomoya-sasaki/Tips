@@ -37,6 +37,17 @@ Error: Aesthetics must be either length 1 or the same as the data (53940): xinte
 
 * `+ axis.title.x = element_blank()`,  `+ axis.title.y = element_blank()`
 
+### Center titles
+
+```
+ggplot() +
+  ggtitle("Default in 2.2.0 is left-aligned")
+  
+ggplot() +
+  ggtitle("Use theme(plot.title = element_text(hjust = 0.5)) to center") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
 ### Log-scale data
 * data -> log scale & axis label -> non log scale
 * example
@@ -58,6 +69,8 @@ ggplot(data, aes(x = exp_A)) + scale_x_continuous(trans="log")
 
 ### Change angle of the label
 * `theme(axis.text.x = element_text(angle = 45, hjust = 1))`
+
+
 
 ## color 
 ### make grey gradation
@@ -118,7 +131,8 @@ ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"),
 	legend.direction="horizontal", 
 	legend.text = element_text(size=20), 
 	legend.key = element_rect(fill = "white"), 
-	legend.title = element_blank(),
+	#legend.title = element_blank(),
+	plot.title = element_text(hjust = 0.5),
 	legend.key.size = unit(1.5, "cm"))
 ```
 
@@ -146,6 +160,39 @@ To do this, place the alpha = 0.8 outside the aes() definition.
 g <- ggplot(df, aes(x = x, y = y, group = group))
 g <- g + geom_line(aes(colour = group))
 g <- g + geom_point(aes(colour = group), alpha = 0.8)
+```
+
+
+### Change spaces between legends and figures
+
+```
+ggplot(dfr,aes(x=x,y=value,fill=variable))+
+  geom_bar(stat="identity")+
+  theme(legend.position="top",
+        legend.justification="right",
+        legend.margin=margin(0,0,0,0),
+        legend.box.margin=margin(-10,-10,-10,-10))
+# the last two lines change margins of legend
+```
+
+### Remove legend titles
+
+Remove legend for a particular aesthetic (fill):
+
+```
+bp  + guides(fill=FALSE)
+```
+
+It can also be done when specifying the scale:
+
+```
+bp + scale_fill_discrete(guide=FALSE)
+```
+
+This removes all legends:
+
+```
+bp + theme(legend.position="none")
 ```
 
 # Small tips
