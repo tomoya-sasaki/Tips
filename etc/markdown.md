@@ -24,6 +24,11 @@ You can summarize the links at the end of the document.
 Please check [here][2].
 
 ## To use keyboard-like character
+```
+<kbd>Alt</kbd>+<kbd>F2</kbd>
+```
+<kbd>Alt</kbd>+<kbd>F2</kbd>
+
 Check [here](https://meta.askubuntu.com/questions/707/how-to-use-keyboard-icon-in-markdown).
 
 # Shortcuts

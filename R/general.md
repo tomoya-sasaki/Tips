@@ -65,8 +65,8 @@ obj2 <- readRDS("lm.obj")
 
 
 # Regular Expression, print family
-### sprintf
-#### basic format
+## sprintf
+### basic format
 * `sprintf("%f", int)`: Count and print the string from left (from right if negative) until a decimal point, default number is 6. If the string is more than 6, it keep the string and if less it create 0 or space.
     
 	```
@@ -114,7 +114,7 @@ obj2 <- readRDS("lm.obj")
 	}
 	```
 	
-## sprintf
+### Avoid scientific notation with `sprintf`
 * You can also use `sprintf` to avoid scientific notation.
 
 ```
@@ -140,13 +140,13 @@ sprintf("width '%*.5f'", 8, pi)
 [1] "width ' 3.14159'"
 ```
 
-### Use latex in R plots
+## Use latex in R plots
 * `latex2exp` parses and converts LaTeX math formulas to R’s plotmath expressions. For detail, see [here][latexexp]
 
 ```
 TeX('$\\alpha^\\beta$')
 ```
-### Avoid scientific/exponential notation
+## Avoid scientific/exponential notation
 * Check [here][1]
 * For one shot change
 
@@ -160,13 +160,24 @@ format(1810032000, scientific = FALSE)
 options("scipen"=-100, "digits"=4)
 ```
 
-### colr
+## colr
 * To manipulate colnames and rownames. See `colr.R`.
 
-### formattr
+## formattr
 * To manipulate (join) strings. See `formattr.R`.
 
+## Extracting the last n characters from a string
 
+```
+x <- "some text in a string"
+
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
+
+substrRight(x, 6)
+[1] "string"
+```
 
 # Class
 ## factor

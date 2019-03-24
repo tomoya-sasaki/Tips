@@ -1,11 +1,11 @@
 # General tips
-* Japanese:[here][1], [here][2], or [here][3].
+* Japanese: [here](http://neurodynamics.jp/etc/beamer), or [here](https://en.wikibooks.org/wiki/LaTeX/Presentations#Themes).
 
 # Theme
-* Choose from [here][4].
+* Choose from [here](http://deic.uab.es/~iblanes/beamer_gallery/)).
 
 # Overlay
-* In the following code, characteristics of each animal appear one by one
+* In the following code, characteristics of each animal appear one by one in the same page
 
 ```
 \documentclass{beamer}
@@ -84,8 +84,12 @@
 \setbeamertemplate{footline}{}
 ```
 
-[1]:http://ayapin-film.sakura.ne.jp/LaTeX/Slides/guide4beamer.pdf
-[2]:http://neurodynamics.jp/etc/beamer
-[3]:https://en.wikibooks.org/wiki/LaTeX/Presentations#Themes
-[4]:http://deic.uab.es/~iblanes/beamer_gallery/
+# Table
+## Numbering figures
+
+```
+\setbeamertemplate{caption}[numbered]
+
+```
+
 

@@ -16,7 +16,7 @@
 
 # `ascmac.sty`
 When you use `itembox` or `screen` with `Xelatex` or `LuaLatex` (maybe applicable to other systems as well).
-See [here](1)
+See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 
 ```
 \usepackage{ascmac}
@@ -39,9 +39,10 @@ See [here](1)
 ```
 
 # Texmaker
-See [here](2)
+See [here](http://blog.livedoor.jp/ti5942/?p=63)
 
-# General stuff
+
+# Miscellaneous
 ## To make math symbols in section title bold
 
 ```
@@ -50,5 +51,34 @@ See [here](2)
 \makeatother
 ```
 
-[1]:http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202
-[2]:http://blog.livedoor.jp/ti5942/?p=63
+## Checkmark
+
+```
+\documentclass{article}
+\usepackage{amssymb}
+\usepackage{bbding}
+% \usepackage{dingbat}
+\usepackage{pifont}
+\usepackage{wasysym}
+
+\begin{document}
+
+% amssymb
+\checkmark
+
+% bbding
+\Checkmark
+\CheckmarkBold
+
+% dingbat
+% \checkmark
+
+% pifont
+\ding{51}
+\ding{52}
+
+% wasysym
+\CheckedBox
+
+\end{document}
+```
