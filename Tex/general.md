@@ -82,3 +82,22 @@ See [here](http://blog.livedoor.jp/ti5942/?p=63)
 
 \end{document}
 ```
+## Text aligned left/center/right
+
+```
+\documentclass{article}
+
+\newcommand\textbox[1]{%
+  \parbox{.333\textwidth}{#1}%
+}
+
+\begin{document}
+
+% left and right
+\noindent Left longer sample simple \hfill Right
+
+% left, center, and right
+\noindent\textbox{Left longer sample text\hfill}\textbox{\hfil Center\hfil}\textbox{\hfill Right}
+
+\end{document}
+```

@@ -204,3 +204,13 @@ Here are eight must-know keystrokes for navigating the Mac Dock. Note you must f
 * Hold <kbd>Option</kbd> key while navigating to, then hit the Up Arrow key to access Force Quit
 * <kbd>Command</kbd>+<kbd>Return</kbd> to reveal the Dock item in the Finder
 * <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Return</kbd> to hide all other apps and windows except for the selected Dock item
+
+# Prevent sleep
+* `caffeinate` may work [here](https://computers.tutsplus.com/tutorials/quick-tip-how-to-stop-your-mac-from-sleeping-using-the-command-line--mac-50905)
+
+```
+$ caffeinate
+R
+```
+
+* Type `caffeinate` before starting `R` or `Python` may work
