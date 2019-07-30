@@ -1,3 +1,9 @@
+# vector
+## Convert one row/column of dataframe into vector
+```
+as.numeric(df[, 1])
+```
+
 # matrix
 ## Convert the values in a column into rownames in an existing matrix
 

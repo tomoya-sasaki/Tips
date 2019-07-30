@@ -83,6 +83,12 @@
 % comment out to revert to previous/default definitions
 \setbeamertemplate{footline}{}
 ```
+## Remove header
+
+```
+\setbeamertemplate{headline}{}
+```
+
 
 # Table
 ## Numbering figures
