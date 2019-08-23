@@ -30,6 +30,27 @@ $ open ~
 $ open .
 ```
 
+## Show files with time of modification
+
+```
+ls --full-time
+ls -l --time-style=full-iso
+
+ls -l --time-style=+"%Y %H:%M:%S"
+```
+
+* In OSX, `ls -lT` also works
+
+## Check time zone
+* [here](https://www.tecmint.com/check-linux-timezone/)
+
+```
+$ date
+$ date +"%Z %z"
+$ timedatectls
+$ timedatectls | grep "Time zone"
+```
+
 ## Obtain current path in terminal
 ```
 $ pwd
@@ -114,6 +135,48 @@ To move from `sub2_1` to `sub1_1`
 
 ```
 ~/sub2_1 $ cd ../../sub1/sub1_1
+```SonDirectory
+
+### "flatten" directory. 
+* Move files in subdirectories to its parent directories
+* When you want to move from this (or `ParentDirectory $ find . -type f`)
+
+```
+GrandParentDirectory $ find ~/ParentDirectory/ -type f
+~/ParentDirectory/rooty.jpg
+~/ParentDirectory/SonDirectory1/beta-tool-preview.jpg
+~/ParentDirectory/SonDirectory2/test-tools.jpg
+~/ParentDirectory/SonDirectory3/test-png.jpg
+~/ParentDirectory/SonDirectory3/test1.jpg
+```
+to this
+
+```
+GrandParentDirectory $ find ~/ParentDirectory/ -type f
+~/ParentDirectory/rooty.jpg
+~/ParentDirectory/beta-tool-preview.jpg
+~/ParentDirectory/test-tools.jpg
+~/ParentDirectory/test-png.jpg
+~/ParentDirectory/test1.jpg
+```
+
+```
+GrandParentDirectory $ find ParendDirectory/ -mindepth 2 -type f -exec mv -i '{}' ParendDirectory/ ';'
+```
+
+### `unzip`
+* If your file is too large, you may not be able to unzip using apps such as unarchiver [here](https://apple.stackexchange.com/questions/135853/error-opening-a-zip-file-no-such-file-or-directory)
+* Use `unzip`
+
+```
+unzip ~/filelocation/filename.zip -d ~/whereunzipfilegoes
+```
+
+* If the zipped file needs repair
+
+```
+zip -FF ~/Downloads/filename.zip --out ~/Downloads/Repairedversion.zip
+unzip ~/Repairedversion.zip -d ~/whereunzipfilegoes
 ```
 
 ## ssh connections
@@ -139,6 +202,65 @@ scp /local/path user@remoteHost:/home/user/test.txt
 
 # moving whole directory
 scp -r user@remoteHost:/remote/dir /local/dir
+```
+## `screen` method
+### Basic
+* Change to new "screen" [here](https://www.utakata.work/entry/2017/11/23/100000)
+
+```
+$ ssh target-server
+[username@target-server ~]$ screen
+[username@target-server ~]$
+```
+
+* To move back, <kbd>Ctrl</kbd> + <kbd>a</kbd> then <kbd>Ctrl</kbd> + <kbd>d</kbd>
+
+```
+[username@target-server ~]$ screen
+[detached]
+[username@target-server ~]$
+```
+
+* To check the list of "screens"
+
+```
+[username@target-server ~]$ screen -ls
+There are screens on:
+    5689.pts-10.target-server(Detached)
+1 Sockets in /var/run/screen/S-username
+```
+
+* To exit/quit
+
+```
+[username@target-server ~]$ exit
+[screen is terminating]
+[yoshiyuki_sakamoto@nv-sysmanage01 ~]$
+```
+
+### `quit` screen method outside the screen
+* send a 'quit' command:
+
+```
+screen -X -S "sessionname" quit
+```
+
+* send a Ctrl-C to a screen session running a script:
+
+```
+screen -X -S "sessionname" stuff "^C"
+```
+
+* Kill multiple sessions
+
+```
+screen -ls | grep pts | cut -d. -f1 | awk '{print $1}' | xargs kill
+```
+
+* Kill (multiple) detached sessions
+
+```
+screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
 ```
 
 ## Install pip in remote computer locally

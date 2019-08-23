@@ -5,18 +5,19 @@
 4. [Write files](# Write filess)
 5. [Regular Expression, print family?](# Regular Expression, print family?)
 6. [Measure running time](# Measure running time)
-7. [Potpourri](# # Potpourri)
+7. [Potpourri](# Potpourri)
 
 
 # Implement R in terminal
 For detail, check [here](http://qiita.com/doskin/items/5e3877f110af244f7b59)
 
 ```
-R --vanilla --slave < file_name.R
+$ R --vanilla --slave < file_name.R
+$ Rscript --vanilla --slave file_name.R
 ```
 
 * `--vanilla`: このオプションを付けると、R がこれまでに保存していたオブジェクトを使用しないプレーンな状態で実行する
-* `--slave`: このオプションを付けると、スクリプト実行時に標準出力に表示される情報を出力しない
+* `--slave`: このオプションを付けると、スクリプト実行時に標準出力に表示される情報を出力しないß
 
 
 # Open R in English in terminal
@@ -36,6 +37,26 @@ R --vanilla --slave < file_name.R
 
 ```
 res <- lm(y~x)
+```
+
+## Save output
+* Save both outputs and messages [here](https://stackoverflow.com/questions/7096989/how-to-save-all-console-output-to-file-in-r)
+
+```
+con <- file("test.log")
+# by adding both line, you can save all messages
+sink(con, append=TRUE)
+sink(con, append=TRUE, type="message")
+
+# This will echo all input and not truncate 150+ character lines...
+source("script.R", echo=TRUE, max.deparse.length=10000)
+
+# Restore output to console
+sink() 
+sink(type="message")
+
+# And look at the log...
+cat(readLines("test.log"), sep="\n")
 ```
 
 ## `rds` object
@@ -303,6 +324,21 @@ unname(obj)
 a <- data.frame()
 deparse(substitute(a))
 [1] "a"
+```
+
+## Check existence of directory
+
+```
+mainDir <- "c:/path/to/main/dir"
+subDir <- "outputDirectory"
+
+if (file.exists(subDir)){
+    setwd(file.path(mainDir, subDir))
+} else {
+    dir.create(file.path(mainDir, subDir))
+    setwd(file.path(mainDir, subDir))
+
+}
 ```
 
 
