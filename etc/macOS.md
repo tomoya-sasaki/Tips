@@ -135,7 +135,7 @@ To move from `sub2_1` to `sub1_1`
 
 ```
 ~/sub2_1 $ cd ../../sub1/sub1_1
-```SonDirectory
+```
 
 ### "flatten" directory. 
 * Move files in subdirectories to its parent directories
@@ -159,6 +159,8 @@ GrandParentDirectory $ find ~/ParentDirectory/ -type f
 ~/ParentDirectory/test-png.jpg
 ~/ParentDirectory/test1.jpg
 ```
+* Use the following command
+
 
 ```
 GrandParentDirectory $ find ParendDirectory/ -mindepth 2 -type f -exec mv -i '{}' ParendDirectory/ ';'
@@ -187,8 +189,37 @@ or
 $ usrname@hostname
 ```
 
-* How to transfer files
-* __Be sure that you have to be at your local environment__
+### Use ssh keys
+* References [here](https://qiita.com/kenju/items/b09199c4b3e7203a2867), [here](https://qiita.com/suthio/items/2760e4cff0e185fe2db9), or [here](https://qiita.com/kazokmr/items/754169cfa996b24fcbf5)
+
+1. Create ssh keys in your local environment
+
+```
+# create a folder if a file to contain ssh keys does not exist
+local $ mkdir ~/.ssh/
+
+# generate key
+# there are multiple options you can use
+local $ ssh-keygen
+```
+
+2. Let client remember your ssh public key
+
+```
+# create directory in your client if it does not exist
+# 1. move scp file
+local $ scp ~/.ssh/id_rsa.pub remote-user-name@address:~/.ssh
+# 2-1. copy and paste, copy contents of id_rsa.pub
+local $ cat ~/id_rsa.pub >> .ssh/authorized_keys
+
+# 3-1. or copy and paste manually
+local $ less .ssh/id_rsa.pub 
+remote $ touch .ssh/authorized_keys
+remote $ vim .ssh/authorized_keys
+```
+
+
+### How to transfer files
 
 ```
 # Syntax 
