@@ -106,10 +106,10 @@ create directory and set sty file (e.g. STYLE.sty)
 3. `$ sudo mv STYLE.sty /usr/local/texlive/2014/texmf-dist/tex/latex/misc/STYLE`
 
 #### Reference
-* http://emath.a.la9.jp/ydir/Wiki/index.php?emath.sty%A4%CE%C3%D6%A4%AD%BE%EC%BD%EA
-* https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90
-* https://texwiki.texjp.org/?LaTeX%E5%85%A5%E9%96%80%2F%E5%90%84%E7%A8%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E5%88%A9%E7%94%A8
-* http://demmys.hatenablog.com/entry/2012/06/06/234808
+* [emath.styの置き場所](http://emath.a.la9.jp/ydir/Wiki/index.php?emath.sty%A4%CE%C3%D6%A4%AD%BE%EC%BD%EA)
+* [TeX のディレクトリ構成 (TDS)](https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90)
+* [各種パッケージの利用](https://texwiki.texjp.org/?LaTeX%E5%85%A5%E9%96%80%2F%E5%90%84%E7%A8%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E5%88%A9%E7%94%A8)
+* [Mac OSでのスタイルファイル(.sty)のインストール](http://demmys.hatenablog.com/entry/2012/06/06/234808)
 
 ## Handling file through terminal
 * create files: `touch [filename]`
@@ -293,6 +293,15 @@ screen -ls | grep pts | cut -d. -f1 | awk '{print $1}' | xargs kill
 ```
 screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
 ```
+
+### Quit attached screen
+* [Reference](https://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached)
+* If your attached by you cannot get access to the screen
+
+```
+screen -r -d [screen_name]
+```
+
 
 ## Install pip in remote computer locally
 * Reference [here][2].
