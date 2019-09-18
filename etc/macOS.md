@@ -294,6 +294,13 @@ screen -ls | grep pts | cut -d. -f1 | awk '{print $1}' | xargs kill
 screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
 ```
 
+* Kill (multiple) sessions from screen name
+
+```
+screen -ls | grep [name] | cut -d. -f1 | awk '{print $1}' | xargs kill
+```
+
+
 ### Quit attached screen
 * [Reference](https://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached)
 * If your attached by you cannot get access to the screen
