@@ -66,6 +66,7 @@ $ git push -u origin master
 # How to move git repo
 * With all history and branches
 * See [here](https://gist.github.com/tomoya-sasaki/731369b9fbe50a9052c753642cf65dda)
+* [This](https://www.atlassian.com/git/tutorials/git-move-repository) might work as well.
 
 [1]:https://stackoverflow.com/questions/26042390/git-add-asterisk-vs-git-add-period
 [2]:https://git-scm.com/docs/git-checkout
