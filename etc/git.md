@@ -1,3 +1,9 @@
+## Clone with `ssh`
+
+```
+$ git clone git$@github.com:username/reponame.git
+```
+
 ## Commit deleted file
 ```
 ## if you want to commit one deleted file
@@ -6,14 +12,14 @@ $ git rm <file name>
 $ git rm $(git ls-files --deleted)
 ```
 
-## Variety of git add 
+## Variety of `git add`
 * see [here][1]
 * According to the explanation above,
 	* add * means add all files in the current directory, except for files, whose name begin with a dot. This is your shell functionality and Git only ever receives a list of files.
 
 	* add . has no special meaning in your shell, and thus Git adds the entire directory recursively, which is almost the same, but including files whose names begin with a dot.
 
-## If you need to get branch on remote
+## If your need to get branch on remote
 * [here][2]
 
 ```
@@ -22,6 +28,9 @@ git checkout -b new_local_branch -t origin/new_remote_branch
 
 # show all branches including remotes
 git branch -a 
+
+# or do simply 
+git reset HEAD
 ```
 
 ## When you change to gitignore was not reflected

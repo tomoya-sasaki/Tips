@@ -78,7 +78,7 @@ PATH=$PATH:~/.local/bin
 4. then don't forget to put `source ~/.bash_profile` 
 5. check PATH with `printenv PATH`
 
-#### Reference
+## Reference
 * http://qiita.com/nbkn/items/01a11392921119fa0153
 * http://qiita.com/soarflat/items/d5015bec37f8a8254380
 * http://cns-guide.sfc.keio.ac.jp/2000/4/1/2.html
@@ -105,7 +105,7 @@ create directory and set sty file (e.g. STYLE.sty)
 
 3. `$ sudo mv STYLE.sty /usr/local/texlive/2014/texmf-dist/tex/latex/misc/STYLE`
 
-#### Reference
+### Reference
 * [emath.styの置き場所](http://emath.a.la9.jp/ydir/Wiki/index.php?emath.sty%A4%CE%C3%D6%A4%AD%BE%EC%BD%EA)
 * [TeX のディレクトリ構成 (TDS)](https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90)
 * [各種パッケージの利用](https://texwiki.texjp.org/?LaTeX%E5%85%A5%E9%96%80%2F%E5%90%84%E7%A8%AE%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E5%88%A9%E7%94%A8)
@@ -116,7 +116,7 @@ create directory and set sty file (e.g. STYLE.sty)
 * remove files: `rm -Rf [filename]` or `rm -R [filename]`
 * move files: at the directory where the file exists`mv [filename] [destination]`
 * (In `zsh`) move first 100 files: `$ mv -- *([1,100]) /other/location/`
-* You can also change name of file by `mv`: `$ mv "old location" "new location"`
+* You can also change name of file by `mv`: `$ mv -v "old location" "new location"`
 * double dots to move up the directory: `$ cd ..`
 * double dots to move directory part 2
  
@@ -269,6 +269,35 @@ There are screens on:
 [yoshiyuki_sakamoto@nv-sysmanage01 ~]$
 ```
 
+### Run multiple screen sessions
+
+* `-d`: Do not start screen, but instead detach a screen session running elsewhere (see Detach). There is also `-D`, which 
+* `-m`: Tell screen to ignore the $STY environment variable. When this option is used, a new session will always be created, regardless of whether screen is being called from within another screen session or not. This flag has a special meaning in connection with the ‘-d’ option:
+* `-dm`: Start screen in detached mode. This creates a new session but doesn’t attach to it. This is useful for system startup scripts.
+* `-Dm`: This also starts screen in detached mode, but doesn’t fork a new process. The command exits if the session terminates.
+* Usually USE `-dm`
+
+```
+# example
+screen -dmS [session_name] [your task]
+```
+* You can also write a bash file.
+
+```
+# !/bin/bash
+for i in {1..5}; do # random number
+        for j in "key" "lda"; do # method
+                title="bill_"
+                title+="$j"
+                title+="_rand$i"
+                # echo $title
+                #screen -dmS $title sleep 10s
+                screen -dmS $title Rscript main.R 2000 5 $j $i
+        done
+done
+```
+
+
 ### `quit` screen method outside the screen
 * send a 'quit' command:
 
@@ -300,7 +329,6 @@ screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill
 screen -ls | grep [name] | cut -d. -f1 | awk '{print $1}' | xargs kill
 ```
 
-
 ### Quit attached screen
 * [Reference](https://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached)
 * If your attached by you cannot get access to the screen
@@ -309,6 +337,13 @@ screen -ls | grep [name] | cut -d. -f1 | awk '{print $1}' | xargs kill
 screen -r -d [screen_name]
 ```
 
+## Check running cores
+```
+# view process
+$ htop
+
+$ mpstat -P ALL 1
+```
 
 ## Install pip in remote computer locally
 * Reference [here][2].
@@ -355,6 +390,44 @@ screen -r -d [screen_name]
 
 ### Reference
 [here](https://hydrocul.github.io/wiki/commands/less.html)
+
+## Shell
+### Read and parse arguments
+* Check [here](https://ryanstutorials.net/bash-scripting-tutorial/bash-input.php)
+
+```
+# fullname="USER INPUT"
+read -p "Enter fullname: " fullname
+echo $fullname
+
+# default name is Richard if you don't specify any
+read -p "Enter your name [Richard]: " name
+name=${name:-Richard}
+echo $name
+```
+
+### Loop
+* Check [here](https://stackoverflow.com/questions/8880603/loop-through-an-array-of-strings-in-bash)
+
+```
+
+for j in a b c d e f; do
+  echo $j
+done 
+
+## declare an array variable
+declare -a arr=("element1" "element2" "element3")
+
+## now loop through the above array
+for i in "${arr[@]}"
+do
+   echo "$i"
+   # or do whatever with individual element of the array
+done
+
+# You can access them using echo "${arr[0]}", "${arr[1]}" also
+```
+
 
 # Window
 ### Macのタスク切り替えで、最小化されたウィンドウを表示する方法

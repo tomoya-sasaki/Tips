@@ -1,4 +1,14 @@
-# `dplyr` and `plyr`
+# `tidyverse`
+
+## `bind_rows` and `bind_cols`
+* Bind matrices or dataframes in a list into a single matrix of dataframe
+
+```
+bind_rows(list_of_df) # do.call("rbind", list_of_df) also works
+bind_cols(list_of_df) # do.call("cbind", list_of_df) also works
+```
+
+## `dplyr` and `plyr`
 * Sometimes `group_by` function of `dplyr` does no work.
 * "Best answer is to load plyr ALWAYS before dplyr, AND not load plyr again. Pasting his tweet for reference." For detail, [here][1].
 

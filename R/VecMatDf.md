@@ -4,6 +4,19 @@
 as.numeric(df[, 1])
 ```
 
+## replicate the same operation
+
+```
+> replicate(3, rnorm(5))
+
+           [,1]        [,2]       [,3]
+[1,]  0.7086600 -0.28753399  2.7394584
+[2,]  1.2401119 -1.56940352  0.3100194
+[3,]  1.7929567  1.25951315 -1.9236301
+[4,] -0.4647647  0.51893826  0.1365466
+[5,] -0.4669128  0.02026587 -0.4949872
+```
+
 # matrix
 ## Convert the values in a column into rownames in an existing matrix
 

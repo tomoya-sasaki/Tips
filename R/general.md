@@ -84,7 +84,6 @@ obj2 <- readRDS("lm.obj")
 * `write()` and `write.lines()` forced to write `\n` in the last lines.
 
 
-
 # Regular Expression, print family
 ## sprintf
 ### basic format
@@ -285,6 +284,8 @@ browseURL('https://www.youtube.com/watch?v=QH2-TGUlwu4')
 ## Detach packages
 
 ```
+detach("package:[yourpackage]", unload=TRUE)
+
 detachAllPackages <- function() {
 
   basic.packages <- c("package:stats",
