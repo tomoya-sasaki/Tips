@@ -1,5 +1,6 @@
 # Set path
 * See [ReadmeETC.md](https://github.com/UT-GLP-2014/TMY/blob/master/code_tips/etc/ReadmeETC.md) in `~/code_tips/etc/` 
+
 # Beamer
 ## When you want to use `minipage` in beamer
 * use `\begin{column}`
@@ -40,6 +41,31 @@ See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 
 # Texmaker
 See [here](http://blog.livedoor.jp/ti5942/?p=63)
+
+# Compile separately
+* Use `subfiles.sty` ([example](https://tex.stackexchange.com/questions/7052/how-do-i-choose-which-sections-to-compile-from-a-latex-document))
+* `main.tex` for the main document
+* Tex file for each section (e.g. `sec1.tex`, `sec2.tex` ...)
+
+```
+% this is main.tex
+\documentclass{article}
+\usepackage{subfiles} % write this at the end of preamble
+\begin{document}
+  \subfile{sec1}
+  \subfile{sec2}
+\end{document}
+```
+
+* Create latex files for each section
+
+```
+\documentclass[main.tex]{subfiles}
+\begin{document}
+  \section{Methods}
+\end{document}
+```
+
 
 
 # Miscellaneous
