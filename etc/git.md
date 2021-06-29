@@ -26,6 +26,11 @@ $ git rm $(git ls-files --deleted)
 # switch to a branch in remote (new_remote_branch)
 git checkout -b new_local_branch -t origin/new_remote_branch
 
+# or this may work
+$ git checkout --track origin/newsletter
+Branch newsletter set up to track remote branch newsletter from origin.
+Switched to a new branch 'newsletter'
+
 # show all branches including remotes
 git branch -a 
 

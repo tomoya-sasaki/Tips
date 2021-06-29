@@ -31,6 +31,11 @@ Error: package or namespace load failed for [packagename] in dyn.load ...
 > devtools::document();pkgdown::build_article("path_wo_Rmd")
 ```
 
+```
+pkgdown::build_site()
+# if it takes time
+pkgdown::build_site(install = F)
+```
 
 * Then you might want to try...
 	* Try install [this][1]

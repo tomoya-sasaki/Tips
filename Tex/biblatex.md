@@ -35,3 +35,14 @@ doi = false, %exclude DOI
 isbn = false %exclude isbn
 ]{biblatex-chicago} 
 ```
+
+## Sort bib file
+* Use `bibtool`. Install with brew.
+* [Link](https://tex.stackexchange.com/questions/426341/using-bibtool-to-sort-a-bib-file-by-types-and-keys-alphabetically)
+
+```
+% by key (within each type, sorted with key)
+bibtool -s --sort.format='{%s($key)}' -i bibsort.bib -o bibsorted.bib
+% sort with two variables
+bibtool -s --sort.format='{%s($type) %s($key)}' -i bibsort.bib -o bibsorted.bib
+```

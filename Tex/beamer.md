@@ -1,8 +1,6 @@
-# General tips
-* Japanese: [here](http://neurodynamics.jp/etc/beamer), or [here](https://en.wikibooks.org/wiki/LaTeX/Presentations#Themes).
 
 # Theme
-* Choose from [here](http://deic.uab.es/~iblanes/beamer_gallery/)).
+* Choose from [here](http://deic.uab.es/~iblanes/beamer_gallery/).
 
 # Overlay
 * In the following code, characteristics of each animal appear one by one in the same page
@@ -98,4 +96,7 @@
 
 ```
 
+# Japanese
+* Check [here](https://qiita.com/zr_tex8r/items/69e8cc32038ff29f5ac3)
+* [here](http://neurodynamics.jp/etc/beamer), or [here](https://en.wikibooks.org/wiki/LaTeX/Presentations#Themes) might be also useful.
 

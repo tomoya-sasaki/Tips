@@ -6,6 +6,7 @@
 5. [Regular Expression, print family?](# Regular Expression, print family?)
 6. [Measure running time](# Measure running time)
 7. [Potpourri](# Potpourri)
+8. [Update](# Update)
 
 
 # Implement R in terminal
@@ -17,7 +18,7 @@ $ Rscript --vanilla --slave file_name.R
 ```
 
 * `--vanilla`: このオプションを付けると、R がこれまでに保存していたオブジェクトを使用しないプレーンな状態で実行する
-* `--slave`: このオプションを付けると、スクリプト実行時に標準出力に表示される情報を出力しないß
+* `--slave`: このオプションを付けると、スクリプト実行時に標準出力に表示される情報を出力しない
 
 
 # Open R in English in terminal
@@ -238,9 +239,8 @@ Output
 
 # Potpourri
 
-
 ## Logical
-### Check `value == integer(0)`
+* Check `value == integer(0)`
 
 ```
 value = integer(0)
@@ -341,6 +341,11 @@ if (file.exists(subDir)){
 
 }
 ```
+
+
+# Update
+* Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
+
 
 
 [1]:https://stackoverflow.com/questions/9397664/force-r-not-to-use-exponential-notation-e-g-e10

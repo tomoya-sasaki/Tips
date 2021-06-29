@@ -18,6 +18,20 @@ as.numeric(df[, 1])
 ```
 
 # matrix
+## Check
+* Check the dataframe entry with 1 ([here](https://stackoverflow.com/questions/50476617/extract-the-column-names-for-each-row-which-meets-a-condition))
+
+## Drop based on colnames
+```
+df <- data.frame(ID = 1:10,
+                 A1 = rnorm(10),
+                 A2 = rnorm(10),
+                 B1 = letters[1:10],
+                 B2 = letters[11:20])
+df[, -grep("1$", colnames(df))]                 
+```
+
+
 ## Convert the values in a column into rownames in an existing matrix
 
 ```

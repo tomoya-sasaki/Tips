@@ -35,5 +35,13 @@
 \end{document}
 ```
 
+# Increase space between columns
+
+```
+\begin{table}
+\setlength{\tabcolsep}{12pt}
+\begin{tabular}
+```
+
 # Useful packages
 * `array`

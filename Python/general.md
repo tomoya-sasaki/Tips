@@ -198,7 +198,119 @@ import textract
 text = textract.process("path/to/file.extension")
 ```
 
-# Setting `pyenv`
+# Misc
+## Install
+### Installing `camelot-py[cv]`
+* You need to install `camelot-py[cv]`, not `camelot` or `camelot-py` (`pip3 install camelot-py[cv]`) [Ref1](https://github.com/atlanhq/camelot/issues/142), [Ref2](https://github.com/atlanhq/camelot/issues/389)
+* You may get this error after installing and importing `camelot-py[cv]`
+
+```
+>>> import camelot
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/camelot/__init__.py", line 6, in <module>
+    from .io import read_pdf
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/camelot/io.py", line 5, in <module>
+    from .handlers import PDFHandler
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/camelot/handlers.py", line 9, in <module>
+    from .parsers import Stream, Lattice
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/camelot/parsers/__init__.py", line 4, in <module>
+    from .lattice import Lattice
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/camelot/parsers/lattice.py", line 27, in <module>
+    from ..image_processing import (
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/camelot/image_processing.py", line 5, in <module>
+    import cv2
+  File "/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/cv2/__init__.py", line 5, in <module>
+    from .cv2 import *
+ImportError: dlopen(/usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/cv2/cv2.cpython-37m-darwin.so, 2): Symbol not found: _inflateValidate
+  Referenced from: /usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/cv2/.dylibs/libpng16.16.dylib (which was built for Mac OS X 10.13)
+  Expected in: /usr/lib/libz.1.dylib
+ in /usr/local/var/pyenv/versions/snake/lib/python3.7/site-packages/cv2/.dylibs/libpng16.16.dylib
+```
+* If you get the error above, try to install `octave` and `opencv` etc using `brew intall octave opencv`. [Ref1](https://github.com/Homebrew/homebrew-core/issues/24857), [Ref2]
+* While installing `octave`, you may fail to install `open-mpi` because of an error caused by gfotran (`gcc`)
+
+```
+==> Installing octave dependency: gcc
+==> Downloading https://ftp.gnu.org/gnu/gcc/gcc-9.3.0/gcc-9.3.0.tar.xz
+######################################################################## 100.0%
+==> ../configure --build=x86_64-apple-darwin16 --prefix=/usr/local/Cellar/gcc/9.3.0_1 --libdir=/usr/local/Cellar/gcc/
+==> make BOOT_LDFLAGS=-Wl,-headerpad_max_install_names
+==> make install
+Error: The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local
+Could not symlink bin/gfortran
+Target /usr/local/bin/gfortran
+already exists. You may want to remove it:
+  rm '/usr/local/bin/gfortran'
+
+To force the link and overwrite all conflicting files:
+  brew link --overwrite gcc
+
+To list all files that would be deleted:
+  brew link --overwrite --dry-run gcc
+
+Possible conflicting files are:
+/usr/local/bin/gfortran -> /usr/local/gfortran/bin/gfortran
+```
+* Then if you have not installed other versions of `gcc` before, simply follow the guide `brew link --overwrite gcc`. If you do have it from elsewhere, you might need to remove it first. [Ref1](https://github.com/Homebrew/brew/issues/3168), [Ref2](https://stackoverflow.com/questions/49862397/gcc-stopped-working-after-brew-update)
+
+
+```
+configure: error: No xcodebuild tool and no system framework headers found, use --with-sysroot or --with-sdk-name to provide a path to a valid SDK
+/private/tmp/openjdk-20200730-29234-3rv7rb/jdk14u-jdk-14.0.1-ga/build/.configure-support/generated-configure.sh: line 82: 5: Bad file descriptor
+configure exiting with result code 1
+```
+
+* If you get an error above while installing opencv, try this [ref](https://stackoverflow.com/questions/17980759/xcode-select-active-developer-directory-error) or [ref](https://stackoverflow.com/questions/30781214/troubles-when-i-use-homebrew)
+
+```
+# you might need to move between these two below
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+sudo xcode-select --switch /Library/Developer/CommandLineTool
+```
+
+* Check the version of opencv-python: compatibility with macOS
+
+## Errors
+```
+pip is configured with locations that require TLS/SSL, however the ssl module in Python is not available
+```
+
+* Reinstall pyenv, pyenv-virtualenv, and python
+
+```
+brew uninstall python
+rm -rf $(pyenv root)
+brew uninstall pyenv-virtualenv   # you may not have this installed, but...
+brew uninstall pyenv
+```
+
+## Which python version is available
+* Right now in my MacBook
+	* Python2: default
+	* Python3: available (use pip3 for installing libraries)
+	* pyenv: snake for python3 and py2 for python2
+
+## Install pip in remote computer locally
+* Reference [here][2].
+
+1. Download `wget https://bootstrap.pypa.io/get-pip.py`
+2. `python get-pip.py --user`. This will install pip to your local directory `(.local/bin)`.
+3. Set path. Write `PATH=$PATH:~/.local/bin` in your `.bash_profile`.
+
+## Install pyenv in remote computer locally
+* Reference [here][3], [here][4], [here][5].
+
+1. `$ git clone https://github.com/pyenv/pyenv.git ~/.pyenv`. Be aware of your directory installing the `pip`.
+2. `$ echo 'export PYENV_ROOT="/home/usrname/.pyenv"' >> ~/.bash_profile`. I changed `$HOME/.pyenv` to `/home/usrname/.pyenv`. `usrname` part could be any directory.
+3. `$ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile`.
+4. `$ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile`
+5. `source .bash_profile`
+6. Start! (`$ pyenv` will show you the options).
+
+## Setting `pyenv`
 * On cluster computer
 
 1. First install `pyenv` without `sudo`
@@ -214,5 +326,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 ```
+For installation, check Shusei's github.
 
 [1]:https://textract.readthedocs.io/en/stable/
+

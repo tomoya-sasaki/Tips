@@ -1,4 +1,24 @@
 # ggplot
+## A barplot
+```{r, warning=FALSE, message=FALSE, fig.align='center'}
+d %>%
+	ggplot(., aes(x=ownchild)) +
+	geom_bar() +
+	ggtitle("Barplot: Number of children") +
+	xlab("Number of Children") + ylab("Count") +
+	form1
+```
+
+## A probability density graph overlaid on a histogram
+```{r, warning=FALSE, message=FALSE, fig.align='center'}
+d %>%
+	ggplot(., aes(x=age)) +
+	geom_histogram(aes(y=..density..), colour="black", bins=20) +
+	geom_density(colour="red", adjust=4) +
+	xlab("Age") +
+	ggtitle("A density plot and histogram of age") +
+	form1
+```
 ## `geom_vline` and legend
 * If you want to make legend, you need to put the variables in `aes(xintercept=)`.
 * However, `geom_vline` allows length 1 or the same length as the data. Otherwise you will get a following error.
