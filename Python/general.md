@@ -329,4 +329,7 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 For installation, check Shusei's github.
 
 [1]:https://textract.readthedocs.io/en/stable/
-
+[2]:https://gist.github.com/saurabhshri/46e4069164b87a708b39d947e4527298
+[3]:https://github.com/pyenv/pyenv
+[4]:https://github.com/Shusei-E/Code_Tips/blob/master/MacOS/SettingEnvironment.md
+[5]:https://qiita.com/maskedw/items/aaa2fd7abfd493cf2820

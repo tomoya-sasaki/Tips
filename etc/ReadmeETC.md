@@ -59,7 +59,3 @@ $ pandoc -s --toc happiness.txt -o happiness.html
 
 [0]:https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line
 [1]:https://bahoom.com/finderpath/
-[2]:https://gist.github.com/saurabhshri/46e4069164b87a708b39d947e4527298
-[3]:https://github.com/pyenv/pyenv
-[4]:https://github.com/Shusei-E/Code_Tips/blob/master/MacOS/SettingEnvironment.md
-[5]:https://qiita.com/maskedw/items/aaa2fd7abfd493cf2820
