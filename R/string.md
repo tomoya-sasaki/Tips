@@ -105,7 +105,7 @@ paste(unique(d), collapse = ' ')
 
 ```
 # returns string w/o leading whitespace
-trim.leading <- function (x)  sub("^\\s+", "", x)
+trim.leading <- function (x)  sub("^\\s+w", "", x)
 
 # returns string w/o trailing whitespace
 trim.trailing <- function (x) sub("\\s+$", "", x)
@@ -114,4 +114,11 @@ trim.trailing <- function (x) sub("\\s+$", "", x)
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 
 trim(text)
+```
+
+Insert a character at a specific location in a string
+
+```
+gsub('^([a-z]{3})([a-z]+)$', '\\1d\\2', 'abcefg')
+# [1] "abcdefg"
 ```

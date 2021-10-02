@@ -4,6 +4,16 @@
 $ git clone git$@github.com:username/reponame.git
 ```
 
+## Re-clone existing repo with token
+
+```
+git remote remove origin
+git remote add origin https://[TOKEN]@github.com/[USER]/[REPO]
+git push
+# or git push --set-upstream origin master
+```
+
+
 ## Commit deleted file
 ```
 ## if you want to commit one deleted file
@@ -81,6 +91,14 @@ $ git push -u origin master
 * With all history and branches
 * See [here](https://gist.github.com/tomoya-sasaki/731369b9fbe50a9052c753642cf65dda)
 * [This](https://www.atlassian.com/git/tutorials/git-move-repository) might work as well.
+
+# Github cloned repo
+## Mac mini
+* `geotrade`
+* `Tips`
+* `IV_sensitivity_analysis`
+
+
 
 [1]:https://stackoverflow.com/questions/26042390/git-add-asterisk-vs-git-add-period
 [2]:https://git-scm.com/docs/git-checkout
