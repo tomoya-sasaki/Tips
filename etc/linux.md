@@ -190,7 +190,7 @@ $ usrname@hostname
 ```
 
 ### Use ssh keys
-* References [here](https://qiita.com/kenju/items/b09199c4b3e7203a2867), [here](https://qiita.com/suthio/items/2760e4cff0e185fe2db9), or [here](https://qiita.com/kazokmr/items/754169cfa996b24fcbf5)
+* References [here](https://soji256.hatenablog.jp/entry/2021/03/04/070000), [here](https://qiita.com/suthio/items/2760e4cff0e185fe2db9), or [here](https://qiita.com/kazokmr/items/754169cfa996b24fcbf5)
 
 1. Create ssh keys in your local environment
 
@@ -201,7 +201,21 @@ local $ mkdir ~/.ssh/
 # generate key
 # there are multiple options you can use
 local $ ssh-keygen
+
+# example
+~ $ ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/tomoyasasaki/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/tomoyasasaki/.ssh/id_rsa.
+Your public key has been saved in /Users/tomoyasasaki/.ssh/id_rsa.pub.
+The key fingerprint is:
+<...> tomoyasasaki@Tomoyas-MacBook-Pro.local
+The key's randomart image is:
+
 ```
+* Note that the computer reads ssh keys in `.ssh/id_rsa.pub`
 
 2. Let client remember your ssh public key
 
@@ -210,7 +224,7 @@ local $ ssh-keygen
 # 1. move scp file
 local $ scp ~/.ssh/id_rsa.pub remote-user-name@address:~/.ssh
 # 2-1. copy and paste, copy contents of id_rsa.pub
-local $ cat ~/id_rsa.pub >> .ssh/authorized_keys
+remote $ cat ~/id_rsa.pub >> .ssh/authorized_keys
 
 # 3-1. or copy and paste manually
 local $ less .ssh/id_rsa.pub 
@@ -218,6 +232,13 @@ remote $ touch .ssh/authorized_keys
 remote $ vim .ssh/authorized_keys
 ```
 
+3. To debug
+
+* Check what goes wrong
+
+```
+ssh -v remote-user-name@address
+```
 
 ### How to transfer files
 
