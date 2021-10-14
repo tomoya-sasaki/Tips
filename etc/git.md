@@ -4,6 +4,22 @@
 $ git clone git$@github.com:username/reponame.git
 ```
 
+## Adding a project to Github
+* Create a new repo on Github
+* Initialize the local directory as Git repo `git init -b main`
+* Add and commit
+* Add the URL to the remote repo
+
+```
+git remote add origin <REMOTE URL>
+# verifies the remote URL
+git remote -v 
+# if you have only done `git init` in the second step
+git branch -M main
+# pushes the changes in your local repo to remote repo
+git push -u origin main
+```
+
 ## Re-clone existing repo with token
 
 ```
