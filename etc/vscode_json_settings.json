@@ -1,0 +1,161 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "security.workspace.trust.untrustedFiles": "open",
+  
+  "python.pythonPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
+  "python.defaultInterpreterPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
+
+  "workbench.editorAssociations": {
+      "*.ipynb": "jupyter.notebook.ipynb"
+  },
+
+
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "latex-workshop.latex.tools": [
+      {
+          "name": "bibtex",
+          "command": "bibtex",
+          "args": [
+            "%DOCFILE%"
+          ],
+          "env": {}
+        },
+      {
+          "name": "latexmk",
+          "command": "latexmk",
+          "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-halt-on-error",
+              "-file-line-error",
+              "-pdfdvi",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+          ],
+          "env": {}
+      },
+      {
+          "name": "pdflatex",
+          "command": "pdflatex",
+          "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "%DOC%"
+          ]
+      },
+      {
+          "name": "xelatex",
+          "command": "xelatex",
+          "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+          ]
+      },
+      {
+          "name": "biber",
+          "command": "biber",
+          "args": [
+              "%DOCFILE%"
+          ]
+      }
+  ],
+  "latex-workshop.latex.recipes": [
+      {
+          "name": "latexmk",
+          "tools": [
+            "latexmk"
+          ]
+      },
+      {
+          "name": "latexmk -> biber -> latexmk*2",
+          "tools": [
+              "latexmk",
+              "biber",
+              "latexmk",
+              "latexmk"
+
+          ]
+      },
+              {
+          "name": "pdflatex",
+          "tools": [
+              "pdflatex"
+          ]
+      },
+      {
+          "name": "xelatex",
+          "tools": [
+              "xelatex"
+          ]
+      },       
+      {
+          "name": "pdflatex -> bibtex -> pdflatex*2",
+          "tools": [
+              "pdflatex",
+              "bibtex",
+              "pdflatex",
+              "pdflatex"
+          ]
+      },
+      {
+          "name": "pdflatex -> biber -> pdflatex*2",
+          "tools": [
+              "pdflatex",
+              "biber",
+              "pdflatex",
+              "pdflatex"
+          ]
+      },
+      {
+          "name": "xelatex -> biber -> xelatex*2",
+          "tools": [
+              "xelatex",
+              "biber",
+              "xelatex",
+              "xelatex"
+          ]
+      },
+      {
+          "name": "Compile Rnw files",
+          "tools": [
+            "rnw2tex",
+            "latexmk"
+          ]
+        }
+
+  ],
+
+  "terminal.integrated.confirmOnExit": "always",
+  "terminal.integrated.cwd": "${fileDirname}",
+  
+
+
+  "json.schemas": [
+  
+  ],
+  
+  "C_Cpp.commentContinuationPatterns": [
+      "/**"
+  ],
+
+  // The number of spaces a tab is equal to. This setting is overridden
+  // based on the file contents when `editor.detectIndentation` is true.
+  "editor.tabSize": 2,
+
+  // Insert spaces when pressing Tab. This setting is overriden
+  // based on the file contents when `editor.detectIndentation` is true.
+  "editor.insertSpaces": true,
+
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces`
+  // will be detected based on the file contents. Set to false to keep
+  // the values you've explicitly set, above.
+  "editor.detectIndentation": false,
+  "window.zoomLevel": -1,
+  "editor.minimap.enabled": false,
+}
