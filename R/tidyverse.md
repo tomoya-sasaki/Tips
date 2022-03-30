@@ -29,6 +29,32 @@ mytable <- function(x, ...) {
 mytable(iris, "Species")
 ```
 
+### Select rows within each group with a condition
+
+```
+# data
+df <- data.frame(ID= rep(1:3, each=3), date=c('02/20/1989',
+'03/14/2001', '02/25/1990',  '04/20/2002', '02/04/2005', '02/01/2008',
+'08/22/2011','08/20/2009', '08/25/2010' ), stringsAsFactors=FALSE)
+
+# select the mots recent date
+df %>% 
+  group_by(ID) %>%
+  slice(which.max(as.Date(date, '%m/%d/%Y')))
+```
+
+## Split a column into two strings
+
+```
+before = data.frame(attr = c(1,30,4,6), type=c('foo_and_bar','foo_and_bar_2'))
+
+str_split_fixed(before$type, "_and_", 2)
+
+separate(before$type, into = c("foo", "bar"), sep = "_and_")
+```
+
+
+
 ## Find rows with NA
 * Find rows with `NA` in any column
 

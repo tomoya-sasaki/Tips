@@ -1,4 +1,24 @@
-# When your desired out put is `list`
+# `foreach`
+## Using random number generator
+* Use `doRNG`
+
+```
+library(doParallel)
+library(doRNG)
+library(doMC)
+
+registerDoParallel(cores = 20)
+
+y <- foreach(i = 1:100) %dorng% {
+	rnorm(1)
+}
+```
+
+
+
+# `pforeach`
+
+## When your desired out put is `list`
 * You can "wrap" your results with a list.
 
 ```
