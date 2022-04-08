@@ -95,6 +95,38 @@
 \setbeamertemplate{caption}[numbered]
 
 ```
+# Button
+## Place button at the left bottom
+
+```
+\documentclass{beamer}
+%\usepackage{textpos}
+\usepackage{tikz}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\begin{frame}[plain,fragile,label=here]
+\begin{center}
+\includegraphics[width=3in,height=3in]{crocuses}
+\end{center}
+\begin{tikzpicture}[remember picture, overlay]
+\node[shift={(-0.6cm,0.5cm)}]() at (current page.south east){%
+\hyperlink{there}{\beamerreturnbutton{Back}}};        
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile,label=there]{test}
+
+text
+\begin{tikzpicture}[remember picture, overlay]
+\node[shift={(-0.6cm,0.5cm)}]() at (current page.south east){%
+\hyperlink{here}{\beamerreturnbutton{Back}}};        
+\end{tikzpicture}
+
+\end{frame}
+\end{document}
+```
 
 # Japanese
 * Check [here](https://qiita.com/zr_tex8r/items/69e8cc32038ff29f5ac3)
