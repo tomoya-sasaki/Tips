@@ -37,13 +37,21 @@ $ git rm <file name>
 ## if you want to commit all deleted files
 $ git rm $(git ls-files --deleted)
 ```
+* When you delete files manually
+
+```
+$ git add -u
+```
+
 
 ## Variety of `git add`
 * see [here][1]
 * According to the explanation above,
-	* add * means add all files in the current directory, except for files, whose name begin with a dot. This is your shell functionality and Git only ever receives a list of files.
+	* `git add *` means add all files in the current directory, except for files, whose name begin with a dot. This is your shell functionality and Git only ever receives a list of files.
 
-	* add . has no special meaning in your shell, and thus Git adds the entire directory recursively, which is almost the same, but including files whose names begin with a dot.
+	* `git add .` has no special meaning in your shell, and thus Git adds the entire directory recursively, which is almost the same, but including files whose names begin with a dot. This does not remove files that have been deleted from the disk.
+	* `git add -u` only adds currently tracked files (which have been modified) to the staging area and also checks if they have been deleted (if yes, they are removed from staging area). This means that it does not stage new files.
+	* `git add -A` performs both of `git add .` and `git add -u`, that is, stages your entire directory as it is.
 
 ## If your need to get branch on remote
 * [here][2]
