@@ -1,10 +1,11 @@
-# Window
+# System
+## Window
 ### Macのタスク切り替えで、最小化されたウィンドウを表示する方法
 
 <kbd>Command</kbd> + <kbd>Tab</kbd> でアプリを選択した後、<kbd>Option</kbd>を押して<kbd>Command</kbd>を離す
 
 
-# Mac Dock Navigation Keyboard Shortcuts
+## Mac Dock Navigation Keyboard Shortcuts
 Here are eight must-know keystrokes for navigating the Mac Dock. Note you must first summon the Dock with the keyboard navigation enabled, which is the first tip. From then on, you can use the additional keyboard navigation tricks.
 
 * <kbd>Control</kbd>+<kbd>Function</kbd>+<kbd>F3</kbd> to summon the Dock with keyboard navigation enabled, works even if the Dock is hidden by default
@@ -16,7 +17,7 @@ Here are eight must-know keystrokes for navigating the Mac Dock. Note you must f
 * <kbd>Command</kbd>+<kbd>Return</kbd> to reveal the Dock item in the Finder
 * <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Return</kbd> to hide all other apps and windows except for the selected Dock item
 
-# Prevent sleep
+## Prevent sleep
 * `caffeinate` may work [here](https://computers.tutsplus.com/tutorials/quick-tip-how-to-stop-your-mac-from-sleeping-using-the-command-line--mac-50905)
 
 ```
@@ -25,6 +26,16 @@ R
 ```
 
 * Type `caffeinate` before starting `R` or `Python` may work
+
+# Apps
+## iWORK
+### Download older versions of iWORK
+[here](https://discussions.apple.com/thread/253442218)
+
+If you had Pages/Numbers/Keynote installed prior to the upgrade to Catalina, you might be able to get the latest compatible version for Catalina.
+Launch the Mac App Store with the same Apple ID as you used to obtain these applications previously. Press <kbd>cmd</kbd>+<kbd>0</kbd> (zero) to open the Purchased panel. 
+If the above method does not work, there will be no means to get Pages v10.2 - v11.1 for Catalina, and you will need to use Pages for iCloud, or compatible Pages for your iOS/iPadOS installation.
+
 
 # External devices
 ## Anker bluetooth keyboard
