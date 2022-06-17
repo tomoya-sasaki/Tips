@@ -1,5 +1,4 @@
 {
-  "workbench.colorTheme": "Default Dark+",
   "security.workspace.trust.untrustedFiles": "open",
   
   "python.pythonPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
@@ -8,7 +7,10 @@
   "workbench.editorAssociations": {
       "*.ipynb": "jupyter.notebook.ipynb"
   },
-
+  "markdown.marp.themes": [
+    "https://example.com/foo/bar/custom-theme.css",
+    "./your-theme.css"
+  ],
 
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.view.pdf.viewer": "tab",
@@ -63,6 +65,15 @@
           "args": [
               "%DOCFILE%"
           ]
+      },
+      {
+        "name": "rnw2tex",
+        "command": "Rscript",
+        "args": [
+          "-e",
+          "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+        ],
+        "env": {}
       }
   ],
   "latex-workshop.latex.recipes": [
@@ -127,22 +138,32 @@
             "rnw2tex",
             "latexmk"
           ]
+        },
+        {
+          "name": "Rnw with pdflatex",
+          "tools": [
+            "rnw2tex",
+            "pdflatex",
+            "pdflatex"
+          ]
+        }, 
+                {
+          "name": "Rnw with pdflatex -> biber",
+          "tools": [
+            "rnw2tex",
+            "pdflatex",
+            "biber",
+            "pdflatex",
+            "pdflatex"
+          ]
         }
 
   ],
 
-  "terminal.integrated.confirmOnExit": "always",
-  "terminal.integrated.cwd": "${fileDirname}",
-  
-
-
-  "json.schemas": [
-  
-  ],
-  
   "C_Cpp.commentContinuationPatterns": [
       "/**"
   ],
+
 
   // The number of spaces a tab is equal to. This setting is overridden
   // based on the file contents when `editor.detectIndentation` is true.
@@ -156,6 +177,34 @@
   // will be detected based on the file contents. Set to false to keep
   // the values you've explicitly set, above.
   "editor.detectIndentation": false,
-  "window.zoomLevel": -1,
   "editor.minimap.enabled": false,
+
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.confirmOnExit": "always",
+  "terminal.integrated.cwd": "${fileDirname}", 
+  "terminal.integrated.defaultLocation": "view",
+  "window.zoomLevel": -1,
+  "json.schemas": [
+  
+  ],
+  "workbench.colorTheme": "Monokai",
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext",
+    "rsweave"
+  ],
+  "spellright.parserByClass": {
+    "rsweave": {
+      "parser": "latex"
+    }
+  },
+  "cSpell.enableFiletypes": [
+    "rsweave"
+  ]
+
+    
 }
