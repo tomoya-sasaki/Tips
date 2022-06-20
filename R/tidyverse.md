@@ -53,6 +53,25 @@ str_split_fixed(before$type, "_and_", 2)
 separate(before$type, into = c("foo", "bar"), sep = "_and_")
 ```
 
+## Collapse several rows
+
+```
+df <- data.frame(a=rep(c("x","y"), 2),
+                 b=c("Rome", "Venice", "Barcelona", "Paris"))
+
+# with summarise
+df %>%
+  group_by(a) %>%
+  summarise(b = paste(b, collapse = ", "))
+
+# with nest
+df %>%
+  mutate(b = as.character(b)) %>%
+  nest(b) %>%
+  mutate(cityList = map_chr(data, ~paste(.$b, collapse = ", "))) %>%
+  select(-data)
+
+```
 
 
 ## Find rows with NA
