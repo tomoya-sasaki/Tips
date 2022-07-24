@@ -1,6 +1,15 @@
 ---
 title: "Hello, Quarto"
-format: html
+author: "Tomoya Sasaki"
+toc: true
+number-sections: true
+format: 
+  html: default
+  pdf: 
+    geometry:
+      - top=30mm
+      - left=20mm
+  docx: default
 ---
 
 ## Markdown
@@ -8,7 +17,7 @@ format: html
 Markdown is an easy to read and write text format:
 
 - It's _plain text_ so works well with version control
-- It can be **rendered** into HTML, PDF, and more
+- It can be **rendered** into HTML, PDF, and more with `Command+Shift+k`
 - Learn more at: <https://quarto.org/docs/authoring/>
 
 ## Code Cell
@@ -16,6 +25,8 @@ Markdown is an easy to read and write text format:
 Here is a Python code cell:
 
 ```{python}
+#| label: test
+#| fig-cap: "test"
 import os
 os.cpu_count()
 ```
@@ -25,5 +36,5 @@ os.cpu_count()
 Use LaTeX to write equations:
 
 $$
-chi' = sum_{i=1}^n k_i s_i^2
+chi' = \sum_{i=1}^n k_i s_i^2 + 3
 $$
