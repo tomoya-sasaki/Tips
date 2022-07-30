@@ -1,6 +1,6 @@
 # Setup a computer (macOS)
 ## General
-* `zsh`: in general use `zshrc` 
+* `zsh`: in general use `zshrc` for `bash_profile`
 
 
 ## List an app
@@ -69,7 +69,7 @@ install.packages(p)
 
 ```
 PS1="%1~ \$ "
-#export PYENV_ROOT="/usr/local/var/pyenv"
+#export PYENV_ROOT="/User/tomoyasasaki/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
