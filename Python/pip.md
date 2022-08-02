@@ -1,5 +1,5 @@
 #Install and use pip in a local directory without root/sudo access.
-#####By: [@saurabhshri](https://github.com/saurabhshri)
+**By**: [@saurabhshri](https://github.com/saurabhshri)
 
 ## Why?
 Many users when are given server access, do not have root (or sudo) privileges and can not simply do
