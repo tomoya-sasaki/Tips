@@ -3,10 +3,15 @@
   
   "python.pythonPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
   "python.defaultInterpreterPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
+  "python.terminal.executeInFileDir": true,
+  "python.terminal.activateEnvironment": false,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+
 
   "workbench.editorAssociations": {
-      "*.ipynb": "jupyter.notebook.ipynb"
+      "*.ipynb": "jupyter-notebook"
   },
+
   "markdown.marp.themes": [
     "https://example.com/foo/bar/custom-theme.css",
     "./your-theme.css"
@@ -182,8 +187,8 @@
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.confirmOnExit": "always",
   "terminal.integrated.cwd": "${fileDirname}", 
-  "terminal.integrated.defaultLocation": "view",
-  "window.zoomLevel": -1,
+  "terminal.integrated.defaultLocation": "editor",
+
   "json.schemas": [
   
   ],
@@ -195,16 +200,24 @@
     "markdown",
     "latex",
     "plaintext",
-    "rsweave"
+    "rsweave",
+    "quarto"
   ],
   "spellright.parserByClass": {
     "rsweave": {
       "parser": "latex"
+    },
+    "quarto": {
+      "parser": "markdown"
     }
   },
   "cSpell.enableFiletypes": [
     "rsweave"
-  ]
-
+  ],
+  "window.zoomLevel": -1,
+  "quarto.mathjax.theme": "dark",
+  "editor.codeActionsOnSave": {
+  
+  }
     
 }
