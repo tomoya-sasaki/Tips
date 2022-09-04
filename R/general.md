@@ -345,6 +345,12 @@ if (file.exists(subDir)){
 
 # Update
 * Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
+* Remove existing R and RStudio before upgrading R
+
+```
+$ sudo rm -rf /Applications/R.app
+$ sudo rm -rf /Library/Frameworks/R.framework
+```
 
 
 
