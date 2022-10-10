@@ -1,6 +1,7 @@
 # `tidyverse`
 
-## `bind_rows` and `bind_cols`
+## dplyr
+### `bind_rows` and `bind_cols`
 * Bind matrices or dataframes in a list into a single matrix of dataframe
 
 ```
@@ -8,13 +9,9 @@ bind_rows(list_of_df) # do.call("rbind", list_of_df) also works
 bind_cols(list_of_df) # do.call("cbind", list_of_df) also works
 ```
 
-## `dplyr` and `plyr`
-* Sometimes `group_by` function of `dplyr` does no work.
-* "Best answer is to load plyr ALWAYS before dplyr, AND not load plyr again. Pasting his tweet for reference." For detail, [here][1].
+### `group_by`
 
-## `group_by`
-
-### `group_by` inside functions
+#### `group_by` inside functions
 
 * You need quotes.
  
@@ -29,7 +26,7 @@ mytable <- function(x, ...) {
 mytable(iris, "Species")
 ```
 
-### Select rows within each group with a condition
+#### Select rows within each group with a condition
 
 ```
 # data
@@ -43,17 +40,7 @@ df %>%
   slice(which.max(as.Date(date, '%m/%d/%Y')))
 ```
 
-## Split a column into two strings
-
-```
-before = data.frame(attr = c(1,30,4,6), type=c('foo_and_bar','foo_and_bar_2'))
-
-str_split_fixed(before$type, "_and_", 2)
-
-separate(before$type, into = c("foo", "bar"), sep = "_and_")
-```
-
-## Collapse several rows
+### Collapse several rows
 
 ```
 df <- data.frame(a=rep(c("x","y"), 2),
@@ -73,8 +60,7 @@ df %>%
 
 ```
 
-
-## Find rows with NA
+### Find rows with NA
 * Find rows with `NA` in any column
 
 ```
@@ -82,6 +68,55 @@ df %>%
   select(var1, var2) %>% 
   mutate(na = rowSums(is.na(.))) %>%
   filter(na > 0)
+```
+
+## tidyr
+### `nest`
+
+
+```
+> data
+
+  Country   type                           crop                                                      
+  <chr>     <chr>                          <chr>                                                     
+1 Australia Set equal to PP  BA, BF, CT, EG, OA
+```
+* You want to split entries in `crop` separated by each comma
+
+```
+data %>% 
+  mutate(crop_nest = crop) %>% 
+  nest(crop_nest = crop_nest) %>% 
+  mutate(crop_sep = map(crop_nest, function(x) strsplit(x[[1]], split = ",")[[1]])) %>% 
+  # mutate(crop_sep = map(crop, ~str_squish(.x))) %>% 
+  unnest(crop_sep) %>% 
+  mutate(crop_sep = str_squish(crop_sep))
+
+# A tibble: 15 × 5
+   Country   type             crop               crop_nest        crop_sep
+   <chr>     <chr>            <chr>              <list>           <chr>   
+ 1 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "BA"    
+ 2 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "BF"   
+ 3 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "CT"   
+ 4 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "EG"   
+ 5 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "OA"   
+```
+
+
+## `dplyr` and `plyr`
+* Sometimes `group_by` function of `dplyr` does no work.
+* "Best answer is to load plyr ALWAYS before dplyr, AND not load plyr again. Pasting his tweet for reference." For detail, [here][1].
+
+## `stringr`
+
+### Split a column into two strings
+
+```
+before = data.frame(attr = c(1,30,4,6), type=c('foo_and_bar','foo_and_bar_2'))
+
+str_split_fixed(before$type, "_and_", 2)
+
+separate(before$type, into = c("foo", "bar"), sep = "_and_")
 ```
 
 
