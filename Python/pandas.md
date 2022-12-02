@@ -14,7 +14,7 @@ df_C.to_csv("Cutpoints_" + model + ".csv")
 ```
 
 # Adding and deleting rows and columns
-See [here](1)
+
 ## Adding a new column
 ```
 # empty column
@@ -22,9 +22,28 @@ See [here](1)
 df["temp"] = ""
 ```
 
+## Dropping a column
+
+```
+df.drop('column_name', axis=1)
+# 1 is the axis number (0 for rows and 1 for columns.)
+```
+
 ## Plot
 ```
 
 ```
 
-[1]:https://qiita.com/HirofumiYashima/items/3c46cd17ca8295b22137
+## Column bind or concatenate columns of two dataframes
+
+```
+import pandas pd
+ 
+pd.concat([df1, df2], axis=1, ignore_index=True)
+```
+
+## Create binary variables from a categorical variable
+
+```
+pd.get_dummies(df)
+```
