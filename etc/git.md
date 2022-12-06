@@ -111,6 +111,28 @@ $ git push -u origin master
 
 "The first cmd pull remote to local master branch, the second push to remote. -u means add upstream (tracking) reference, which solve the problem" ([ref][3])
 
+## Error about email
+* Error message
+
+```
+Can't finish GitHub sharing process
+Successfully created project 'myproject' on GitHub, but initial push failed:
+remote: error: GH007: Your push would publish a private email address.
+```
+
+### Solution
+* Set an email address in Git. Use your GitHub-provided no-reply email address.
+	* Setting your email address for every repository on your computer
+	`git config --global user.email "{ID}+{username}@users.noreply.github.com"`
+	* Setting your email address for a single repository
+	`git config user.email "{ID}+{username}@users.noreply.github.com"`
+* Reset the author information on your last commit:
+`git commit --amend --reset-author`
+* If you have multiple commits with your private e-mail address, see this answer.
+* Now you can push the commit with the noreply e-mail address, and future commits will have the noreply e-mail address as well.
+`git push`
+* Once you configure Git, commits will use your alternate “noreply” email address, and any pushes that don’t will be rejected.
+
 # How to move git repo
 * With all history and branches
 * See [here](https://gist.github.com/tomoya-sasaki/731369b9fbe50a9052c753642cf65dda)
