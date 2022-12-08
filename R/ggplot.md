@@ -156,6 +156,12 @@ ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"),
 	legend.key.size = unit(1.5, "cm"))
 ```
 
+## Remove borders
+```
+theme(panel.border = element_blank())
+
+```
+
 # Legend
 * You need to use identical name and labels values for both shape and colour scale.
 
@@ -241,4 +247,34 @@ p1 + geom_line(data = mp, aes(x = hp, y = fit), size = 1, color = 'blue') +
 	geom_ribbon(data = mp, aes(x = hp, ymin = lwr, ymax = upr), alpha = 0.1)
 ```
 
-## 
+## Create a map of the US and fit Alaska and Hawaii
+
+* Reference [here](https://r-spatial.org/r/2018/10/25/ggplot2-sf-3.html), [here](https://stackoverflow.com/questions/49523375/graphing-lat-long-data-points-on-us-map-50-states-including-alaska-hawaii), or [here](https://stackoverflow.com/questions/13757771/relocating-alaska-and-hawaii-on-thematic-map-of-the-usa-with-ggplot2)
+
+```
+library(ggplot2)
+library(cowplot)
+(mainland <- ggplot(data = usa) +
+     geom_sf(fill = "cornsilk") +
+     coord_sf(crs = st_crs(2163), xlim = c(-2500000, 2500000), ylim = c(-2300000, 730000)))
+         
+(alaska <- ggplot(data = usa) +
+     geom_sf(fill = "cornsilk") +
+     coord_sf(crs = st_crs(3467), xlim = c(-2400000, 1600000), ylim = c(200000, 2500000), expand = FALSE, datum = NA))
+
+(hawaii  <- ggplot(data = usa) +
+     geom_sf(fill = "cornsilk") +
+     coord_sf(crs = st_crs(4135), xlim = c(-161, -154), ylim = c(18, 23), expand = FALSE, datum = NA))         
+
+(ratioAlaska <- (2500000 - 200000) / (1600000 - (-2400000)))
+
+## [1] 0.575
+
+(ratioHawaii  <- (23 - 18) / (-154 - (-161)))
+
+## [1] 0.7142857
+
+ggdraw(mainland) +
+    draw_plot(alaska, width = 0.26, height = 0.26 * 10/6 * ratioAlaska, x = 0.05, y = 0.05) +
+    draw_plot(hawaii, width = 0.15, height = 0.15 * 10/6 * ratioHawaii, x = 0.3, y = 0.05)     
+```
