@@ -1,12 +1,21 @@
 # Setup a computer (macOS)
-## General
-* `zsh`: in general use `zshrc` for `bash_profile`
+## How to clean install
+* japanese ref [here](https://tech.qookie.jp/posts/mac-clean-install-1/)
 
+## General
+* `zsh`: in general use `zshrc` equivalent to `bash_profile`
 
 ## List an app
 * [here](https://www.makeuseof.com/tag/list-installed-apps-mac/)
 ```
 ls -la /Applications/ > InstalledAppsTerminal.txt
+```
+
+* List of brew installed stuff
+
+```
+brew leaves > brew_leaves.txt
+brew list > brew_list.txt
 ```
 
 ## Google drive
@@ -45,7 +54,6 @@ ls -la /Applications/ > InstalledAppsTerminal.txt
 setwd("/Users/tomoyasasaki/GoogleDrive/admin/computer/") # or any other existing temp directory
 packages <- installed.packages()[,"Package"]
 save(packages, file = "Rpackages")
-
 
 # run on new computer / r version
 # setwd("/Users/Florian/Dropbox/temp") # or any other existing temp directory
@@ -114,12 +122,13 @@ pip install -r /path/to/requirements.txt
 	
 ## Tex
 * Install ghostscript with brew `brew install ghostscript`
-* Download MacTex and custom install without ghostscript
+* (old) Download MacTex and custom install without ghostscript
+* (updated) Download MacTex with brew
 * Update `sudo tlmgr update --self --all`s
 
 ## brew
 * `homebrew-cask` might be useful but won't use for now ([here](https://yutaszk23.hatenadiary.jp/entry/2014/12/16/030653) or [here](https://queryok.ikuwow.com/entry/stop-brew-cask/))
-* Export brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-i``n-a-text-file)): `brew leaves > brew_leaves.txt`
+* Export brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-i``n-a-text-file)): `brew leaves > brew_leaves.txt` and `brew list > brew_list.txt`
 * Install exported brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-in-a-text-file)): `for i in $(cat brew_leaves); do; brew install "$i"; done`
 
 ## OneTab
@@ -128,11 +137,13 @@ pip install -r /path/to/requirements.txt
 ## DBeaver
 * Download from [here](https://dbeaver.io/download/)
 
+## finderpath
+
 ## Git
 * Use git from brew ([here](https://apple.stackexchange.com/questions/93002/how-to-use-the-homebrew-installed-git-on-mac)): `brew install git`
 
 ## Github
-* Connect github with new credential
+* Connect github with new credential or ssh
 
 ### Dropbox and Github
 * Not compatible in general
