@@ -1,11 +1,14 @@
 # Setup a computer (macOS)
-## How to clean install
-* japanese ref [here](https://tech.qookie.jp/posts/mac-clean-install-1/)
 
 ## General
+### How to clean install
+* japanese ref [here](https://tech.qookie.jp/posts/mac-clean-install-1/)
+
+### Misc
 * `zsh`: in general use `zshrc` equivalent to `bash_profile`
 
-## List an app
+## Before starting clean install
+### List an app
 * [here](https://www.makeuseof.com/tag/list-installed-apps-mac/)
 ```
 ls -la /Applications/ > InstalledAppsTerminal.txt
@@ -18,7 +21,31 @@ brew leaves > brew_leaves.txt
 brew list > brew_list.txt
 ```
 
-## Google drive
+## Clean install procedure
+* Install the newest version of macOS if necessary
+* Restart with recovery mode
+	* Intel: Command + R
+	* Apple: 
+* Open disk utility
+	*  Erase "Macintosh HD" WITHOUT Data and reformat it
+	*  Erase "Macintosh HD - Data" using the minus button
+*  Reintall macOS
+*  Reference [here](https://irilyuu.com/mac-ios/mac/macos-clean-instal/)
+
+## After clean install
+
+### Avast, Google Chrome, Firefox
+* Follow the instruction
+* Google Chrome: use google account to sync
+* Firefox: install AdBlocker for YouTube (maybe not Enhancer for YouTube)
+
+### Download Xcode
+* Do not download from Apple Store
+* Download it from [https://developer.apple.com/download/all/](https://developer.apple.com/download/all/). Choose the newest version for your macOS
+* Unpack with `xip -x Xcode.xxx.xip`
+* Drag the unpacked application to Application folder
+
+### Google drive
 * Download "Backup and Sync"
 * Sync
 * Change the local folder name to "GoogleDrive"
@@ -27,22 +54,17 @@ brew list > brew_list.txt
 	* Restart "Backup and Sync" 
 	* Relocate the file to "GoogleDrive"
 
-## GlobalProtect
+### GlobalProtect
 * MIT VPN
 * Portal address: `gpvpn.mit.edu`
 
-## Zotero
+### Zotero
 * Sync with existing account
 * Install better bibtex (citation key format: `[auth:lower][year]`)
 * Make sure to check Google drive setup and the path is corrects
 	* The folder name should be "GoogleDrive"
 
-## Avast, R, Google Chrome, Firefox
-* Follow the instruction
-* Google Chrome: use google account to sync
-* Firefox: install AdBlocker for YouTube (maybe not Enhancer for YouTube)
-
-## R
+### R
 * Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
 * To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile`.
 
@@ -63,13 +85,13 @@ for (p in setdiff(packages, installed.packages()[,"Package"]))
 install.packages(p)
 ```
 
-## Python
+### Python
 1. Install `pyenv`
 2. Install python with `pyenv`
 3. Install `pyenv-virtualenv`
 4. Install `pip` in one of your environment
 
-### pyenv
+#### pyenv
 * Thanks to Shusei ([here](https://github.com/Shusei-E/Code_Tips/blob/master/MacOS/SettingEnvironment.md))
 * Also check [here](https://towardsdatascience.com/python-how-to-create-a-clean-learning-environment-with-pyenv-pyenv-virtualenv-pipx-ed17fbd9b790)
 * Install with `brew install pyenv`
@@ -95,14 +117,14 @@ echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
 * Install available python version `pyenv install -l`
 * Install python version with `pyenv install [ver]`
 
-### pyenv-virtualenv
+#### pyenv-virtualenv
 * More convenient to control multiple versions
 * You can also use `pyenv-virtualenv`: `brew install pyenv-virtualenv`
 	* New environment: `pyenv virtualenv [ver] [envname]`
 	* Activate environment: `pyenv activate [envname]`
 	* Deactivate environment: `pyenv deactivate`
 
-### pip
+#### pip
 * Check [here](https://github.com/pypa/get-pip)
 
 ```
@@ -120,32 +142,32 @@ pip freeze > /path/to/requirements.txt
 pip install -r /path/to/requirements.txt
 ```
 	
-## Tex
+### Tex
 * Install ghostscript with brew `brew install ghostscript`
 * (old) Download MacTex and custom install without ghostscript
 * (updated) Download MacTex with brew
 * Update `sudo tlmgr update --self --all`s
 
-## brew
+### brew
 * `homebrew-cask` might be useful but won't use for now ([here](https://yutaszk23.hatenadiary.jp/entry/2014/12/16/030653) or [here](https://queryok.ikuwow.com/entry/stop-brew-cask/))
 * Export brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-i``n-a-text-file)): `brew leaves > brew_leaves.txt` and `brew list > brew_list.txt`
 * Install exported brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-in-a-text-file)): `for i in $(cat brew_leaves); do; brew install "$i"; done`
 
-## OneTab
+### OneTab
 * Export URLs
 
-## DBeaver
+### DBeaver
 * Download from [here](https://dbeaver.io/download/)
 
-## finderpath
+### finderpath
 
-## Git
+### Git
 * Use git from brew ([here](https://apple.stackexchange.com/questions/93002/how-to-use-the-homebrew-installed-git-on-mac)): `brew install git`
 
-## Github
+### Github
 * Connect github with new credential or ssh
 
-### Dropbox and Github
+#### Dropbox and Github
 * Not compatible in general
 * Main computer: sync everything
 * Sub computer: sync **only** gitignored folders
