@@ -1,7 +1,14 @@
 {
   "editor.wordWrap": "on",
 
+  "workbench.colorTheme": "Monokai",
+  "window.zoomLevel": -1,
   "security.workspace.trust.untrustedFiles": "open",
+  "quarto.mathjax.theme": "dark",
+
+  "editor.codeActionsOnSave": {
+  },
+
   
   "python.pythonPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
   "python.defaultInterpreterPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
@@ -194,7 +201,7 @@
   "json.schemas": [
   
   ],
-  "workbench.colorTheme": "Monokai",
+  // "workbench.colorTheme": "Monokai",
   "spellright.language": [
     "en"
   ],
@@ -215,11 +222,6 @@
   },
   "cSpell.enableFiletypes": [
     "rsweave"
-  ],
-  "window.zoomLevel": -1,
-  "quarto.mathjax.theme": "dark",
-  "editor.codeActionsOnSave": {
-  
-  }
+  ]
     
 }
