@@ -57,6 +57,9 @@ brew list > brew_list.txt
 	* Restart "Backup and Sync" 
 	* Relocate the file to "GoogleDrive"
 
+### Google日本語入力
+
+
 ### GlobalProtect
 * MIT VPN
 * Portal address: `gpvpn.mit.edu`
