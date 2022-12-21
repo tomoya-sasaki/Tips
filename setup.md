@@ -45,6 +45,9 @@ brew list > brew_list.txt
 * Unpack with `xip -x Xcode.xxx.xip`
 * Drag the unpacked application to Application folder
 
+### Others
+* Install Homebrew
+
 ### Google drive
 * Download "Backup and Sync"
 * Sync
@@ -92,6 +95,7 @@ install.packages(p)
 4. Install `pip` in one of your environment
 
 #### pyenv
+* Check [here](https://github.com/pyenv/pyenv)
 * Thanks to Shusei ([here](https://github.com/Shusei-E/Code_Tips/blob/master/MacOS/SettingEnvironment.md))
 * Also check [here](https://towardsdatascience.com/python-how-to-create-a-clean-learning-environment-with-pyenv-pyenv-virtualenv-pipx-ed17fbd9b790)
 * Install with `brew install pyenv`
@@ -143,10 +147,13 @@ pip install -r /path/to/requirements.txt
 ```
 	
 ### Tex
-* Install ghostscript with brew `brew install ghostscript`
-* (old) Download MacTex and custom install without ghostscript
-* (updated) Download MacTex with brew
-* Update `sudo tlmgr update --self --all`s
+* Old procedure (still works though)
+	* Install ghostscript with brew `brew install ghostscript`
+	* Download MacTex and custom install without ghostscript
+* Updated 
+	* Download MacTex with brew `brew install --cask mactex`
+	* Update packages with `sudo tlmgr update --self --all`
+	* Reference [here](https://blog.wtsnjp.com/2020/07/07/about-mactex/)
 
 ### brew
 * `homebrew-cask` might be useful but won't use for now ([here](https://yutaszk23.hatenadiary.jp/entry/2014/12/16/030653) or [here](https://queryok.ikuwow.com/entry/stop-brew-cask/))
@@ -163,6 +170,10 @@ pip install -r /path/to/requirements.txt
 
 ### Git
 * Use git from brew ([here](https://apple.stackexchange.com/questions/93002/how-to-use-the-homebrew-installed-git-on-mac)): `brew install git`
+* If on Intel, add `export PATH="/usr/local/bin:${PATH}"`
+* If on ARM/M1, add `export PATH="/opt/homebrew/bin:${PATH}"`
+
+
 
 ### Github
 * Connect github with new credential or ssh
