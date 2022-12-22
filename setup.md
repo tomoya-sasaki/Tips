@@ -39,11 +39,14 @@ brew list > brew_list.txt
 * Google Chrome: use google account to sync
 * Firefox: install AdBlocker for YouTube (maybe not Enhancer for YouTube)
 
+### Google日本語入力
+
 ### Download Xcode
 * Do not download from Apple Store
 * Download it from [https://developer.apple.com/download/all/](https://developer.apple.com/download/all/). Choose the newest version for your macOS
 * Unpack with `xip -x Xcode.xxx.xip`
 * Drag the unpacked application to Application folder
+* Install xcode command line tools
 
 ### Others
 * Install Homebrew
@@ -57,20 +60,21 @@ brew list > brew_list.txt
 	* Restart "Backup and Sync" 
 	* Relocate the file to "GoogleDrive"
 
-### Google日本語入力
-
-
 ### GlobalProtect
 * MIT VPN
 * Portal address: `gpvpn.mit.edu`
 
 ### Zotero
 * Sync with existing account
-* Install better bibtex (citation key format: `[auth:lower][year]`)
 * Make sure to check Google drive setup and the path is corrects
 	* The folder name should be "GoogleDrive"
+* Install better bibtex (citation key format: `[auth:lower][year]`)
+* Refresh citation key 
 
 ### R
+* Install XQuartz
+* Install gfortran `https://github.com/fxcoudert/gfortran-for-macOS/releases`
+* Install xz (and maybe pcre2) with brew
 * Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
 * To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile`.
 
