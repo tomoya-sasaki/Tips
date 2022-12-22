@@ -27,8 +27,9 @@ brew list > brew_list.txt
 	* Intel: Command + R
 	* Apple: 
 * Open disk utility
-	*  Erase "Macintosh HD" WITHOUT Data and reformat it
-	*  Erase "Macintosh HD - Data" using the minus button
+	*  Erase "Macintosh HD" WITHOUT Data, which includes both "Macintosh HD" and "MAcintosh HD - Data" and reformat it
+		*  Click Erase. However, if you see an Erase Volume Group button, click that button instead.
+	*  (maybe not needed) Erase "Macintosh HD - Data" using the minus button
 *  Reintall macOS
 *  Reference [here](https://irilyuu.com/mac-ios/mac/macos-clean-instal/)
 
