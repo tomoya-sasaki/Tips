@@ -206,3 +206,10 @@ pip install -r /path/to/requirements.txt
 	3. Delete the github Dropbox folder
 	4. Re-clone the github repo to Dropbox
 	5. Put back files moved in Step 2 to the github repo
+
+## Accounts attached to mit address
+* notion
+* Slack
+* Zoom
+* Github
+* Spotify
