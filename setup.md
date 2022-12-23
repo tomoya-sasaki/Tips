@@ -47,10 +47,14 @@ brew list > brew_list.txt
 * Download it from [https://developer.apple.com/download/all/](https://developer.apple.com/download/all/). Choose the newest version for your macOS
 * Unpack with `xip -x Xcode.xxx.xip`
 * Drag the unpacked application to Application folder
-* Install xcode command line tools
+* Install xcode command line tools from the same URL
 
-### Others
-* Install Homebrew
+### brew
+* Install following their website
+* Export brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-i``n-a-text-file)): `brew leaves > brew_leaves.txt` and `brew list > brew_list.txt`
+* Install exported brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-in-a-text-file)): `for i in $(cat brew_leaves); do; brew install "$i"; done`
+* `homebrew-cask` might be useful but won't use for now ([here](https://yutaszk23.hatenadiary.jp/entry/2014/12/16/030653) or [here](https://queryok.ikuwow.com/entry/stop-brew-cask/))
+
 
 ### Google drive
 * Download "Backup and Sync"
@@ -163,10 +167,6 @@ pip install -r /path/to/requirements.txt
 	* Update packages with `sudo tlmgr update --self --all`
 	* Reference [here](https://blog.wtsnjp.com/2020/07/07/about-mactex/)
 
-### brew
-* `homebrew-cask` might be useful but won't use for now ([here](https://yutaszk23.hatenadiary.jp/entry/2014/12/16/030653) or [here](https://queryok.ikuwow.com/entry/stop-brew-cask/))
-* Export brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-i``n-a-text-file)): `brew leaves > brew_leaves.txt` and `brew list > brew_list.txt`
-* Install exported brew installed packages ([here](https://apple.stackexchange.com/questions/279077/how-can-i-install-all-brew-packages-listed-in-a-text-file)): `for i in $(cat brew_leaves); do; brew install "$i"; done`
 
 ### OneTab
 * Export URLs
