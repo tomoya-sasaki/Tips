@@ -195,13 +195,17 @@ pip install -r /path/to/requirements.txt
 * Move some files if necessary. Some files might not be synced from the remote github repo because they are ignored
 
 #### When migrating the main computer
-* When there is huge, smart-synced files
+* This method should work
+	1. Make sure that the Dropbox is perfectly synced
+	2. Check remote with `git remote -v`
+	3. You don't need `git init`
+* (old) When there is huge, smart-synced files
 	1. Make sure that every update is already available in the online repo
 	2. Delete non-gitignored folders
 	3. Re-clone the github repo to non-Dropbox folder
 	4. Move files in the cloned folder to the existing corresponding folder in Dropbox
 	5. Re-init as github repo
-* When there is no smart-synced files
+* (old) When there is no smart-synced files
 	1. Make sure that every update is already available in the online repo
 	2. Move gitignored folders file to non-Dropbox folder
 	3. Delete the github Dropbox folder
