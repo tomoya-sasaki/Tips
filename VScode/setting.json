@@ -9,9 +9,9 @@
   "editor.codeActionsOnSave": {
   },
 
-  
-  "python.pythonPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
-  "python.defaultInterpreterPath": "/Users/tomoyasasaki/.pyenv/versions/snake/bin/python",
+
+  "python.pythonPath": "/Users/tomoyasasaki/.pyenv/versions/py3.9/bin/python",
+  "python.defaultInterpreterPath": "/Users/tomoyasasaki/.pyenv/versions/py3.9/bin/python",
   "python.terminal.executeInFileDir": true,
   "python.terminal.activateEnvironment": false,
   "python.terminal.activateEnvInCurrentTerminal": true,
@@ -28,6 +28,7 @@
 
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.zoom": "page-width",
 
   "latex-workshop.latex.tools": [
       {
@@ -118,7 +119,7 @@
           "tools": [
               "xelatex"
           ]
-      },       
+      },
       {
           "name": "pdflatex -> bibtex -> pdflatex*2",
           "tools": [
@@ -160,7 +161,7 @@
             "pdflatex",
             "pdflatex"
           ]
-        }, 
+        },
                 {
           "name": "Rnw with pdflatex -> biber",
           "tools": [
@@ -195,11 +196,11 @@
 
   "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.confirmOnExit": "always",
-  "terminal.integrated.cwd": "${fileDirname}", 
+  "terminal.integrated.cwd": "${fileDirname}",
   "terminal.integrated.defaultLocation": "editor",
 
   "json.schemas": [
-  
+
   ],
   // "workbench.colorTheme": "Monokai",
   "spellright.language": [
@@ -222,6 +223,7 @@
   },
   "cSpell.enableFiletypes": [
     "rsweave"
-  ]
-    
+  ],
+  "workbench.iconTheme": "vscode-icons"
+
 }
