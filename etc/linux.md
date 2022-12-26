@@ -223,10 +223,11 @@ The key's randomart image is:
 # create directory in your client if it does not exist
 # 1. move scp file
 local $ scp ~/.ssh/id_rsa.pub remote-user-name@address:~/.ssh
+
 # 2-1. copy and paste, copy contents of id_rsa.pub
 remote $ cat ~/id_rsa.pub >> .ssh/authorized_keys
 
-# 3-1. or copy and paste manually
+# 2-2. or copy and paste the contents off id_rsa.pub manually
 local $ less .ssh/id_rsa.pub 
 remote $ touch .ssh/authorized_keys
 remote $ vim .ssh/authorized_keys
