@@ -21,6 +21,10 @@ brew leaves > brew_leaves.txt
 brew list > brew_list.txt
 ```
 
+### Google Chrome OneTab
+* Export URLs
+
+
 ## Clean install procedure
 * Install the newest version of macOS if necessary
 * Restart with recovery mode
@@ -40,7 +44,10 @@ brew list > brew_list.txt
 * Google Chrome: use google account to sync
 * Firefox: install AdBlocker for YouTube (maybe not Enhancer for YouTube)
 
-### Google日本語入力
+### Misc
+* Google日本語入力
+* Finderpath
+* 
 
 ### Download Xcode
 * Do not download from Apple Store
@@ -167,21 +174,14 @@ pip install -r /path/to/requirements.txt
 	* Update packages with `sudo tlmgr update --self --all`
 	* Reference [here](https://blog.wtsnjp.com/2020/07/07/about-mactex/)
 
-
-### OneTab
-* Export URLs
-
 ### DBeaver
 * Download from [here](https://dbeaver.io/download/)
-
-### finderpath
+* Setup connection for databases
 
 ### Git
 * Use git from brew ([here](https://apple.stackexchange.com/questions/93002/how-to-use-the-homebrew-installed-git-on-mac)): `brew install git`
 * If on Intel, add `export PATH="/usr/local/bin:${PATH}"`
 * If on ARM/M1, add `export PATH="/opt/homebrew/bin:${PATH}"`
-
-
 
 ### Github
 * Connect github with new credential or ssh
