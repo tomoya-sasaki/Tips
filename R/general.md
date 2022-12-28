@@ -343,6 +343,17 @@ if (file.exists(subDir)){
 ```
 
 
+## askYesNo
+* Standard way to ask a yes/no question to users
+* Yes, No, cancel return TRUE, FALSE, NA respectively
+
+```
+askYesNo(msg = "Do you like R?")
+
+# use 1/2/3 for yes/no/cancel
+askYesNo(msg = "Do you like R?", prompts = "1/2/3")
+```
+
 # Update
 * Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
 * Remove existing R and RStudio before upgrading R

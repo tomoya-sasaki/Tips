@@ -1,6 +1,14 @@
-## String in R
+# String in R
 
-### 変数名を変えながら値を代入したい
+## Extract URL
+* [here](https://blog.statsbeginner.net/entry/2022/12/28/040830)
+
+```
+grep('https?://[\\w!\\?/\\+\\-_~=;\\.,\\*&@#\\$%\\(\\)\'\\[\\]]+', x, perl=TRUE)
+```
+
+
+## 変数名を変えながら値を代入したい
 [参考](http://futabooo.hatenablog.com/entry/20110910/1315634652)
 
 1.  値を代入する
