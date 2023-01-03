@@ -1,3 +1,7 @@
+1. [vector](#vector)
+2. [matrix](#matrix)
+3. [dataframe](#dataframe)
+
 # vector
 ## Convert one row/column of dataframe into vector
 ```
@@ -16,6 +20,53 @@ as.numeric(df[, 1])
 [4,] -0.4647647  0.51893826  0.1365466
 [5,] -0.4669128  0.02026587 -0.4949872
 ```
+
+
+## Find common elements
+
+
+```
+a <- c(1,3,5,7,9)
+b <- c(3,6,8,9,10)
+c <- c(2,3,4,5,7,9)
+# works fine 
+intersect(intersect(a,b),c)
+
+# more clever way if you have many vectors
+Reduce(intersect, list(a,b,c))
+```
+
+## find index of an element in vector
+
+* Single match: only returns the first encounter of a match
+
+```
+x <- sample(1:10)
+x
+# [1]  4  5  9  3  8  1  6 10  7  2
+match(c(4,8),x)
+# [1] 1 5
+```
+
+* Multiple matches: a logical vector as long as the first argument, with a `TRUE` if that value can be found in the second argument and a `FALSE` otherwise
+ 
+```
+x <- sample(1:4,10,replace=TRUE)
+x
+# [1] 3 4 3 3 2 3 1 1 2 2
+which(x %in% c(2,4))
+# [1]  2  5  9 10
+```
+
+## Find the nearest value in a vector and return that ID
+* Check which value in vector `x` is closet to `14`
+
+```
+x <- c(1, 6, 12, 28, 33) 
+which.min(abs(x - 14))
+
+```
+
 
 # matrix
 ## Check
@@ -88,21 +139,6 @@ duplicated(df) | duplicated(df, fromLast = TRUE)
 
 ```
 
-## Find common elements
-
-
-```
-a <- c(1,3,5,7,9)
-b <- c(3,6,8,9,10)
-c <- c(2,3,4,5,7,9)
-# works fine 
-intersect(intersect(a,b),c)
-
-# more clever way if you have many vectors
-Reduce(intersect, list(a,b,c))
-```
-
-
 ## Replace `Nan` with zeros
 
 ```
@@ -112,7 +148,7 @@ do.call(cbind, lapply(x, is.nan))
 data123[is.nan(data123)] <- 0
 ```
 
-## Replace `Inf`wit zeros
+## Replace `Inf` with zeros
 
 ```
 data[data == Inf] <- 0
@@ -178,39 +214,7 @@ data.frame(d, t(apply(-d, 1, rank, ties.method='min')))
 [3,]    0    0    1
 ```
 
-# vector
-## find index of an element in vector
-
-* Single match: only returns the first encounter of a match
-
-```
-x <- sample(1:10)
-x
-# [1]  4  5  9  3  8  1  6 10  7  2
-match(c(4,8),x)
-# [1] 1 5
-```
-
-* Multiple matches: a logical vector as long as the first argument, with a `TRUE` if that value can be found in the second argument and a `FALSE` otherwise
- 
-```
-x <- sample(1:4,10,replace=TRUE)
-x
-# [1] 3 4 3 3 2 3 1 1 2 2
-which(x %in% c(2,4))
-# [1]  2  5  9 10
-```
-
-## Find the nearest value in a vector and return that ID
-* Check which value in vector `x` is closet to `14`
-
-```
-x <- c(1, 6, 12, 28, 33) 
-which.min(abs(x - 14))
-
-```
-
-# Dataframe
+# dataframe
 ## Create a new column with 
 You can add a sequence of numbers very easily with
 
@@ -257,8 +261,6 @@ fun1 <- function(x, column){
 }
 fun1(df, "B")
 ```
-
-
 
 
 [1]:https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
