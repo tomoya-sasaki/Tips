@@ -140,7 +140,7 @@ duplicated(df) | duplicated(df, fromLast = TRUE)
 
 ```
 
-## Replace `Nan` with zeros
+## Replace `NaN` with zeros
 
 ```
 is.nan.data.frame <- function(x)
