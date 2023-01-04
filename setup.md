@@ -47,7 +47,6 @@ brew list > brew_list.txt
 ### Misc
 * Google日本語入力
 * Finderpath
-* 
 
 ### Download Xcode
 * Do not download from Apple Store
@@ -182,6 +181,8 @@ pip install -r /path/to/requirements.txt
 * Use git from brew ([here](https://apple.stackexchange.com/questions/93002/how-to-use-the-homebrew-installed-git-on-mac)): `brew install git`
 * If on Intel, add `export PATH="/usr/local/bin:${PATH}"`
 * If on ARM/M1, add `export PATH="/opt/homebrew/bin:${PATH}"`
+* Setup email for commit: `git config --global user.email "ID+username@users.noreply.github.com"`
+
 
 ### Github
 * Connect github with new credential or ssh
