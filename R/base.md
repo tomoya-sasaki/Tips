@@ -2,6 +2,7 @@
 2. [matrix](#matrix)
 3. [dataframe](#dataframe)
 4. [list](#list)
+5. [pipe](#pipe)
 
 # vector
 ## Convert one row/column of dataframe into vector
@@ -370,6 +371,24 @@ for (i in 1:10000) {
 tictoc::toc()
 appending matrix: 24.342 sec elapsed
 
+```
+
+# pipe
+* Object in the LHS of the operator is evaluated at the first argument of the RHS function
+* You need an anonymous function to use the LHS object as the non-first argument in the RHS function
+
+```
+# this does not work
+diamonds |> 
+	aggregate(cbind(price, carat)~color, FUN = mean)
+
+# use anonymouus function to use LHS object 
+diamonds |> 
+	(\(x) aggregate(cbind(price, carat)~color, data = x, FUN = mean))()
+
+# or with magrittr
+diamonds %>% 
+	aggregate(cbind(price, carat)~color, data = ., FUN = mean)
 ```
 
 
