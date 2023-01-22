@@ -23,3 +23,9 @@ Arrows(0, 0, 0.5, 0.5, arr.type = "triangle")
 # draw an arrow from (0,0) to (0.5,0.5) where an arrowhead is drawn at both ends (code=3)
 Arrows(0, 0, 0.5, 0.5, arr.type = "triangle",code = 3)
 ```
+
+## Distance between legend symbol and text
+
+```
+legend(x.intersp = 2.0)
+```
