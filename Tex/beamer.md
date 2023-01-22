@@ -112,7 +112,7 @@
 \end{center}
 \begin{tikzpicture}[remember picture, overlay]
 \node[shift={(-0.6cm,0.5cm)}]() at (current page.south east){%
-\hyperlink{there}{\beamerreturnbutton{Back}}};        
+\hyperlink{there}{\beamerbutton{Back}}};        
 \end{tikzpicture}
 \end{frame}
 
@@ -121,11 +121,17 @@
 text
 \begin{tikzpicture}[remember picture, overlay]
 \node[shift={(-0.6cm,0.5cm)}]() at (current page.south east){%
-\hyperlink{here}{\beamerreturnbutton{Back}}};        
+\hyperlink{here}{\beamerbutton{Back}}};        
 \end{tikzpicture}
 
 \end{frame}
 \end{document}
+```
+
+* If you want the botton to be the left
+
+```
+\hfill\hyperlink{here}{\beamerbutton{Back}}
 ```
 
 # Japanese
