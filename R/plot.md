@@ -24,8 +24,23 @@ Arrows(0, 0, 0.5, 0.5, arr.type = "triangle")
 Arrows(0, 0, 0.5, 0.5, arr.type = "triangle",code = 3)
 ```
 
-## Distance between legend symbol and text
+
+## legend
+### Distance between legend symbol and text
 
 ```
 legend(x.intersp = 2.0)
+```
+
+### legend position
+* "bottomright", "bottom", "bottomleft", "left", "topleft", "top", "topright", "right" and "center"
+
+### surrounding square lines
+
+```
+# no square lines
+legend(box.lty=0)
+
+# color square lines
+legend(box.col="red") 
 ```
