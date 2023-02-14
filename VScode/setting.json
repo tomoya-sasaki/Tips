@@ -2,7 +2,6 @@
   "editor.wordWrap": "on",
 
   "workbench.colorTheme": "Monokai",
-  "window.zoomLevel": -1,
   "security.workspace.trust.untrustedFiles": "open",
   "quarto.mathjax.theme": "dark",
 
@@ -28,7 +27,7 @@
 
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.view.pdf.zoom": "page-width",
+  "latex-workshop.view.pdf.zoom": "page-fit",
 
   "latex-workshop.latex.tools": [
       {
@@ -224,6 +223,10 @@
   "cSpell.enableFiletypes": [
     "rsweave"
   ],
-  "workbench.iconTheme": "vscode-icons"
+  "workbench.iconTheme": "vscode-icons",
+  "files.associations": {
+    "*.rmd": "markdown"
+  },
+  "window.zoomLevel": -1
 
 }
