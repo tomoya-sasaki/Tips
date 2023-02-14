@@ -13,7 +13,10 @@ rug(x, side = 3, col = "green")
 ```
 
 ## arrows
-* Use `shape` package
+
+### base
+
+### Use `shape` package
 
 ```
 library(shape)

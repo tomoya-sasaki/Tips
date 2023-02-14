@@ -1,3 +1,24 @@
+# git
+
+## Checkout to remote branches
+* [here][2]
+
+```
+# switch to a branch in remote (new_remote_branch)
+git checkout -b new_local_branch -t origin/new_remote_branch
+
+# or this may work
+$ git checkout --track origin/newsletter
+Branch newsletter set up to track remote branch newsletter from origin.
+Switched to a new branch 'newsletter'
+
+# show all branches including remotes
+git branch -a 
+
+# or do simply 
+git reset HEAD
+```
+
 ## Clone with `ssh`
 
 ```
@@ -53,24 +74,6 @@ $ git add -u
 	* `git add -u` only adds currently tracked files (which have been modified) to the staging area and also checks if they have been deleted (if yes, they are removed from staging area). This means that it does not stage new files.
 	* `git add -A` performs both of `git add .` and `git add -u`, that is, stages your entire directory as it is.
 
-## If your need to get branch on remote
-* [here][2]
-
-```
-# switch to a branch in remote (new_remote_branch)
-git checkout -b new_local_branch -t origin/new_remote_branch
-
-# or this may work
-$ git checkout --track origin/newsletter
-Branch newsletter set up to track remote branch newsletter from origin.
-Switched to a new branch 'newsletter'
-
-# show all branches including remotes
-git branch -a 
-
-# or do simply 
-git reset HEAD
-```
 
 ## When you change to gitignore was not reflected
 
