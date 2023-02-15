@@ -227,6 +227,10 @@
   "files.associations": {
     "*.rmd": "markdown"
   },
-  "window.zoomLevel": -1
+  "window.zoomLevel": -1,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "trailing-spaces.trimOnSave": true
 
 }
