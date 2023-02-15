@@ -231,6 +231,8 @@
   "[python]": {
     "editor.formatOnType": true
   },
-  "trailing-spaces.trimOnSave": true
+  "trailing-spaces.trimOnSave": true,
+  "cSpell.maxNumberOfProblems": 1000,
+  "cSpell.minWordLength": 3
 
 }
