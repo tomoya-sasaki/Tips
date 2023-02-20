@@ -291,6 +291,12 @@ There are screens on:
 [yoshiyuki_sakamoto@nv-sysmanage01 ~]$
 ```
 
+* Change screen session name
+
+```
+screen -S ID.oldname -X sessionname newname
+```
+
 ### Run multiple screen sessions
 
 * `-d`: Do not start screen, but instead detach a screen session running elsewhere (see Detach). There is also `-D`, which 
