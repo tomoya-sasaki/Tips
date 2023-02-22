@@ -157,7 +157,6 @@ data[data == Inf] <- 0
 data[data == -Inf] <- 0
 ```
 
-
 ## Ranking values
 
 * How to get column name of the variable with the top 10 highest values?
@@ -214,6 +213,28 @@ data.frame(d, t(apply(-d, 1, rank, ties.method='min')))
 [1,]    1    0    0
 [2,]    0    1    0
 [3,]    0    0    1
+```
+
+## Matrix VS vector operation
+
+* Use `sweep`
+* Default operation is "-"
+
+```
+M <- matrix(1:12, nrow = 3)
+M
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+
+sweep (M, 1, c(1:4), "+")
+     [,1] [,2] [,3]
+[1,]    2    6   10
+[2,]    4    8   12
+[3,]    6   10   14
+[4,]    8   12   16
 ```
 
 # dataframe
