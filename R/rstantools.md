@@ -29,7 +29,9 @@ Error in getDLLRegisteredRoutines.DLLInfo(dll, addNames = FALSE) :   must speci
 2. Run `pkgbuild::compile_dll()`
 3. Run `roxygen2::roxytenize()`
 	* `devtools::document()` works, too. 
-4. Run `devtools::install()`
+4. Run `devtools::install(quick = FALSE)` (default option)
+	* The argument quick=FALSE is necessary if you want to recompile the Stan models. 
+	*  If you only make a change to the R code or the documentation, you can set quick=TRUE to speed up the process, or use devtools::load_all().
 
 * `devtools::load_all()`, `devtools::test()`, etc also work
 

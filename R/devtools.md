@@ -35,7 +35,7 @@
 ## Testing
 * `usethis::use_testthat()`: declare an intent to write unit tests and to use thei testhat package for testing
 * `usethis::use_test("FUNCTION NAME")`: open/create a test file under `testthat` folder, use after `use_testthat()`
-* `test()`: conduct test
+* `test()`: conduct test, make sure to run `library([packagename])` before the test
 
 ## Use functions in other packages
 * Import functions from the namespace of other packages
