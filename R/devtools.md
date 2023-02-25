@@ -52,13 +52,22 @@
 * `load_all()`: simulates installing and reloading the package, loading R code in `R/`, compiled shared objects in `src/`, and data files in `data/`
 * `test()`: reload with `load_all()` and run all `testhat` tests
 
+## Testing
+* `devtools::test()` reads objects in the global environment and so `devtools::test()` might pass even when `devtools::check()` fails.
+* Also, `devtools::test()` attaches objects to the global environment
+
 ## Build and install
 * `istall()`: reinstalls the package, detaches the currently loaded version then reloads the new version with `library()`. Make sure to run `document()` before running this to reflect changes in `man/` file
 * `build()`: builds a pacakge file from package sources. Can use this to build a binary version of the package (tar.gz file etc).
 
+## README
+* Initialize with `usethis::use_readme_rmd()` or `usethis::use_readme_md()`
+* Build the readme with `devtools::build_readme()` if you use `README.Rmd` generated with `usethis::use_readme_rmd()` for `README.md`
+
 ## Check and release
 * `check()`: automatically builds and checks a source package, using all known best practices. `check_built` checks an already built package
 * `release()`: makes sure everything is ok with your package (including asking you a number of questions), then builds and uploads to CRAN.
+* The `styler` package restyles your scripts and packages
 
 ## Differences among build, install etc
 * `load_all()`: simulates the process of buidling, installing and attaching the package as if you build and install the package and attached it via `library()`. Loads functions in memory but does not instal. Reflects edits
