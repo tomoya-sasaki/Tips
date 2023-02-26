@@ -43,10 +43,24 @@ Arrows(0, 0, 0.5, 0.5, arr.type = "triangle",code = 3)
 
 
 ## legend
-### Distance between legend symbol and text
+### Distances
+* Distance between legend symbol and text
 
 ```
 legend(x.intersp = 2.0)
+```
+* Vertical distance
+
+```
+legend(y.intersp = 2.0)
+```
+
+
+### legend line length
+* The default is 2
+
+```
+legend(seg.len=5)
 ```
 
 ### legend position
