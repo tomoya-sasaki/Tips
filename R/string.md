@@ -1,5 +1,119 @@
 # String in R
 
+## sprintf
+### basic format
+* `sprintf("%f", int)`: Count and print the string from left (from right if negative) until a decimal point, default number is 6. If the string is more than 6, it keep the string and if less it create 0 or space.
+    
+	```
+    > sprintf("%f", 5000.000)
+	[1] "5000.000000"
+	
+	> sprintf("%.3f", 5000.000)
+	[1] "5000.000"
+    	
+	> sprintf("%20f", 5000.000)
+	[1] "         5000.000000"
+    	
+	> sprintf("%-20f", 5000.000)
+	[1] "5000.000000         "
+    	
+	> sprintf("%-20.f", 5000.000)
+	[1] "5000                "
+	
+	> sprintf("%-20.1f", 5000.000)
+	[1] "5000.0              "
+	```
+	
+* `sprintf("%s, string)`: Count and print the string from the left (from right if negative). 
+	
+	```
+    > sprintf("%s", "abcde")
+	[1] "abcde"
+	
+	> sprintf("%.1s", "abcde")
+	[1] "a"
+    	
+	> sprintf("%.s", "abcde")
+	[1] ""
+    	
+	> sprintf("%.100s", "abcde")
+	[1] "abcde"
+	```
+	
+### Use `sprintf` inside a loop
+* Use `cat`
+
+	```
+	for (i in 1:5){
+		cat(sprintf("i = %d", i))
+	}
+	```
+	
+### Avoid scientific notation with `sprintf`
+* You can also use `sprintf` to avoid scientific notation.
+
+```
+# %s for string
+sprintf("Current working dir: %s", wd)
+
+# %d for integer
+sprintf("Current working dir: %d", id)
+
+# %f for numeric
+sprintf("Current working dir: %f", value)
+
+# to show the width and precision
+sprintf("precision %.*f", 3, pi)
+[1] "precision 3.142"
+
+sprintf("width '%*.3f'", 8, pi)
+[1] "width '   3.142'"
+
+# you can also control precision with the value before "f"
+# if you want to control both width and precision, use the following expression
+sprintf("width '%*.5f'", 8, pi)
+[1] "width ' 3.14159'"
+```
+
+## Use latex in R plots
+* `latex2exp` parses and converts LaTeX math formulas to R’s plotmath expressions. For detail, see [here][latexexp]
+
+```
+TeX('$\\alpha^\\beta$')
+```
+## Avoid scientific/exponential notation
+* Check [here][1]
+* For one shot change
+
+```
+format(1810032000, scientific = FALSE)
+```
+
+* Force to change with options
+
+```
+options("scipen"=-100, "digits"=4)
+```
+
+## colr
+* To manipulate colnames and rownames. See `colr.R`.
+
+## formattr
+* To manipulate (join) strings. See `formattr.R`.
+
+## Extracting the last n characters from a string
+
+```
+x <- "some text in a string"
+
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
+
+substrRight(x, 6)
+[1] "string"
+```
+
 ## Prevent scientific expression
 
 ```

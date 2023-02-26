@@ -25,202 +25,6 @@ $ Rscript --vanilla --slave file_name.R
 * Type `LC_ALL=en_US.UTF-8 R` to start R
 * See [here](https://stackoverflow.com/questions/19781008/r-language-setting-cant-be-change-with-default-writes-command-on-mac), [here](https://stackoverflow.com/questions/12642651/in-r-how-to-get-error-messages-in-english), or [here](https://stackoverflow.com/questions/13575180/how-to-change-language-settings-in-r). See [here](http://qiita.com/methane/items/dac75ef5019b311a0f10) for some details of `LC_ALL`
 
-
-# Save and Load
-## Use Rdata
-* `save(list=ls(), file = "[filename].Rdata"` to save the all objects in the console (plot, data.frame, etc)
-* If you want to save specific objects (e.g. `df` and `elapsed_time`) then you use `save(list = c("df", "elapsed_time"), file = "[filename].Rdata")` to save the objects
-* To load, use `load("[filename].Rdata")`
-
-### Use other objects
-* See [here](http://www.fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/) or [here](https://www.trifields.jp/how-to-save-or-read-object-in-r-1397).
-* The method below can contain only one objects, but this method doesn't save both the object and its name, rather it just saves a representation of the object. As a result, the saved object can be loaded into a named object within R that is different from the name it had when originally serialized.
-
-```
-res <- lm(y~x)
-```
-
-## Save output
-* Save both outputs and messages [here](https://stackoverflow.com/questions/7096989/how-to-save-all-console-output-to-file-in-r)
-
-```
-con <- file("test.log")
-# by adding both line, you can save all messages
-sink(con, append=TRUE)
-sink(con, append=TRUE, type="message")
-
-# This will echo all input and not truncate 150+ character lines...
-source("script.R", echo=TRUE, max.deparse.length=10000)
-
-# Restore output to console
-sink() 
-sink(type="message")
-
-# And look at the log...
-cat(readLines("test.log"), sep="\n")
-```
-
-## `rds` object
-###Write object
-
-```
-saveRDS(res, file = "lm.obj")
-```
-
-### Read object
-
-```
-obj2 <- readRDS("lm.obj")
-```
-
-### When you have trouble using `readRDS`
-* You also can use `load()` to read `rds` object.
-
-# Write files
-## Write as csv
-* `write.csv()` cannont ignore column names.
-* If you want to ignore column names, you can use `write.table()` instead.
-
-## Write as text
-* `write()` and `write.lines()` forced to write `\n` in the last lines.
-
-
-# Regular Expression, print family
-## sprintf
-### basic format
-* `sprintf("%f", int)`: Count and print the string from left (from right if negative) until a decimal point, default number is 6. If the string is more than 6, it keep the string and if less it create 0 or space.
-    
-	```
-    > sprintf("%f", 5000.000)
-	[1] "5000.000000"
-	
-	> sprintf("%.3f", 5000.000)
-	[1] "5000.000"
-    	
-	> sprintf("%20f", 5000.000)
-	[1] "         5000.000000"
-    	
-	> sprintf("%-20f", 5000.000)
-	[1] "5000.000000         "
-    	
-	> sprintf("%-20.f", 5000.000)
-	[1] "5000                "
-	
-	> sprintf("%-20.1f", 5000.000)
-	[1] "5000.0              "
-	```
-	
-* `sprintf("%s, string)`: Count and print the string from the left (from right if negative). 
-	
-	```
-    > sprintf("%s", "abcde")
-	[1] "abcde"
-	
-	> sprintf("%.1s", "abcde")
-	[1] "a"
-    	
-	> sprintf("%.s", "abcde")
-	[1] ""
-    	
-	> sprintf("%.100s", "abcde")
-	[1] "abcde"
-	```
-	
-### Use `sprintf` inside a loop
-* Use `cat`
-
-	```
-	for (i in 1:5){
-		cat(sprintf("i = %d", i))
-	}
-	```
-	
-### Avoid scientific notation with `sprintf`
-* You can also use `sprintf` to avoid scientific notation.
-
-```
-# %s for string
-sprintf("Current working dir: %s", wd)
-
-# %d for integer
-sprintf("Current working dir: %d", id)
-
-# %f for numeric
-sprintf("Current working dir: %f", value)
-
-# to show the width and precision
-sprintf("precision %.*f", 3, pi)
-[1] "precision 3.142"
-
-sprintf("width '%*.3f'", 8, pi)
-[1] "width '   3.142'"
-
-# you can also control precision with the value before "f"
-# if you want to control both width and precision, use the following expression
-sprintf("width '%*.5f'", 8, pi)
-[1] "width ' 3.14159'"
-```
-
-## Use latex in R plots
-* `latex2exp` parses and converts LaTeX math formulas to R’s plotmath expressions. For detail, see [here][latexexp]
-
-```
-TeX('$\\alpha^\\beta$')
-```
-## Avoid scientific/exponential notation
-* Check [here][1]
-* For one shot change
-
-```
-format(1810032000, scientific = FALSE)
-```
-
-* Force to change with options
-
-```
-options("scipen"=-100, "digits"=4)
-```
-
-## colr
-* To manipulate colnames and rownames. See `colr.R`.
-
-## formattr
-* To manipulate (join) strings. See `formattr.R`.
-
-## Extracting the last n characters from a string
-
-```
-x <- "some text in a string"
-
-substrRight <- function(x, n){
-  substr(x, nchar(x)-n+1, nchar(x))
-}
-
-substrRight(x, 6)
-[1] "string"
-```
-
-# Class
-## factor
-### How to sort
-```
-d <- data.frame(x = c(1,2,1,2,3,4), y = c("1", "2", "10","1", "2", "10") )
-tapply(d$x, d$y, mean)
->>   1  10   2 
->> 1.5 2.5 2.5
-```
-`1 10 2`という並びを`1 2 10`にしたいとき
-
-```
-factor_level = c("1", "2", "10")
-# sortして　作り直す
-d$y <- factor(d$y, levels = factor_level)
-
-tapply(d$x, d$y, mean)
->>   1   2  10
->> 1.5 2.5 2.5
-```
-
 # Measure running time
 ## `tictoc`
 ```
@@ -240,7 +44,7 @@ Output
 # Potpourri
 
 ## Logical
-* Check `value == integer(0)`
+### How to check `value == integer(0)`
 
 ```
 value = integer(0)
@@ -250,6 +54,19 @@ identical(value, integer(0))
 
 is.integer(value) && length(value) == 0
 # [1] TRUE
+```
+
+### Use inherits
+
+```
+> class(1L)
+[1] "integer"
+> is.numeric(1L)
+[1] TRUE
+> is(1L, "numeric")
+[1] TRUE
+> inherits(1L, "numeric")
+[1] FALSE
 ```
 
 ## Notification
