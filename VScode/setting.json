@@ -15,6 +15,11 @@
   "python.terminal.activateEnvironment": false,
   "python.terminal.activateEnvInCurrentTerminal": true,
 
+  "r.alwaysUseActiveTerminal": true,
+  // "r.bracketedPaste": true,
+  "r.sessionWatcher": true,
+  // "r.rterm.mac": "/Users/tomoyasasaki/Library/Python/3.9/bin/radian",
+
 
   "workbench.editorAssociations": {
       "*.ipynb": "jupyter-notebook"

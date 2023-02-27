@@ -21,3 +21,17 @@
 2. Run the script with <kbd>Enter</kbd>+<kbd>Shift</kbd>
 3. Open a new editor region (group) on the left with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>b</kbd>
 4. Move the Python file to the left with <kbd>Cmd</kbd>+<kbd>Ctrl</kbd>+<kbd>&larr:</kbd>
+
+## R workflow
+
+* Check [here](https://renkun.me/)
+* Set PATH for `radian`
+
+```
+export PATH=/Users/tomoyasasaki/Library/Python/3.9/bin:$PATH
+```
+* Set `r` for `radian` and `R` will be stay as it is
+
+```
+alias r="radian"
+```
