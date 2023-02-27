@@ -1,15 +1,20 @@
 # rstantools
 
-* Explain the general workflow to create an R package using Stan.
+* Explain the general workflow to create an R package using Stan using the `rstantools` package
 * Focus on the differences with the recommendation on `https://r-pkgs.org/`.
 * [Vignette](https://mc-stan.org/rstantools/articles/minimal-rstan-package.html)
 
 ## Beginning
 * Run `rstan_create_package`
+
+```
+rstan_create_package("[packagename]")
+```
+
 * Delete `Read-and-delete-me` file or include this in `.gitignore` and `.Rbuildignore`
 * Edit `Description`
-* Create first `stan` and `R` functions. 
-* Run the following scrits:
+* Create `stan` and `R` functions. 
+* Run the following scripts:
 
 ```
 example(source) # defines the sourceDir() function
@@ -37,8 +42,9 @@ Error in getDLLRegisteredRoutines.DLLInfo(dll, addNames = FALSE) :   must speci
 
 ## Misc
 ### The following will be useful at initialization
-* Choose license if necessary (e.g., `usethis::use_mit_license()`
-* Create readme with `usethis::use_readme_rmd()`
+* Choose license if necessary (e.g., `usethis::use_mit_license()` or usethis::use_gpl_license(version = 3)`
+* Create readme with `usethis::use_readme_rmd()` and compile with `usethis::build_readme()` to create `README.MD` from `README.Rmd`
 
 ### Others
 * Use `rm(list = ls())` occationally to clean up the enviornment
+	* Especially after you test, because testing create new object in the global enviornment 
