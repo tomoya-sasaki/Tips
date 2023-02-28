@@ -5,17 +5,14 @@
 * [Vignette](https://mc-stan.org/rstantools/articles/minimal-rstan-package.html)
 
 ## Beginning
-<<<<<<< HEAD
+
 * Use `rstantools`
 * Run `rstan_create_package(path = [packagename])`
-=======
-* Run `rstan_create_package`
 
 ```
 rstan_create_package("[packagename]")
 ```
 
->>>>>>> refs/remotes/origin/master
 * Delete `Read-and-delete-me` file or include this in `.gitignore` and `.Rbuildignore`
 * Edit `Description`
 * Create `stan` and `R` functions. 
@@ -47,7 +44,7 @@ Error in getDLLRegisteredRoutines.DLLInfo(dll, addNames = FALSE) :   must speci
 
 ## Misc
 ### The following will be useful at initialization
-* Choose license if necessary (e.g., `usethis::use_mit_license()` or usethis::use_gpl_license(version = 3)`
+* Choose license if necessary (e.g., `usethis::use_mit_license()` or `usethis::use_gpl_license(version = 3)`
 * Create readme with `usethis::use_readme_rmd()` and compile with `usethis::build_readme()` to create `README.MD` from `README.Rmd`
 
 ### Others
