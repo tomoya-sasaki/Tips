@@ -16,3 +16,18 @@ check_cmdstan_toolchain()
 # isntall CmdStan
 install_cmdstan(cores = 2)
 ```
+
+## Use `cmdstanr` in a package
+* Not sure this is the right way to do this
+
+```
+# path to the stan file in the package
+standir <- system.file(paste0("stan/lm.stan"), package = "cmdstanrtest")
+
+# compile
+stanmodel <-cmdstanr::cmdstan_model(standir)
+
+# fit
+out <- stanmodel$sample(data = standata, ...)
+
+```
