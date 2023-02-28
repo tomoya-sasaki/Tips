@@ -5,7 +5,8 @@
 * [Vignette](https://mc-stan.org/rstantools/articles/minimal-rstan-package.html)
 
 ## Beginning
-* Run `rstan_create_package`
+* Use `rstantools`
+* Run `rstan_create_package(path = [packagename])`
 * Delete `Read-and-delete-me` file or include this in `.gitignore` and `.Rbuildignore`
 * Edit `Description`
 * Create first `stan` and `R` functions. 
