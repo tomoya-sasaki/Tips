@@ -4,7 +4,7 @@
 * Focus on the differences with the recommendation on `https://r-pkgs.org/`.
 * [Vignette](https://mc-stan.org/rstantools/articles/minimal-rstan-package.html)
 
-## Beginning
+## When you start
 
 * Use `rstantools`
 * Run `rstan_create_package(path = [packagename])`
