@@ -18,6 +18,7 @@ install_cmdstan(cores = 2)
 ```
 
 ## Use `cmdstanr` in a package
+* Write this in R functions to compile and fit a model
 * Not sure this is the right way to do this
 
 ```
@@ -31,3 +32,5 @@ stanmodel <-cmdstanr::cmdstan_model(standir)
 out <- stanmodel$sample(data = standata, ...)
 
 ```
+
+* Compiled `stan` is created when you compile it by calling (R) functions after loading the package, not when you load the function
