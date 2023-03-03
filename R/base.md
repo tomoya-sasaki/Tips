@@ -38,6 +38,15 @@ intersect(intersect(a,b),c)
 Reduce(intersect, list(a,b,c))
 ```
 
+## Find non-duplicated elements between two vectors
+
+```
+outersect <- function(x, y) {
+  sort(c(setdiff(x, y),
+         setdiff(y, x)))
+}
+```
+
 ## find index of an element in vector
 
 * Single match: only returns the first encounter of a match
