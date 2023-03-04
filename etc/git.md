@@ -131,7 +131,6 @@ remote: error: GH007: Your push would publish a private email address.
 	`git config user.email "{ID}+{username}@users.noreply.github.com"`
 * Reset the author information on your last commit:
 `git commit --amend --reset-author`
-* If you have multiple commits with your private e-mail address, see this answer.
 * Now you can push the commit with the noreply e-mail address, and future commits will have the noreply e-mail address as well.
 `git push`
 * Once you configure Git, commits will use your alternate “noreply” email address, and any pushes that don’t will be rejected.
