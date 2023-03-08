@@ -4,6 +4,7 @@
 4. [list](#list)
 5. [pipe](#pipe)
 
+
 # vector
 ## Convert one row/column of dataframe into vector
 ```
@@ -421,6 +422,29 @@ diamonds %>%
 	aggregate(cbind(price, carat)~color, data = ., FUN = mean)
 ```
 
+# Misc
+* Rの<-と=は、どちらも付値を行う演算子ですが、<-は一般的に付値できる一方、=はトップレベルでしか付値できず、以下のように関数の中では付値できません。
+
+
+```
+mean(x<-rnorm(100))
+x
+
+mean(y=rnorm(100))
+y
+
+```
+
+* %$%はtable()をとるときに便利に使っています。
+
+```
+cars %$% table(speed)
+```
+
+あと%>%でやる場合は{}の使い方もポイントで、cars %>% table(.$speed)ではcars %>% table(., .$speed)みたいな解釈になるので(?)エラーになります。それを回避するためにcars %>% {table(.$speed)}。
+
+
+* Rでベクトルの要素の頻度を集計するときに、table()関数をよく使うが、useNA = "always" とオプション指定しておくと、NAの件数を常に表示してくれる
 
 
 [1]:https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
