@@ -4,6 +4,42 @@
 4. [list](#list)
 5. [pipe](#pipe)
 
+# base
+## table
+### Add column- and row-sums to table
+
+```
+# both column and row sums
+addmargins(table(df$Company,df$Marital))
+
+# only sum for each column, 2 for each row
+addmargins(table(df$Company,df$Marital), 1) 
+```
+
+## binning
+* Age etc
+
+
+```
+# option 1
+findInterval(ages, c(20, 30, 40))
+
+# option 2
+data %>% dplyr::mutate(agegroup = case_when(age >= 40  & age <= 49 ~ '3',
+                                             age >= 30  & age <= 39 ~ '2',
+                                             age >= 20  & age <= 29 ~ '1'))
+```
+
+## Grouping
+* Split a dataframe into groups based on one variable
+
+```
+# for data frame
+df %>% 
+  split(f = as.factor(.$Cluster))
+```
+
+
 
 # vector
 ## Convert one row/column of dataframe into vector
