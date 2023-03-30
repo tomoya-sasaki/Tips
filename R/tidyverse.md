@@ -145,7 +145,7 @@ list_of_dfs %>%
 	map2(colnames, ~.x %>% mutate(id = .y)) 
 ```
 
-## Use tidyverse functionw to each dataframe in a list
+## Use tidyverse functions to each dataframe in a list
 
 
 ```
