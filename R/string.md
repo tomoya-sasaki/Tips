@@ -260,3 +260,18 @@ Insert a character at a specific location in a string
 gsub('^([a-z]{3})([a-z]+)$', '\\1d\\2', 'abcefg')
 # [1] "abcdefg"
 ```
+
+## Marusuji
+* [here](https://qiita.com/taiyodayo/items/f3aa8b55243a5d49a33a)
+
+```
+pacman::p_load(tidyverse, stringr)
+# 丸数字を通常数字に置き換える
+marunum2num <- function(input) {
+  maru_all <- "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳㉑㉒㉓㉔㉕㉖㉗㉘㉙㉚㉛㉜㉝㉞㉟㊱㊲㊳㊴㊵㊶㊷㊸㊹㊺㊻㊼㊽㊾㊿"
+  maru_v <- str_split_1(maru_all, "")
+  onetofifty <- 1:50 %>% as.character
+  names(onetofifty) <- maru_v
+  str_replace_all(input, onetofifty)
+}
+```

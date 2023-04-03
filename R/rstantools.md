@@ -4,8 +4,10 @@
 * Focus on the differences with the recommendation on `https://r-pkgs.org/`.
 * [Vignette](https://mc-stan.org/rstantools/articles/minimal-rstan-package.html)
 
-## Beginning
-* Run `rstan_create_package`
+## When you start
+
+* Use `rstantools`
+* Run `rstan_create_package(path = [packagename])`
 
 ```
 rstan_create_package("[packagename]")
@@ -42,7 +44,7 @@ Error in getDLLRegisteredRoutines.DLLInfo(dll, addNames = FALSE) :   must speci
 
 ## Misc
 ### The following will be useful at initialization
-* Choose license if necessary (e.g., `usethis::use_mit_license()` or usethis::use_gpl_license(version = 3)`
+* Choose license if necessary (e.g., `usethis::use_mit_license()` or `usethis::use_gpl_license(version = 3)`
 * Create readme with `usethis::use_readme_rmd()` and compile with `usethis::build_readme()` to create `README.MD` from `README.Rmd`
 
 ### Others

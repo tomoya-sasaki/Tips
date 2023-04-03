@@ -127,10 +127,30 @@ separate(before$type, into = c("foo", "bar"), sep = "_and_")
 
 # `purrr`
 
+## Add a column to each dataframe in a list
+
+
 * R List of lists to dataframe with list name as extra column
 
 ```
 ans <- map_df(past_earnings_lists, ~as.data.frame(.x), .id="id")
+```
+
+* The column name comes from outside
+
+```
+# new column name comes from colnames
+# make sure to check the length of colnames and list_of_dfs
+list_of_dfs %>%
+	map2(colnames, ~.x %>% mutate(id = .y)) 
+```
+
+## Use tidyverse functions to each dataframe in a list
+
+
+```
+list_of_dfs %>%
+  map(~ .x %>% filter(alpha != 0 & delta != 0))
 ```
 
 

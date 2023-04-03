@@ -4,6 +4,43 @@
 4. [list](#list)
 5. [pipe](#pipe)
 
+# base
+## table
+### Add column- and row-sums to table
+
+```
+# both column and row sums
+addmargins(table(df$Company,df$Marital))
+
+# only sum for each column, 2 for each row
+addmargins(table(df$Company,df$Marital), 1) 
+```
+
+## binning
+* Age etc
+
+
+```
+# option 1
+findInterval(ages, c(20, 30, 40))
+
+# option 2
+data %>% dplyr::mutate(agegroup = case_when(age >= 40  & age <= 49 ~ '3',
+                                             age >= 30  & age <= 39 ~ '2',
+                                             age >= 20  & age <= 29 ~ '1'))
+```
+
+## Grouping
+* Split a dataframe into groups based on one variable
+
+```
+# for data frame
+df %>% 
+  split(f = as.factor(.$Cluster))
+```
+
+
+
 # vector
 ## Convert one row/column of dataframe into vector
 ```
@@ -36,6 +73,15 @@ intersect(intersect(a,b),c)
 
 # more clever way if you have many vectors
 Reduce(intersect, list(a,b,c))
+```
+
+## Find non-duplicated elements between two vectors
+
+```
+outersect <- function(x, y) {
+  sort(c(setdiff(x, y),
+         setdiff(y, x)))
+}
 ```
 
 ## find index of an element in vector
@@ -412,6 +458,29 @@ diamonds %>%
 	aggregate(cbind(price, carat)~color, data = ., FUN = mean)
 ```
 
+# Misc
+* Rの<-と=は、どちらも付値を行う演算子ですが、<-は一般的に付値できる一方、=はトップレベルでしか付値できず、以下のように関数の中では付値できません。
+
+
+```
+mean(x<-rnorm(100))
+x
+
+mean(y=rnorm(100))
+y
+
+```
+
+* %$%はtable()をとるときに便利に使っています。
+
+```
+cars %$% table(speed)
+```
+
+あと%>%でやる場合は{}の使い方もポイントで、cars %>% table(.$speed)ではcars %>% table(., .$speed)みたいな解釈になるので(?)エラーになります。それを回避するためにcars %>% {table(.$speed)}。
+
+
+* Rでベクトルの要素の頻度を集計するときに、table()関数をよく使うが、useNA = "always" とオプション指定しておくと、NAの件数を常に表示してくれる
 
 
 [1]:https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r

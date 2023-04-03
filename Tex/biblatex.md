@@ -46,3 +46,26 @@ bibtool -s --sort.format='{%s($key)}' -i bibsort.bib -o bibsorted.bib
 % sort with two variables
 bibtool -s --sort.format='{%s($type) %s($key)}' -i bibsort.bib -o bibsorted.bib
 ```
+
+## Font size of reference
+
+* Check [here](https://tex.stackexchange.com/questions/474994/biblatex-biber-atnextbibliography-and-fontsize) and [here](https://tex.stackexchange.com/questions/205432/with-biblatex-how-do-i-make-the-fontsize-of-the-bibliography-smaller)
+
+```
+\renewcommand*{\bibfont}{\normalfont\small}
+```
+
+## The section name for biliography
+* Change section name
+
+```
+\printbibliography[title=Mein Titel]
+
+```
+
+* No section name
+
+```
+\printbibliography[heading=none]
+
+```

@@ -227,6 +227,23 @@ pip install -r /path/to/requirements.txt
 	4. Re-clone the github repo to Dropbox
 	5. Put back files moved in Step 2 to the github repo
 
+## Install Java
+* Java is required for some packages:
+	* Python `tabula-py`
+	* R `tabulizer`
+
+```
+$ brew install java
+$ java --version
+```
+
+If `java --version` does not show the Java version, create a symlink for the system Java wrappers to find this JDK [link](https://stackoverflow.com/questions/65601196/how-to-brew-install-java)
+
+```
+$ sudo ln -sfn /usr/local/Cellar/openjdk/18.0.2.1/libexec/openjdk.jdk \ /Library/Java/JavaVirtualMachines/openjdk.jdk
+```
+
+
 ## Accounts attached to mit address
 * notion
 * Slack

@@ -1,6 +1,9 @@
-# Calculation
-##  `@` and `*` in array
+# numpy
+
+## Calculation
+###  `@` and `*` in array
 * @ gives you matrix-like multiplication while * gives you direct multiplication of each components of array
+
 ```
 >>> g = np.array([1,2])
 >>> h = np.array([[3,4], [5,6]])
@@ -11,16 +14,16 @@ array([[3,8], [5,12]])
 >>> g @ h
 array([13, 16])
 
-# array([a1, a2]) * array([[b1, b2], [b3, b4]])
-# = array([[a1 * b1, a2 * b2], [a1 * b3, a2 * b4]])
+## array([a1, a2]) * array([[b1, b2], [b3, b4]])
+## = array([[a1 * b1, a2 * b2], [a1 * b3, a2 * b4]])
 #
-# array([a1, a2]) @ array([[b1, b2], [b3, b4]])
-# = array([a1 * b1 + a2 * b3, a1 * b2 + a2 * b4])
+## array([a1, a2]) @ array([[b1, b2], [b3, b4]])
+## = array([a1 * b1 + a2 * b3, a1 * b2 + a2 * b4])
 
 ```
 
-# Extraction
-## `np.take`
+## Extraction
+### `np.take`
 * You can extract the part of numpy array
 ```
 import numpy as np
@@ -43,13 +46,13 @@ array([[ 2,  3],
    [11, 12]], dtype=int32)
 ```
 
-## Compare two numpy objects
+### Compare two numpy objects
 ```
 >>> (A==B).all()
-True # if A and B are identical numpy arrays
+True ## if A and B are identical numpy arrays
 ```
 
-## dimension
+### dimension
 * `ndim`
 ```
 >>> A.ndim
@@ -78,7 +81,7 @@ array([[1, 2, 3]], dtype=int32)
 *　たとえ、numpy.takeやスライスを使うことで、行列が一次元（ベクトル）になっても、dimensionは二次元のままである。そのため、たとえ処理の中でnumpy.takeを用いて一次元になってしまうとしても、cythonの次元の指定の際には、`ndim = 2`のままでよい。
 * ただし、一つだけ要素を取ってきた場合(`A[0]`)、dimensionは一次元になる。
 
-# restrict range of each value
+## restrict range of each value
 ```
 >>> a = np.array([1,2,3,0,-1,-1])
 
@@ -89,19 +92,19 @@ array([1, 2, 3])
 array([ 1,  2,  3, -1, -1])
 ```
 
-# change the data type
+## change the data type
 * Note that when you use some functions in numpy, datatyoe of the object might change. (`np.unique` or `np.sum` etc)
 ```
 >>> a.astype(np.int32)
 ```
 
-# Read numpy object
+## Read numpy object
 ```
 data = np.loadtxt("data.csv", delimiter=',')
 ```
 If you want to skip first row.
 ```
-data = np.loadtxt("data.csv",delimiter=',', skiprows=1)
+data = np.loadtxt("data.csv", delimiter=',', skiprows=1)
 ```
 If you want to skip first column, get the number of the column first to choose the appropriate place before read the file.
 ```
@@ -110,7 +113,7 @@ with open("data.csv") as f:
 data = np.loadtxt("data.csv",delimiter=',',usecols=range(1,ncols))
 ```
 
-# How to choose row in numpy
+## How to choose row in numpy
 * `np.take` is extremely slow
 ```
 >>> X = np.zeros((30, 20))
@@ -128,12 +131,12 @@ data = np.loadtxt("data.csv",delimiter=',',usecols=range(1,ncols))
 0.05764293670654297
 ```
 
-# Set seed
+## Set seed
 ```
 >>> numpy.random.seed(123)
 ```
 
-# Generate random bernoulli 
+## Generate random bernoulli
 ```
 >>> def RBernHand(prob):
 >>> 	out = npr.uniform(low = .0, high = 1.0, size = 1)
@@ -147,7 +150,7 @@ data = np.loadtxt("data.csv",delimiter=',',usecols=range(1,ncols))
 
 
 $$
-\beta = 
+\beta =
 $$
 
 ```
@@ -156,4 +159,22 @@ $$
 >>>     beta = math.exp(r)
 >>>     new_prob = prob ** beta
 >>>     return npr.binomial(1, new_prob), new_prob
+```
+
+
+## Regression
+
+```
+import numpy as np
+
+N = 100
+x = np.random.normal(size = (N, 2))
+coef = np.array([-1, 2])
+y = np.dot(x, coef) + np.random.normal(size = N)
+
+xtx = np.dot(x.transpose(), x)
+xty = np.dot(x.transpose(), y)
+
+beta = np.dot(np.linalg.inv(xtx), xty)
+print(beta)
 ```

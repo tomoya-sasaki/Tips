@@ -57,7 +57,7 @@
 * Also, `devtools::test()` attaches objects to the global environment
 
 ## Build and install
-* `istall()`: reinstalls the package, detaches the currently loaded version then reloads the new version with `library()`. Make sure to run `document()` before running this to reflect changes in `man/` file
+* `install()`: reinstalls the package, detaches the currently loaded version then reloads the new version with `library()`. Make sure to run `document()` before running this to reflect changes in `man/` file
 * `build()`: builds a pacakge file from package sources. Can use this to build a binary version of the package (tar.gz file etc).
 
 ## README
