@@ -25,13 +25,3 @@
 ## R workflow
 
 * Check [here](https://renkun.me/)
-* Set PATH for `radian`
-
-```
-export PATH=/Users/tomoyasasaki/Library/Python/3.9/bin:$PATH
-```
-* Set `r` for `radian` and `R` will be stay as it is
-
-```
-alias r="radian"
-```

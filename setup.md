@@ -106,6 +106,20 @@ for (p in setdiff(packages, installed.packages()[,"Package"]))
 install.packages(p)
 ```
 
+#### radian
+* After installed Python
+* Check [here](https://renkun.me/)
+* Set PATH for `radian`
+
+```
+export PATH=/Users/tomoyasasaki/Library/Python/3.9/bin:$PATH
+```
+* Set `r` for `radian` and `R` will be stay as it is
+
+```
+alias r="radian"
+```
+
 ### Python
 1. Install `pyenv`
 2. Install python with `pyenv`
