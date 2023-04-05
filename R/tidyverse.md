@@ -120,14 +120,14 @@ separate(before$type, into = c("foo", "bar"), sep = "_and_")
 ```
 
 
-# `readr` 
-## Warning column specificaition
+## `readr` 
+### Warning column specificaition
 * "By default readr only looks at the first 1000 rows. This keeps file parsing speedy, but can generate incorrect guesses. For example, in challenge.csv the column types change in row 1001, so readr guesses the wrong types. One way to resolve the problem is to increase the number of rows" (from readr manual)
 * This could be a problem when you are dealing with a giant matrix with a large number of rows.
 
-# `purrr`
+## `purrr`
 
-## Add a column to each dataframe in a list
+### Add a column to each dataframe in a list
 
 
 * R List of lists to dataframe with list name as extra column
@@ -145,13 +145,17 @@ list_of_dfs %>%
 	map2(colnames, ~.x %>% mutate(id = .y)) 
 ```
 
-## Use tidyverse functions to each dataframe in a list
+### Use tidyverse functions to each dataframe in a list
 
 
 ```
 list_of_dfs %>%
   map(~ .x %>% filter(alpha != 0 & delta != 0))
 ```
+
+## `lubridate`
+
+* "A date-time is a date plus a time: it uniquely identifies an instant in time (typically to the nearest second). Tibbles print this as <dttm>. Elsewhere in R these are called POSIXct, but I don’t think that’s a very useful name."
 
 
 [1]:https://stackoverflow.com/questions/31644739/loading-dplyr-after-plyr-is-causing-issues

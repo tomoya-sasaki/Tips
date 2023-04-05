@@ -197,7 +197,6 @@ pip install -r /path/to/requirements.txt
 * If on ARM/M1, add `export PATH="/opt/homebrew/bin:${PATH}"`
 * Setup email for commit: `git config --global user.email "ID+username@users.noreply.github.com"`
 
-
 ### Github
 * Connect github with new credential or ssh
 
@@ -226,6 +225,9 @@ pip install -r /path/to/requirements.txt
 	3. Delete the github Dropbox folder
 	4. Re-clone the github repo to Dropbox
 	5. Put back files moved in Step 2 to the github repo
+
+### Install Obsidian
+* Setip Git and Github
 
 ## Install Java
 * Java is required for some packages:
