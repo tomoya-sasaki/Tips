@@ -227,7 +227,7 @@ pip install -r /path/to/requirements.txt
 	5. Put back files moved in Step 2 to the github repo
 
 ### Install Obsidian
-* Setip Git and Github
+* Setup Git and Github
 
 ## Install Java
 * Java is required for some packages:
@@ -252,3 +252,11 @@ $ sudo ln -sfn /usr/local/Cellar/openjdk/18.0.2.1/libexec/openjdk.jdk \ /Library
 * Zoom
 * Github
 * Spotify
+
+# Setup a mobile phone
+
+## Obsidian 
+### Use Obsidian with Git
+* Follow the instruction [here](https://publish.obsidian.md/git-doc/03+Getting+Started)
+	*  Make sure to use the token in the password form
+*  Once you finish authentication, specify the author name and email for commit in the setting of the plugin
