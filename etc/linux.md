@@ -325,7 +325,6 @@ for i in {1..5}; do # random number
 done
 ```
 
-
 ### `quit` screen method outside the screen
 * send a 'quit' command:
 
@@ -363,6 +362,29 @@ screen -ls | grep [name] | cut -d. -f1 | awk '{print $1}' | xargs kill
 
 ```
 screen -r -d [screen_name]
+```
+
+### Check PID for screen session
+
+* `PID`.`sessionname`
+	* `1020`: PID
+	* `agr`: session name
+
+```
+/var/run/screen/S-tomoyas:
+total 0
+drwx------  2 tomoyas tomoyas 320 Apr  4 20:22 .
+drwxrwxrwt 14 root    utmp    280 Apr  7 14:47 ..
+srw-------  1 tomoyas tomoyas   0 Apr  3 21:36 1020.agr
+```
+
+### Check screen sessions in a machine
+
+* Run the following with your admin account
+* `sudo` is probably required
+
+```
+ls -laR /var/run/screen/
 ```
 
 ## Check running cores
