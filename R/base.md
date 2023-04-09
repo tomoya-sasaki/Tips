@@ -349,6 +349,12 @@ names(Example) <- c("Freedom", "Equality", "TypeCountry")
 Ex <- Example[c("TypeCountry","Freedom", "Equality")]
 ```
 
+## list to dataframe
+
+```
+df <- map_df(list_of_dfs, ~as.data.frame(.x), .id="id")
+```
+
 ## Select using vector
 
 ```
