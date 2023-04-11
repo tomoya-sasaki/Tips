@@ -387,6 +387,14 @@ srw-------  1 tomoyas tomoyas   0 Apr  3 21:36 1020.agr
 ls -laR /var/run/screen/
 ```
 
+### Change screen name
+
+1. Attached to the session
+2. Press <kbd>Ctrl</kbd>+<kbd>a</kbd> 
+3. Type `:sessionname new_session_name`
+4. <kbd>Enter</kbd>
+
+
 ## Check running cores
 ```
 # view process
