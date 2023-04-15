@@ -133,7 +133,9 @@ separate(before$type, into = c("foo", "bar"), sep = "_and_")
 * R List of lists to dataframe with list name as extra column
 
 ```
-ans <- map_df(past_earnings_lists, ~as.data.frame(.x), .id="id")
+ans <- map_df(past_earnings_lists, ~as.data.frame(.x), .id = "id")
+
+ans <- map_df(past_earnings_lists, ~as_tibble(.x), .id = "id")
 ```
 
 * The column name comes from outside
