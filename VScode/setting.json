@@ -1,6 +1,10 @@
 {
   "editor.wordWrap": "on",
 
+
+  // Wraps after 72 characters
+  "rewrap.wrappingColumn": 72,
+
   "workbench.colorTheme": "Monokai",
   "security.workspace.trust.untrustedFiles": "open",
   "quarto.mathjax.theme": "dark",
@@ -232,12 +236,36 @@
   "files.associations": {
     "*.rmd": "markdown"
   },
-  "window.zoomLevel": -1,
   "[python]": {
     "editor.formatOnType": true
   },
   "trailing-spaces.trimOnSave": true,
   "cSpell.maxNumberOfProblems": 1000,
-  "cSpell.minWordLength": 3
+  "cSpell.minWordLength": 3,
 
+  "todohighlight.keywords": [
+    "DEBUG:",
+    "REVIEW:",
+    {
+        "text": "NOTE:",
+        "color": "#ff0000",
+        "backgroundColor": "yellow",
+        "overviewRulerColor": "grey"
+    },
+    {
+        "text": "HACK:",
+        "color": "#000",
+        "isWholeLine": false,
+    },
+    {
+        "text": "TODO:",
+        "color": "red",
+        "border": "1px solid red",
+        "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+        "backgroundColor": "rgba(0,0,0,.2)",
+        //other styling properties goes here ...
+    }
+],
+"git.openRepositoryInParentFolders": "always",
+"window.zoomLevel": -1
 }
