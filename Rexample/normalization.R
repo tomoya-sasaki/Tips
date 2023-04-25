@@ -34,3 +34,21 @@ coefs[2] <- coef(m2)[2] - coef(m2)[4] * attr(z, "scaled:center") / attr(z, "scal
 coefs
 
 all.equal(coefs, coef(m))
+
+# alternatively
+coefs2 <- numeric(4)
+names(coefs2) <- names(coef(m))
+
+# intercept
+coefs2[1] <- coef(m2)[1] - coef(m2)[3] * mean(w) / sd(w)
+
+# coefficient involving z
+coefs2[c(3, 4)] <- coef(m2)[c(3, 4)] / sd(w)
+
+# coefficient of w
+coefs2[2] <- coef(m2)[2] - coef(m2)[4] * mean(w) / sd(w)
+
+coefs2
+
+all.equal(coefs2, coef(m))
+

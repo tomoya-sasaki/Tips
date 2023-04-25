@@ -8,7 +8,40 @@ date: "2023-04-25"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Formalization
+# Model without interaction term
+
+* Original model
+$$
+y_i = \beta_0 + \beta_1 d_i + \beta_2 w_i + e_i
+$$
+
+* Model with normalized $W_i$: 
+
+\begin{align*}
+& y_i = \gamma_0 + \gamma_1 d_i + \gamma_2 z_i + \epsilon_i \\
+& z_i = \frac{w_i - \overline{w_i}}{sd(w_i)}
+\end{align*}
+
+* Derivation:
+
+\begin{align*}
+y_i &= \gamma_0 + \gamma_1 d_i + \gamma_2 z_i + \epsilon_i\\
+&= \gamma_0 + \gamma_1 d_i + \gamma_2 \frac{w_i - \overline{w_i}}{sd(w_i)} + \epsilon_i\\
+&= \gamma_0 - \frac{\gamma_2 \overline{w_i}}{sd(w_i)} +
+\gamma_1 d_i + \frac{\gamma_2}{sd(w_i)} w_i +  \epsilon_i\\
+\end{align*}
+
+* Therefore,
+
+$$
+\beta_0 = \gamma_0 - \frac{\gamma_2 \overline{w_i}}{sd(w_i)}, \;\;
+\beta_1 = \gamma_1, \;\;
+\beta_2 = \frac{\gamma_2}{sd(w_i)}
+$$
+
+
+
+# Model with interaction term
 
 * How to interpret coefficients when you have an interaction term and you also
 normalize some explanatory variables?
@@ -36,19 +69,19 @@ y_i &= \gamma_0 + \gamma_1 d_i + \gamma_2 z_i + \gamma_3 d_i z_i + \epsilon_i\\
 \frac{\gamma_2}{sd(w_i)} w_i + \frac{\gamma_3}{sd(w_i)} d_i w_i + \epsilon_i\\
 \end{align*}
 
-* Correspondence:
+* Therefore,
 
 $$
 \beta_0 = \gamma_0 - \frac{\gamma_2 \overline{w_i}}{sd(w_i)}, \;\;
 \beta_1 = \gamma_1 - \frac{\gamma_3 \overline{w_i}}{sd(w_i)}, \;\;
-\beta_2 = \frac{\gamma_2}{sd(w_i)}, \;\; beta_3 = \frac{\gamma_3}{sd(w_i)}
+\beta_2 = \frac{\gamma_2}{sd(w_i)}, \;\; \beta_3 = \frac{\gamma_3}{sd(w_i)}
 $$
 
 
 
 # Example
 
-```{r, file = "interaction.R"}
+```{r, file = "normalization.R"}
 # source("interaction.R", local = knitr::knit_global())
 # or sys.source("your-script.R", envir = knitr::knit_global())
 ```

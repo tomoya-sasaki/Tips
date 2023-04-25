@@ -355,8 +355,39 @@ display: none;
 </div>
 
 
-<div id="formalization" class="section level1">
-<h1>Formalization</h1>
+<div id="model-without-interaction-term" class="section level1">
+<h1>Model without interaction term</h1>
+<ul>
+<li><p>Original model <span class="math display">\[
+y_i = \beta_0 + \beta_1 d_i + \beta_2 w_i + e_i
+\]</span></p></li>
+<li><p>Model with normalized <span class="math inline">\(W_i\)</span>:</p></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+&amp; y_i = \gamma_0 + \gamma_1 d_i + \gamma_2 z_i + \epsilon_i \\
+&amp; z_i = \frac{w_i - \overline{w_i}}{sd(w_i)}
+\end{align*}\]</span></p>
+<ul>
+<li>Derivation:</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+y_i &amp;= \gamma_0 + \gamma_1 d_i + \gamma_2 z_i + \epsilon_i\\
+&amp;= \gamma_0 + \gamma_1 d_i + \gamma_2 \frac{w_i -
+\overline{w_i}}{sd(w_i)} + \epsilon_i\\
+&amp;= \gamma_0 - \frac{\gamma_2 \overline{w_i}}{sd(w_i)} +
+\gamma_1 d_i + \frac{\gamma_2}{sd(w_i)} w_i +  \epsilon_i\\
+\end{align*}\]</span></p>
+<ul>
+<li>Therefore,</li>
+</ul>
+<p><span class="math display">\[
+\beta_0 = \gamma_0 - \frac{\gamma_2 \overline{w_i}}{sd(w_i)}, \;\;
+\beta_1 = \gamma_1, \;\;
+\beta_2 = \frac{\gamma_2}{sd(w_i)}
+\]</span></p>
+</div>
+<div id="model-with-interaction-term" class="section level1">
+<h1>Model with interaction term</h1>
 <ul>
 <li><p>How to interpret coefficients when you have an interaction term
 and you also normalize some explanatory variables?</p></li>
@@ -385,12 +416,12 @@ y_i &amp;= \gamma_0 + \gamma_1 d_i + \gamma_2 z_i + \gamma_3 d_i z_i +
 \epsilon_i\\
 \end{align*}\]</span></p>
 <ul>
-<li>Correspondence:</li>
+<li>Therefore,</li>
 </ul>
 <p><span class="math display">\[
 \beta_0 = \gamma_0 - \frac{\gamma_2 \overline{w_i}}{sd(w_i)}, \;\;
 \beta_1 = \gamma_1 - \frac{\gamma_3 \overline{w_i}}{sd(w_i)}, \;\;
-\beta_2 = \frac{\gamma_2}{sd(w_i)}, \;\; beta_3 =
+\beta_2 = \frac{\gamma_2}{sd(w_i)}, \;\; \beta_3 =
 \frac{\gamma_3}{sd(w_i)}
 \]</span></p>
 </div>
@@ -434,6 +465,24 @@ coefs</code></pre>
 <pre><code>## (Intercept)           d           w         d:w 
 ##    1.984777    3.001187    4.001413    1.005838</code></pre>
 <pre class="r"><code>all.equal(coefs, coef(m))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code># alternatively
+coefs2 &lt;- numeric(4)
+names(coefs2) &lt;- names(coef(m))
+
+# intercept
+coefs2[1] &lt;- coef(m2)[1] - coef(m2)[3] * mean(w) / sd(w)
+
+# coefficient involving z
+coefs2[c(3, 4)] &lt;- coef(m2)[c(3, 4)] / sd(w)
+
+# coefficient of w
+coefs2[2] &lt;- coef(m2)[2] - coef(m2)[4] * mean(w) / sd(w)
+
+coefs2</code></pre>
+<pre><code>## (Intercept)           d           w         d:w 
+##    1.984777    3.001187    4.001413    1.005838</code></pre>
+<pre class="r"><code>all.equal(coefs2, coef(m))</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 
