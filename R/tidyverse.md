@@ -73,7 +73,6 @@ df %>%
 ## tidyr
 ### `nest`
 
-
 ```
 > data
 
@@ -100,6 +99,12 @@ data %>%
  3 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "CT"   
  4 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "EG"   
  5 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "OA"   
+```
+
+### Fill in missing values
+
+```
+fill(data, ..., .direction = c("down", "up", "downup", "updown"))
 ```
 
 

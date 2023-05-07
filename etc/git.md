@@ -1,5 +1,14 @@
 # git
 
+## `.gitignore`
+
+* Recursively ignore files
+
+```
+# ignore all csv files in file folder
+file/**/*.csv
+```
+
 ## Checkout to remote branches
 * [here][2]
 
