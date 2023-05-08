@@ -136,7 +136,7 @@ The arguments you could add in `date_breaks`.
 date_breaks("1 week"), date_breaks("10 years"), date_breaks("5 days") etc
 ```
 
-## Whole Themes
+## Themes
 * My template
 
 ```
@@ -156,11 +156,23 @@ ng1 <- theme(panel.background = element_rect(fill = "white", colour = "white"),
 	legend.key.size = unit(1.5, "cm"))
 ```
 
-## Remove borders
+
+
+#### Remove borders
 ```
 theme(panel.border = element_blank())
 
 ```
+
+### Remove grid and background
+
+```
+panel.border = element_rect(fill = NA, linewidth = 0.8),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank())
+```
+
 
 # Legend
 * You need to use identical name and labels values for both shape and colour scale.
