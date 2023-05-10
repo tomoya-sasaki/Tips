@@ -160,6 +160,41 @@ list_of_dfs %>%
   map(~ .x %>% filter(alpha != 0 & delta != 0))
 ```
 
+## `magrittr`
+
+### Conditionally applying pipleline step
+
+* Reference [here](https://stackoverflow.com/questions/44001722/conditionally-apply-pipeline-step-depending-on-external-value)
+
+
+```
+# pattern 1
+mtcars %>% 
+	tibble::rownames_to_column(var = "model") %>% 
+	filter(if(applyfilter== 1) grepl(x = model, pattern = "Merc") else TRUE) %>% 
+	group_by(am) %>% 
+	summarise(meanMPG = mean(mpg))
+
+# pattern 2
+mtcars %>% 
+  tibble::rownames_to_column(var = "model") %>% 
+  {if(applyfilter == 1) filter(., grepl(x = model, pattern = "Merc")) else .} %>% 
+  group_by(am) %>% 
+  summarise(meanMPG = mean(mpg))
+
+# pattern 3
+mtcars %<>% 
+  tibble::rownames_to_column(var = "model")
+
+if(applyfilter == 1) mtcars %<>% filter(grepl(x = model, pattern = "Merc"))
+
+mtcars %>% 
+  group_by(am) %>% 
+  summarise(meanMPG = mean(mpg))
+
+```
+
+
 ## `lubridate`
 
 * "A date-time is a date plus a time: it uniquely identifies an instant in time (typically to the nearest second). Tibbles print this as <dttm>. Elsewhere in R these are called POSIXct, but I don’t think that’s a very useful name."
