@@ -8,7 +8,6 @@
 # bib
 /Users/tomoyasasaki/Library/texmf/bibtex/bib/
 
-
 # bst
 /Users/tomoyasasaki/Library/texmf/bibtex/bst/
 ```
@@ -68,4 +67,19 @@ bibtool -s --sort.format='{%s($type) %s($key)}' -i bibsort.bib -o bibsorted.bib
 ```
 \printbibliography[heading=none]
 
+```
+
+## Error messages
+
+### Cannot run `biber`
+* You probably need to update the entire MacTex with `brew` or other methods if you see the following errors
+* This message probably implies that there are incompatibility between biber and biblatex versions
+* References [here](https://bbs.archlinux.org/viewtopic.php?id=278226), [here](https://tex.stackexchange.com/questions/286706/troubleshooting-for-biber), [here](https://tex.stackexchange.com/questions/633088/biber-biblatex-error-after-update)
+
+```
+LaTeX Warning: There were undefined references.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                test
+(biblatex)                and rerun LaTeX afterwards.
 ```
