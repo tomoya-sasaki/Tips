@@ -1,9 +1,8 @@
 {
   "editor.wordWrap": "on",
 
-
-  // Wraps after 72 characters
-  "rewrap.wrappingColumn": 72,
+  // Wraps after 70 characters
+  "rewrap.wrappingColumn": 70,
 
   "workbench.colorTheme": "Monokai",
   "security.workspace.trust.untrustedFiles": "open",
