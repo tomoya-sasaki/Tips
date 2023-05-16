@@ -1,5 +1,7 @@
 # Setup a computer (macOS)
 
+* Include explanation about both Intel and arm 
+
 ## General
 ### How to clean install
 * japanese ref [here](https://tech.qookie.jp/posts/mac-clean-install-1/)
