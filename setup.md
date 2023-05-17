@@ -89,6 +89,8 @@ brew list > brew_list.txt
 * Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
 * To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile`.
 
+#### Reinstall packages
+
 ```
 # modified from http://stackoverflow.com/questions/1401904/painless-way-to-install-a-new-version-of-r-on-windows
 # from https://gist.github.com/florianhartig/10527319
@@ -119,6 +121,9 @@ export PATH=/Users/tomoyasasaki/Library/Python/3.9/bin:$PATH
 ```
 alias r="radian"
 ```
+
+#### Misc
+* 
 
 ### Python
 1. Install `pyenv`
