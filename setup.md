@@ -88,8 +88,10 @@ brew list > brew_list.txt
 * Install XQuartz
 * Install gfortran `https://github.com/fxcoudert/gfortran-for-macOS/releases`
 * Install xz (and maybe pcre2) with brew
-* Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
-* To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile`.
+* Find binariles of R builds for macOS
+  * Intel: `https://cloud.r-project.org/bin/macosx/base/`
+  * Apple silicon: `https://cran.r-project.org/bin/macosx/big-sur-arm64/base/`
+* To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile` or `~/.zshrc`.
 
 ```
 # modified from http://stackoverflow.com/questions/1401904/painless-way-to-install-a-new-version-of-r-on-windows
@@ -107,6 +109,15 @@ load("Rpackages")
 for (p in setdiff(packages, installed.packages()[,"Package"]))
 install.packages(p)
 ```
+
+#### Firster computation
+
+* `https://mpopov.com/blog/2021/10/10/even-faster-matrix-math-in-r-on-macos-with-m1/`
+* `https://groups.google.com/g/r-sig-mac/c/YN6uNYCIZK0`
+* `https://thomasmcrow.com/blog/2021-08-optimized-blas-in-r/`
+
+#### `data.table`
+* Check Shusei's Tips
 
 #### radian
 * After installed Python
@@ -187,7 +198,7 @@ pip install -r /path/to/requirements.txt
 * Updated 
 	* Download MacTex with brew `brew install --cask mactex`
 	* Update packages with `sudo tlmgr update --self --all`
-	* Reference [here](https://blog.wtsnjp.com/2020/07/07/about-mactex/)
+	* Reference [here](httpghos://blog.wtsnjp.com/2020/07/07/about-mactex/)
 
 ### DBeaver
 * Download from [here](https://dbeaver.io/download/)
