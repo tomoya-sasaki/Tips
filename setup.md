@@ -1,6 +1,6 @@
 # Setup a computer (macOS)
 
-* Include explanation about both Intel and arm 
+* Include explanation about both Intel and arm
 
 ## General
 ### How to clean install
@@ -31,7 +31,7 @@ brew list > brew_list.txt
 * Install the newest version of macOS if necessary
 * Restart with recovery mode
 	* Intel: Command + R
-	* Apple: 
+	* Apple:
 * Open disk utility
 	*  Erase "Macintosh HD" WITHOUT Data, which includes both "Macintosh HD" and "MAcintosh HD - Data" and reformat it
 		*  Click Erase. However, if you see an Erase Volume Group button, click that button instead.
@@ -70,7 +70,7 @@ brew list > brew_list.txt
 * Change the local folder name to "GoogleDrive"
 	* Pause "Backup and Sync"
 	* Change file name "GoogleDrive"
-	* Restart "Backup and Sync" 
+	* Restart "Backup and Sync"
 	* Relocate the file to "GoogleDrive"
 
 ### GlobalProtect
@@ -82,7 +82,7 @@ brew list > brew_list.txt
 * Make sure to check Google drive setup and the path is corrects
 	* The folder name should be "GoogleDrive"
 * Install better bibtex (citation key format: `[auth:lower][year]`)
-* Refresh citation key 
+* Refresh citation key
 
 ### R
 * Install XQuartz
@@ -91,7 +91,11 @@ brew list > brew_list.txt
 * Find binariles of R builds for macOS
   * Intel: `https://cloud.r-project.org/bin/macosx/base/`
   * Apple silicon: `https://cran.r-project.org/bin/macosx/big-sur-arm64/base/`
-* To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile` or `~/.zshrc`.
+* To change language setting, write `export LC_ALL=en_US.UTF-8` in `~/.bash_profile` and $ `source ~/.bash_profile` or in `~./.zshrc`.
+* For trouble shooting, Step 1 to 4 of this guidance solved in M2 Mac [here](https://yiqingxu.org/public/BigSurError.pdf)
+* For `data.table`, check Shusei's tips or [here](https://investcookies.ru/post/datatable_m1/data_table_arm/)
+
+#### Reinstall packages
 
 ```
 # modified from http://stackoverflow.com/questions/1401904/painless-way-to-install-a-new-version-of-r-on-windows
@@ -132,6 +136,10 @@ export PATH=/Users/tomoyasasaki/Library/Python/3.9/bin:$PATH
 ```
 alias r="radian"
 ```
+
+#### Misc
+* Fast matrix calculation [here](https://mpopov.com/blog/2021/10/10/even-faster-matrix-math-in-r-on-macos-with-m1/)
+*
 
 ### Python
 1. Install `pyenv`
@@ -190,12 +198,12 @@ python get-pip.py
 pip freeze > /path/to/requirements.txt
 pip install -r /path/to/requirements.txt
 ```
-	
+
 ### Tex
 * Old procedure (still works though)
 	* Install ghostscript with brew `brew install ghostscript`
 	* Download MacTex and custom install without ghostscript
-* Updated 
+* Updated
 	* Download MacTex with brew `brew install --cask mactex`
 	* Update packages with `sudo tlmgr update --self --all`
 	* Reference [here](httpghos://blog.wtsnjp.com/2020/07/07/about-mactex/)
@@ -268,7 +276,7 @@ $ sudo ln -sfn /usr/local/Cellar/openjdk/18.0.2.1/libexec/openjdk.jdk \ /Library
 
 # Setup a mobile phone
 
-## Obsidian 
+## Obsidian
 ### Use Obsidian with Git
 * Follow the instruction [here](https://publish.obsidian.md/git-doc/03+Getting+Started)
 	*  Make sure to use the token in the password form
