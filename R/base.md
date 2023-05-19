@@ -16,6 +16,14 @@ addmargins(table(df$Company,df$Marital))
 addmargins(table(df$Company,df$Marital), 1) 
 ```
 
+### Include NAs
+
+```
+table(vec, useNA = "always") # always displays the number of missing values
+table(vec, useNA = "ifany") # only displays the number of missing values if there are some
+```
+
+
 ## binning
 * Age etc
 
