@@ -64,6 +64,9 @@ brew list > brew_list.txt
 * `homebrew-cask` might be useful but won't use for now ([here](https://yutaszk23.hatenadiary.jp/entry/2014/12/16/030653) or [here](https://queryok.ikuwow.com/entry/stop-brew-cask/))
 
 
+### `zsh`
+* Check [here](https://www.evernote.com/client/web?_sourcePage=TsvqOBqafQziMUD9T65RG_YvRLZ-1eYO3fqfqRu0fynRL_1nukNa4gH1t86pc1SP&__fp=BrJLsAe_dWk3yWPvuidLz-TPR6I9Jhx8&hpts=1684692763940&showSwitchService=true&usernameImmutable=false&login=&login=Sign+in&login=true&hptsh=oUZWLnGA5lmokJv1CtZkwApgWHA%3D#?n=6040af2e-4766-4392-aa73-eddf3c34478d&query=view%3ASE%1Ezsh&)
+
 ### Google drive
 * Download "Backup and Sync"
 * Sync
