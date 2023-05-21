@@ -2,7 +2,7 @@
   "editor.wordWrap": "on",
 
 
-  // Wraps after 72 characters
+  // Wraps after 70 characters
   "rewrap.wrappingColumn": 70,
 
   "workbench.colorTheme": "Monokai",
