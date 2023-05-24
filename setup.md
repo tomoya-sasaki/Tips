@@ -86,6 +86,7 @@ brew list > brew_list.txt
 	* The folder name should be "GoogleDrive"
 * Misc settings:
   * Under "General": Uncheck "Automatically attach associated PDFs and ..." to avoid downloading PDF files
+  * Under "General": Check linked files
   * Under "Sync": Uncheck "Sync fill-text context"
 * Install better bibtex (citation key format: `[auth:lower][year]`)
 * Refresh citation key
