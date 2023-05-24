@@ -84,6 +84,9 @@ brew list > brew_list.txt
 * Sync with existing account
 * Make sure to check Google drive setup and the path is corrects
 	* The folder name should be "GoogleDrive"
+* Misc settings:
+  * Under "General": Uncheck "Automatically attach associated PDFs and ..." to avoid downloading PDF files
+  * Under "Sync": Uncheck "Sync fill-text context"
 * Install better bibtex (citation key format: `[auth:lower][year]`)
 * Refresh citation key
 
