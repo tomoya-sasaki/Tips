@@ -46,16 +46,6 @@ Note that the two country code characters have to be in UPPERCASE ! Otherwise Go
 
 There is another parameter - gl= - for search results as they would appear in specified country. I tried testing it, but for me results were not differing for different parameter values. Maybe that's obsolete or overwritten by some other paremeters/settings of browser or my Google account.
 
-# Pandoc
-* Create a table of index
-* `--toc` method to create a table of index. 
-* You need to specify `-s` to produce a standalone document with table of contents
-
-```
-$ pandoc -s --toc happiness.txt -o happiness.html
-```
-
-
 
 [0]:https://stackoverflow.com/questions/6481005/how-to-obtain-the-number-of-cpus-cores-in-linux-from-the-command-line
 [1]:https://bahoom.com/finderpath/
