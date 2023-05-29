@@ -121,7 +121,7 @@ for (p in setdiff(packages, installed.packages()[,"Package"]))
 install.packages(p)
 ```
 
-#### Firster computation
+#### First R computation
 
 * `https://mpopov.com/blog/2021/10/10/even-faster-matrix-math-in-r-on-macos-with-m1/`
 * `https://groups.google.com/g/r-sig-mac/c/YN6uNYCIZK0`
@@ -219,6 +219,10 @@ pip install -r /path/to/requirements.txt
 * Download from [here](https://dbeaver.io/download/)
 * Setup connection for databases
 
+### VS Code
+* Setup extensions
+* `Remote SSH` extension can connect various remote machines via VS Code
+
 ### Git
 * Use git from brew ([here](https://apple.stackexchange.com/questions/93002/how-to-use-the-homebrew-installed-git-on-mac)): `brew install git`
 * If on Intel, add `export PATH="/usr/local/bin:${PATH}"`
@@ -272,7 +276,6 @@ If `java --version` does not show the Java version, create a symlink for the sys
 ```
 $ sudo ln -sfn /usr/local/Cellar/openjdk/18.0.2.1/libexec/openjdk.jdk \ /Library/Java/JavaVirtualMachines/openjdk.jdk
 ```
-
 
 ## Accounts attached to mit address
 * notion
