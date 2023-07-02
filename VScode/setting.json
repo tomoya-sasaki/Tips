@@ -1,7 +1,6 @@
 {
   "editor.wordWrap": "on",
 
-
   // Wraps after 70 characters
   "rewrap.wrappingColumn": 70,
 
@@ -83,6 +82,17 @@
           ]
       },
       {
+        "name": "lualatex",
+        "command": "lualatex",
+        "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "-pdf",
+            "%DOC%"
+        ]
+      },
+      {
           "name": "biber",
           "command": "biber",
           "args": [
@@ -107,16 +117,12 @@
           ]
       },
       {
-          "name": "latexmk -> biber -> latexmk*2",
-          "tools": [
-              "latexmk",
-              "biber",
-              "latexmk",
-              "latexmk"
-
-          ]
-      },
-              {
+        "name": "lualatex",
+        "tools": [
+          "lualatex"
+        ]
+    },
+            {
           "name": "pdflatex",
           "tools": [
               "pdflatex"
@@ -155,12 +161,6 @@
               "xelatex"
           ]
       },
-      {
-        "name": "biber",
-        "tools": [
-          "biber"
-        ]
-      }
       {
           "name": "Compile Rnw files",
           "tools": [
@@ -273,5 +273,5 @@
     }
 ],
 "git.openRepositoryInParentFolders": "always",
-"window.zoomLevel": -1
+"window.zoomLevel": -2
 }
