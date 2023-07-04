@@ -15,7 +15,6 @@ It seems there are four ways to include texts in equations. For the detail, see 
 
 ## Non-independence
 
-
 ```
 \documentclass{article}
 \usepackage{unicode-math}
@@ -59,6 +58,12 @@ It seems there are four ways to include texts in equations. For the detail, see 
 \makeatother
 
 ```
+
+## Spaces in `\underbrace{}`
+
+* "Add an appropriate `\vphantom` and flatten the longer text horizontally":
+
+ [here](https://tex.stackexchange.com/questions/275121/underbrace-spacing)
 
 
 [1]:https://tex.stackexchange.com/questions/130510/write-text-correctly-in-equations
