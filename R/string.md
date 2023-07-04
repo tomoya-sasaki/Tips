@@ -3,43 +3,43 @@
 ## sprintf
 ### basic format
 * `sprintf("%f", int)`: Count and print the string from left (from right if negative) until a decimal point, default number is 6. If the string is more than 6, it keep the string and if less it create 0 or space.
-    
+
 	```
     > sprintf("%f", 5000.000)
 	[1] "5000.000000"
-	
+
 	> sprintf("%.3f", 5000.000)
 	[1] "5000.000"
-    	
+
 	> sprintf("%20f", 5000.000)
 	[1] "         5000.000000"
-    	
+
 	> sprintf("%-20f", 5000.000)
 	[1] "5000.000000         "
-    	
+
 	> sprintf("%-20.f", 5000.000)
 	[1] "5000                "
-	
+
 	> sprintf("%-20.1f", 5000.000)
 	[1] "5000.0              "
 	```
-	
-* `sprintf("%s, string)`: Count and print the string from the left (from right if negative). 
-	
+
+* `sprintf("%s, string)`: Count and print the string from the left (from right if negative).
+
 	```
     > sprintf("%s", "abcde")
 	[1] "abcde"
-	
+
 	> sprintf("%.1s", "abcde")
 	[1] "a"
-    	
+
 	> sprintf("%.s", "abcde")
 	[1] ""
-    	
+
 	> sprintf("%.100s", "abcde")
 	[1] "abcde"
 	```
-	
+
 ### Use `sprintf` inside a loop
 * Use `cat`
 
@@ -48,7 +48,7 @@
 		cat(sprintf("i = %d", i))
 	}
 	```
-	
+
 ### Avoid scientific notation with `sprintf`
 * You can also use `sprintf` to avoid scientific notation.
 
@@ -73,6 +73,15 @@ sprintf("width '%*.3f'", 8, pi)
 # if you want to control both width and precision, use the following expression
 sprintf("width '%*.5f'", 8, pi)
 [1] "width ' 3.14159'"
+```
+
+## `format`
+
+* Large numbers separated with commas
+
+```
+format(12345.678, big.mark = ",", scientific = FALSE)
+[1] "12,345.68"
 ```
 
 ## Use latex in R plots
@@ -123,7 +132,7 @@ seq(-.3, .3, .1)
 
 as.character(seq(-.3, .3, .1))
 [1] "-0.3"                 "-0.2"                 "-0.1"
-[4] "5.55111512312578e-17" "0.1"                  "0.2"                 
+[4] "5.55111512312578e-17" "0.1"                  "0.2"
 [7] "0.3"
 
 sprintf("%.1f", seq(-.3, .3, .1))
@@ -239,7 +248,7 @@ paste(unique(d), collapse = ' ')
 
 ```
 
-11. Trim leading and trailing whitespace 
+11. Trim leading and trailing whitespace
 
 ```
 # returns string w/o leading whitespace
