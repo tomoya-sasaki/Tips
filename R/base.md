@@ -13,7 +13,7 @@
 addmargins(table(df$Company,df$Marital))
 
 # only sum for each column, 2 for each row
-addmargins(table(df$Company,df$Marital), 1) 
+addmargins(table(df$Company,df$Marital), 1)
 ```
 
 ### Include NAs
@@ -43,11 +43,9 @@ data %>% dplyr::mutate(agegroup = case_when(age >= 40  & age <= 49 ~ '3',
 
 ```
 # for data frame
-df %>% 
+df %>%
   split(f = as.factor(.$Cluster))
 ```
-
-
 
 # vector
 ## Convert one row/column of dataframe into vector
@@ -71,12 +69,11 @@ as.numeric(df[, 1])
 
 ## Find common elements
 
-
 ```
 a <- c(1,3,5,7,9)
 b <- c(3,6,8,9,10)
 c <- c(2,3,4,5,7,9)
-# works fine 
+# works fine
 intersect(intersect(a,b),c)
 
 # more clever way if you have many vectors
@@ -105,7 +102,7 @@ match(c(4,8),x)
 ```
 
 * Multiple matches: a logical vector as long as the first argument, with a `TRUE` if that value can be found in the second argument and a `FALSE` otherwise
- 
+
 ```
 x <- sample(1:4,10,replace=TRUE)
 x
@@ -118,11 +115,10 @@ which(x %in% c(2,4))
 * Check which value in vector `x` is closet to `14`
 
 ```
-x <- c(1, 6, 12, 28, 33) 
+x <- c(1, 6, 12, 28, 33)
 which.min(abs(x - 14))
 
 ```
-
 
 # matrix
 ## Check
@@ -135,7 +131,7 @@ df <- data.frame(ID = 1:10,
                  A2 = rnorm(10),
                  B1 = letters[1:10],
                  B2 = letters[11:20])
-df[, -grep("1$", colnames(df))]                 
+df[, -grep("1$", colnames(df))]
 ```
 
 
@@ -153,7 +149,7 @@ mat <- mat[, -1]
 
 ## Sorting columns/rows
 
-* Sort the rownames of `DF1` based on the rownames of `DF2`. 
+* Sort the rownames of `DF1` based on the rownames of `DF2`.
 
 ```
 # row-wise
@@ -283,6 +279,8 @@ M
 [3,]    3    7   11
 [4,]    4    8   12
 
+# 1 for rowwise operation and
+# 2 for column wise operation
 sweep (M, 1, c(1:4), "+")
      [,1] [,2] [,3]
 [1,]    2    6   10
@@ -292,7 +290,7 @@ sweep (M, 1, c(1:4), "+")
 ```
 
 # dataframe
-## Create a new column with 
+## Create a new column with
 You can add a sequence of numbers very easily with
 
 ```
@@ -383,7 +381,7 @@ unique(unlist(x, use.names = FALSE))
 ## Appending lists
 
 ```
-## base 
+## base
 ll <- list(a = 1, b = 2)
 lll <- list(c = 3)
 append(ll, lll)
@@ -460,15 +458,15 @@ appending matrix: 24.342 sec elapsed
 
 ```
 # this does not work
-diamonds |> 
+diamonds |>
 	aggregate(cbind(price, carat)~color, FUN = mean)
 
-# use anonymouus function to use LHS object 
-diamonds |> 
+# use anonymouus function to use LHS object
+diamonds |>
 	(\(x) aggregate(cbind(price, carat)~color, data = x, FUN = mean))()
 
 # or with magrittr
-diamonds %>% 
+diamonds %>%
 	aggregate(cbind(price, carat)~color, data = ., FUN = mean)
 ```
 
