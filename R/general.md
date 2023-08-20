@@ -40,6 +40,9 @@ Output
 1.003 sec elapsed
 ```
 
+## Progress bar with `progressr`
+https://cran.r-project.org/web/packages/progressr/vignettes/progressr-intro.html
+
 
 # Potpourri
 
@@ -94,7 +97,7 @@ browseURL('https://www.youtube.com/watch?v=QH2-TGUlwu4')
 (1:50)*2
 ```
 
-## `.Last.value` 
+## `.Last.value`
 * The value of the internal evaluation of a top-level R expression is always assigned to .Last.value (in package:base) before further processing (e.g., printing).
 * You can obtain the last evaluation.
 
