@@ -16,3 +16,11 @@ seq(as.Date("2000/1/1"), by = "month", length.out = 12)
 seq(ISOdate(1910,1,1), ISOdate(1999,1,1), "years")
 seq(ISOdate(2000,1,31), by = "month", length.out = 4)
 ```
+
+## Obtain the day of week
+
+```
+df = data.frame(date=c("2012-02-01", "2012-02-01", "2012-02-02"))
+lubridate::wday(df$date, label=TRUE) # with label
+lubridate::wday(df$date) # with number
+```

@@ -14,13 +14,13 @@ bind_cols(list_of_df) # do.call("cbind", list_of_df) also works
 #### `group_by` inside functions
 
 * You need quotes.
- 
+
 ```
 library(rlang)
 mytable <- function(x, ...) {
   group_ <- syms(...)
-  x %>% 
-    group_by(!!!group_) %>% 
+  x %>%
+    group_by(!!!group_) %>%
     summarise(n = n())
 }
 mytable(iris, "Species")
@@ -35,7 +35,7 @@ df <- data.frame(ID= rep(1:3, each=3), date=c('02/20/1989',
 '08/22/2011','08/20/2009', '08/25/2010' ), stringsAsFactors=FALSE)
 
 # select the mots recent date
-df %>% 
+df %>%
   group_by(ID) %>%
   slice(which.max(as.Date(date, '%m/%d/%Y')))
 ```
@@ -64,10 +64,17 @@ df %>%
 * Find rows with `NA` in any column
 
 ```
-df %>% 
-  select(var1, var2) %>% 
+df %>%
+  select(var1, var2) %>%
   mutate(na = rowSums(is.na(.))) %>%
   filter(na > 0)
+```
+
+### `across` and create new name
+
+```
+df |>
+  mutate(across(v1:v3, mean, .names = "{col}_mean"))
 ```
 
 ## tidyr
@@ -76,29 +83,29 @@ df %>%
 ```
 > data
 
-  Country   type                           crop                                                      
-  <chr>     <chr>                          <chr>                                                     
+  Country   type                           crop
+  <chr>     <chr>                          <chr>
 1 Australia Set equal to PP  BA, BF, CT, EG, OA
 ```
 * You want to split entries in `crop` separated by each comma
 
 ```
-data %>% 
-  mutate(crop_nest = crop) %>% 
-  nest(crop_nest = crop_nest) %>% 
-  mutate(crop_sep = map(crop_nest, function(x) strsplit(x[[1]], split = ",")[[1]])) %>% 
-  # mutate(crop_sep = map(crop, ~str_squish(.x))) %>% 
-  unnest(crop_sep) %>% 
+data %>%
+  mutate(crop_nest = crop) %>%
+  nest(crop_nest = crop_nest) %>%
+  mutate(crop_sep = map(crop_nest, function(x) strsplit(x[[1]], split = ",")[[1]])) %>%
+  # mutate(crop_sep = map(crop, ~str_squish(.x))) %>%
+  unnest(crop_sep) %>%
   mutate(crop_sep = str_squish(crop_sep))
 
 # A tibble: 15 × 5
    Country   type             crop               crop_nest        crop_sep
-   <chr>     <chr>            <chr>              <list>           <chr>   
- 1 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "BA"    
- 2 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "BF"   
- 3 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "CT"   
- 4 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "EG"   
- 5 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "OA"   
+   <chr>     <chr>            <chr>              <list>           <chr>
+ 1 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "BA"
+ 2 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "BF"
+ 3 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "CT"
+ 4 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "EG"
+ 5 Australia Set equal to PP  BA, BF, CT, EG, OA <tibble [1 × 1]> "OA"
 ```
 
 ### Fill in missing values
@@ -125,7 +132,7 @@ separate(before$type, into = c("foo", "bar"), sep = "_and_")
 ```
 
 
-## `readr` 
+## `readr`
 ### Warning column specificaition
 * "By default readr only looks at the first 1000 rows. This keeps file parsing speedy, but can generate incorrect guesses. For example, in challenge.csv the column types change in row 1001, so readr guesses the wrong types. One way to resolve the problem is to increase the number of rows" (from readr manual)
 * This could be a problem when you are dealing with a giant matrix with a large number of rows.
@@ -149,7 +156,7 @@ ans <- map_df(past_earnings_lists, ~as_tibble(.x), .id = "id")
 # new column name comes from colnames
 # make sure to check the length of colnames and list_of_dfs
 list_of_dfs %>%
-	map2(colnames, ~.x %>% mutate(id = .y)) 
+	map2(colnames, ~.x %>% mutate(id = .y))
 ```
 
 ### Use tidyverse functions to each dataframe in a list
@@ -169,27 +176,27 @@ list_of_dfs %>%
 
 ```
 # pattern 1
-mtcars %>% 
-	tibble::rownames_to_column(var = "model") %>% 
-	filter(if(applyfilter== 1) grepl(x = model, pattern = "Merc") else TRUE) %>% 
-	group_by(am) %>% 
+mtcars %>%
+	tibble::rownames_to_column(var = "model") %>%
+	filter(if(applyfilter== 1) grepl(x = model, pattern = "Merc") else TRUE) %>%
+	group_by(am) %>%
 	summarise(meanMPG = mean(mpg))
 
 # pattern 2
-mtcars %>% 
-  tibble::rownames_to_column(var = "model") %>% 
-  {if(applyfilter == 1) filter(., grepl(x = model, pattern = "Merc")) else .} %>% 
-  group_by(am) %>% 
+mtcars %>%
+  tibble::rownames_to_column(var = "model") %>%
+  {if(applyfilter == 1) filter(., grepl(x = model, pattern = "Merc")) else .} %>%
+  group_by(am) %>%
   summarise(meanMPG = mean(mpg))
 
 # pattern 3
-mtcars %<>% 
+mtcars %<>%
   tibble::rownames_to_column(var = "model")
 
 if(applyfilter == 1) mtcars %<>% filter(grepl(x = model, pattern = "Merc"))
 
-mtcars %>% 
-  group_by(am) %>% 
+mtcars %>%
+  group_by(am) %>%
   summarise(meanMPG = mean(mpg))
 
 ```
