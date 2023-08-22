@@ -1,3 +1,8 @@
+# SQL
+
+## MySQL
+* Official tutorial document [here](https://dev.mysql.com/doc/mysql-getting-started/en/)
+
 ## Variable name
 * refrain from using the same variable name as the column name
 * Even in R dbplyr
@@ -5,17 +10,17 @@
 ```
 # does not filter by year
 year <- 1998
-df %>% 
+df %>%
 	filter(year == year)
 
 # you need to contain 1998 in a variable with a different name
 YEAR <- 1998
-df %>% 
+df %>%
 	filter(year == YEAR)
 ```
 
 ## Computing new columns
-### Compute moving average 
+### Compute moving average
 
 ```
 select date, amount, avg(amount) over (order by visited_on range interval 6 day preceding)
@@ -50,8 +55,8 @@ FROM   Payments
 
 ```
 SUBSTR(string, start, length)
- 
-SELECT SUBSTR("SQL Tutorial", 5, 3) AS ExtractString;  
+
+SELECT SUBSTR("SQL Tutorial", 5, 3) AS ExtractString;
 ```
 
 ## Debugging
@@ -60,7 +65,7 @@ SELECT SUBSTR("SQL Tutorial", 5, 3) AS ExtractString;
 * Each derived table must have an alias. `SELECT a.* FROM (SELECT ....)a`
 
 ```
-SELECT xxx.* FROM 
+SELECT xxx.* FROM
 (
     SELECT ....
     FROM ....
