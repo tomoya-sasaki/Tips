@@ -1,5 +1,13 @@
 # SQL
 
+## Connecting new local databases in DBeaver
+* Server Host: `localhost`
+* Username: `root` (unless otherwise specified)
+* Edit `Driver properties` to import data: references [here](https://stackoverflow.com/questions/32737478/how-should-i-resolve-secure-file-priv-in-mysql), [here](https://geodatawrangler.lazym8.com/blog/2017/02/16/secure-file-priv), [here](https://stackoverflow.com/questions/59993844/error-loading-local-data-is-disabled-this-must-be-enabled-on-both-the-client)
+  * `allowPublicKeyRetrieval` to true (probably must)
+  * `verifyServerCertificate` to false (probably must)
+  * `useSSL` to false (maybe not required)
+
 ## MySQL
 * Official tutorial document [here](https://dev.mysql.com/doc/mysql-getting-started/en/)
 * Documentation [here](https://dev.mysql.com/doc/refman/8.1/en/)
