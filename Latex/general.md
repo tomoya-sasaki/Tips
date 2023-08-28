@@ -1,7 +1,7 @@
-# Set path
-* See [ReadmeETC.md](https://github.com/UT-GLP-2014/TMY/blob/master/code_tips/etc/ReadmeETC.md) in `~/code_tips/etc/`
+## Set path
+* See [ReadmeETC.md](https://github.com/tomoya-sasaki/Tips/blob/master/etc/ReadmeETC.md) in `~/code_tips/etc/`
 
-# `ascmac.sty`
+## `ascmac.sty`
 When you use `itembox` or `screen` with `Xelatex` or `LuaLatex` (maybe applicable to other systems as well).
 See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 
@@ -10,7 +10,7 @@ See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 \newdimen\tbaselinshift
 ```
 
-## Title
+### Title
 ### Remove the space between the title and the top
 * Reference [here](https://tex.stackexchange.com/questions/123374/reduce-space-at-the-top-using-maketitle)
 
@@ -18,8 +18,25 @@ See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 \title{\vspace{-60pt}Title}
 ```
 
+## Multi-columns
 
-# `titlesec.sty`
+### No external packages
+* add the twocolumn option to your document class. `\documentclass[twoside]{article}`
+* add `\twocolumn` before the text you want to split into two columns. Later you can add `\onecolumn` to get back to the standard one column.
+
+
+### Using `multicol` package
+* If you omit the `\columnbreak`, the columns will balance automatically.
+
+```
+\begin{multicols}{2}
+Column 1
+\columnbreak
+Column 2
+\end{multicols}
+```
+
+## `titlesec.sty`
 * If you want to change the font size of each section
 
 ```
@@ -33,10 +50,10 @@ See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 \usepackage[compact]{titlesec}
 ```
 
-# Texmaker
+## Texmaker
 See [here](http://blog.livedoor.jp/ti5942/?p=63)
 
-# Compile separately
+## Compile separately
 * Use `subfiles.sty` ([example](https://tex.stackexchange.com/questions/7052/how-do-i-choose-which-sections-to-compile-from-a-latex-document))
 * `main.tex` for the main document
 * Tex file for each section (e.g. `sec1.tex`, `sec2.tex` ...)
@@ -60,7 +77,7 @@ See [here](http://blog.livedoor.jp/ti5942/?p=63)
 \end{document}
 ```
 
-# Font size
+## Font size
 ```
 Command             10pt    11pt    12pt
 \tiny               5       6       6
@@ -75,8 +92,8 @@ Command             10pt    11pt    12pt
 \Huge               24.88   24.88   24.88
 ```
 
-# Miscellaneous
-## To make math symbols in section title bold
+## Miscellaneous
+### To make math symbols in section title bold
 
 ```
 \makeatletter
@@ -84,7 +101,7 @@ Command             10pt    11pt    12pt
 \makeatother
 ```
 
-## Checkmark
+### Checkmark
 
 ```
 \documentclass{article}
@@ -115,7 +132,7 @@ Command             10pt    11pt    12pt
 
 \end{document}
 ```
-## Text aligned left/center/right
+### Text aligned left/center/right
 
 ```
 \documentclass{article}
