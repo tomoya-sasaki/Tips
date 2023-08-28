@@ -1,19 +1,5 @@
 # Set path
-* See [ReadmeETC.md](https://github.com/UT-GLP-2014/TMY/blob/master/code_tips/etc/ReadmeETC.md) in `~/code_tips/etc/` 
-
-# Beamer
-## When you want to use `minipage` in beamer
-* use `\begin{column}`
-
-``` 
-\begin{columns}[T]
-	\begin{column}{0.48\textwidth}
-	\end{column}{0.48\textwidth}
-	
-	\begin{column}{0.48\textwidth}
-	\end{column}{0.48\textwidth}
-\end{columns}
-```
+* See [ReadmeETC.md](https://github.com/UT-GLP-2014/TMY/blob/master/code_tips/etc/ReadmeETC.md) in `~/code_tips/etc/`
 
 # `ascmac.sty`
 When you use `itembox` or `screen` with `Xelatex` or `LuaLatex` (maybe applicable to other systems as well).
@@ -22,6 +8,14 @@ See [here](http://akitsu-sanae.hatenablog.com/entry/2017/09/25/134202)
 ```
 \usepackage{ascmac}
 \newdimen\tbaselinshift
+```
+
+## Title
+### Remove the space between the title and the top
+* Reference [here](https://tex.stackexchange.com/questions/123374/reduce-space-at-the-top-using-maketitle)
+
+```
+\title{\vspace{-60pt}Title}
 ```
 
 

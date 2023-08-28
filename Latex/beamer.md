@@ -1,8 +1,21 @@
 
-# Theme
+## Theme
 * Choose from [here](http://deic.uab.es/~iblanes/beamer_gallery/).
 
-# Overlay
+## When you want to use `minipage` in beamer
+* use `\begin{column}`
+
+```
+\begin{columns}[T]
+	\begin{column}{0.48\textwidth}
+	\end{column}{0.48\textwidth}
+
+	\begin{column}{0.48\textwidth}
+	\end{column}{0.48\textwidth}
+\end{columns}
+```
+
+## Overlay
 * In the following code, characteristics of each animal appear one by one in the same page
 
 ```
@@ -26,11 +39,11 @@
     \end{itemize}}
     \item<6-> \strut Birds
     \only<7>{\begin{itemize}
-        \item<7> \strut Fly 
+        \item<7> \strut Fly
         \item<7> \strut Have feathers
     \end{itemize}}
 \end{itemize}
-\end{overlayarea}   
+\end{overlayarea}
 \end{block}
 
 \end{frame}
@@ -38,7 +51,7 @@
 \end{document}
 ```
 
-# When you use `minipage`
+## When you use `minipage`
 1. A new paragraph is started with the first minipage, which adds the indent. -> `\noindent`
 2. No space between the two minipages. Add `%`.
 
@@ -57,7 +70,7 @@
 \end{document}
 ```
 
-# `textblock`/`block`
+## `textblock`/`block`
 ```
 % この場合は (230pt, 100pt) の位置に 0.4\linewidth の幅のブロックができる．
 \begin{textblock*}{0.4\linewidth}(230pt, 100pt)
@@ -66,8 +79,8 @@
 \end{textblock*}
 ```
 
-# Format
-## Remove footer
+## Format
+#### Remove footer
 
 ```
 % gets rid of bottom navigation bars
@@ -81,22 +94,22 @@
 % comment out to revert to previous/default definitions
 \setbeamertemplate{footline}{}
 ```
-## Remove header
+#### Remove header
 
 ```
 \setbeamertemplate{headline}{}
 ```
 
 
-# Table
-## Numbering figures
+## Table
+#### Numbering figures
 
 ```
 \setbeamertemplate{caption}[numbered]
 
 ```
-# Button
-## Place button at the left bottom
+## Button
+#### Place button at the left bottom
 
 ```
 \documentclass{beamer}
@@ -112,7 +125,7 @@
 \end{center}
 \begin{tikzpicture}[remember picture, overlay]
 \node[shift={(-0.6cm,0.5cm)}]() at (current page.south east){%
-\hyperlink{there}{\beamerbutton{Back}}};        
+\hyperlink{there}{\beamerbutton{Back}}};
 \end{tikzpicture}
 \end{frame}
 
@@ -121,7 +134,7 @@
 text
 \begin{tikzpicture}[remember picture, overlay]
 \node[shift={(-0.6cm,0.5cm)}]() at (current page.south east){%
-\hyperlink{here}{\beamerbutton{Back}}};        
+\hyperlink{here}{\beamerbutton{Back}}};
 \end{tikzpicture}
 
 \end{frame}
@@ -134,7 +147,7 @@ text
 \hfill\hyperlink{here}{\beamerbutton{Back}}
 ```
 
-# Japanese
+## Japanese
 * Check [here](https://qiita.com/zr_tex8r/items/69e8cc32038ff29f5ac3)
-* [here](http://neurodynamics.jp/etc/beamer), or [here](https://en.wikibooks.org/wiki/LaTeX/Presentations#Themes) might be also useful.
+* [here](http://neurodynamics.jp/etc/beamer), or [here](https://en.wikibooks.org/wiki/LaTeX/Presentations##Themes) might be also useful.
 

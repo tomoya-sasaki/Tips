@@ -18,7 +18,22 @@
 ### Create new table from a csv file
 * `LOAD DATA INFILE` or `mysqlimport`. References [here](https://dev.mysql.com/doc/refman/8.1/en/mysqlimport.html), [here](https://www.mysqltutorial.org/import-csv-file-mysql-table/), [here](https://stackoverflow.com/questions/3635166/how-do-i-import-csv-file-into-a-mysql-table)
 * If you use `LOAD DATA INFILE`, you need to create an empty table beforehand
+
+```
+CREATE TABLE discounts (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    expired_date DATE NOT NULL,
+    amount DECIMAL(10 , 2 ) NULL,
+    PRIMARY KEY (id)
+);
+```
+
 * `mysqlimport` does not require you to create an empty table
+* Currently, I use `LOAD DATA INFILE` to specify the data structure
+
+## Basic operations
+* Select databases: `SELECT DATABASE()`
 
 ## Variable name
 * refrain from using the same variable name as the column name
