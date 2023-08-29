@@ -8,6 +8,27 @@
 7. [Potpourri](# Potpourri)
 8. [Update](# Update)
 
+# Makevars file
+
+```
+# add based on here https://stackoverflow.com/questions/69639782/installing-gfortran-on-macbook-with-apple-m1-chip-for-use-in-r
+FC = /opt/homebrew/Cellar/gcc/13.1.0/bin/gfortran
+F77 = /opt/homebrew/Cellar/gcc/13.1.0/bin/gfortran
+FLIBS = -L/opt/homebrew/Cellar/gcc/13.1.0/lib/gcc/11
+
+# the following lines probably only when you install data.table package
+# igraph package does not compile with the following lines
+# if you downloaded llvm manually above, replace with your chosen NEW_PATH/clang
+LLVM_LOC = /opt/homebrew/opt/llvm
+CC=$(LLVM_LOC)/bin/clang -fopenmp
+CXX=$(LLVM_LOC)/bin/clang++ -fopenmp
+# -O3 should be faster than -O2 (default) level optimisation ..
+CFLAGS=-g -O3 -Wall -pedantic -std=gnu99 -mtune=native -pipe
+CXXFLAGS=-g -O3 -Wall -pedantic -std=c++11 -mtune=native -pipe
+LDFLAGS=-L/opt/homebrew/opt/gettext/lib -L$(LLVM_LOC)/lib -Wl,-rpath,$(LLVM_LOC)/lib
+CPPFLAGS=-I/opt/homebrew/opt/gettext/include -I$(LLVM_LOC)/include
+
+```
 
 # Implement R in terminal
 For detail, check [here](http://qiita.com/doskin/items/5e3877f110af244f7b59)
