@@ -90,19 +90,14 @@ format(12345.678, big.mark = ",", scientific = FALSE)
 ```
 TeX('$\\alpha^\\beta$')
 ```
-## Avoid scientific/exponential notation
-* Check [here][1]
-* For one shot change
+## Capitalizing everything after a certain character
 
+* Example: capitalize everything in a character vector that comes after the first
 ```
-format(1810032000, scientific = FALSE)
+gsub("(_.*)","\\U\\1",x,perl=TRUE)
 ```
 
-* Force to change with options
 
-```
-options("scipen"=-100, "digits"=4)
-```
 
 ## colr
 * To manipulate colnames and rownames. See `colr.R`.
@@ -124,6 +119,21 @@ substrRight(x, 6)
 ```
 
 ## Prevent scientific expression
+
+* Check [here][1]
+* For one shot change
+
+```
+format(1810032000, scientific = FALSE)
+```
+
+* Force to change with options
+
+```
+options("scipen"=-100, "digits"=4)
+```
+
+* Other methods
 
 ```
 seq(-.3, .3, .1)
