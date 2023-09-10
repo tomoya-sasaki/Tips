@@ -1,5 +1,8 @@
 # data.table
 
+## Install
+* Check [general.md](general.md) for `Makevars` file
+
 ## Create a grouping variable
 * Use `.GRP`
 

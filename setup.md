@@ -109,6 +109,7 @@ $ brew install zsh-autosuggestions
 * For trouble shooting, Step 1 to 4 of this guidance solved in M2 Mac [here](https://yiqingxu.org/public/BigSurError.pdf)
 * For `data.table`, check Shusei's tips or [here](https://investcookies.ru/post/datatable_m1/data_table_arm/)
 
+
 #### Reinstall packages
 
 ```
@@ -128,14 +129,11 @@ for (p in setdiff(packages, installed.packages()[,"Package"]))
 install.packages(p)
 ```
 
-#### First R computation
+#### Fast R computation
 
 * `https://mpopov.com/blog/2021/10/10/even-faster-matrix-math-in-r-on-macos-with-m1/`
 * `https://groups.google.com/g/r-sig-mac/c/YN6uNYCIZK0`
 * `https://thomasmcrow.com/blog/2021-08-optimized-blas-in-r/`
-
-#### `data.table`
-* Check Shusei's Tips
 
 #### radian
 * After installed Python
