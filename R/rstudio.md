@@ -15,7 +15,7 @@ output: html_document
 ```
 
 ### Add today date
-* `%Y` for year, `&B` for month, and `%d` for date, 
+* `%Y` for year, `&B` for month, and `%d` for date,
 
 ```
 date: '`r format(Sys.time(), "%d %B, %Y")`'
@@ -25,8 +25,13 @@ date: '`r format(Sys.time(), "%d %B, %Y")`'
 
 "Standard LaTeX can’t handle raw Unicode characters like √, but XeLaTeX can. Add latex_engine: xelatex to your YAML front matter: output: pdf_document: latex_engine: xelatex" [here](https://community.rstudio.com/t/tidyverse-1-2-1-knitting-to-pdf-issue/2880)
 
+## Code chunk specifications
+
+### Suppress running scripts from Stan
+* Use `results = "hide"`
+
 # Rsweave
-* Use "Weave Rnw files using:" `knitr` instead of `Sweave` to show shaded code chunks in options 
+* Use "Weave Rnw files using:" `knitr` instead of `Sweave` to show shaded code chunks in options
 
 
 # Miscellaneous
