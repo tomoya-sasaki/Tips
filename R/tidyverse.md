@@ -77,6 +77,35 @@ df |>
   mutate(across(v1:v3, mean, .names = "{col}_mean"))
 ```
 
+### `misc`
+
+#### `between`
+
+```
+between(1:12, 7, 9)
+#>  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
+#> [12] FALSE
+
+mtcars %>% filter(between(row_number(), 1, 10))
+```
+
+#### `rank`
+
+
+```
+x <- c(5, 1, 3, 2, 2, NA)
+row_number(x)
+#> [1]  5  1  4  2  3 NA
+min_rank(x)
+#> [1]  5  1  4  2  2 NA
+dense_rank(x)
+#> [1]  4  1  3  2  2 NA
+percent_rank(x)
+#> [1] 1.00 0.00 0.75 0.25 0.25   NA
+cume_dist(x)
+#> [1] 1.0 0.2 0.8 0.6 0.6  NA
+```
+
 ## tidyr
 ### `nest`
 
