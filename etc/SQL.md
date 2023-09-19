@@ -16,7 +16,7 @@
 * Install with homebrew: references [here](https://www.novicedev.com/blog/how-install-mysql-macos-homebrew), [here](https://hackernoon.com/how-to-install-mysql-8-on-macos-using-homebrew)
 
 ### Create new table from a csv file
-* `LOAD DATA INFILE` or `mysqlimport`. References [here](https://dev.mysql.com/doc/refman/8.1/en/mysqlimport.html), [here](https://www.mysqltutorial.org/import-csv-file-mysql-table/), [here](https://stackoverflow.com/questions/3635166/how-do-i-import-csv-file-into-a-mysql-table)
+* `LOAD DATA INFILE` or `mysqlimport`. References [here](https://dev.mysql.com/doc/refman/8.1/en/mysqlimport.html), [here](https://www.mysqltutorial.org/import-csv-file-mysql-table/), [here](https://dev.mysql.com/doc/refman/8.0/en/create-table.html), [here](https://stackoverflow.com/questions/3635166/how-do-i-import-csv-file-into-a-mysql-table)
 * If you use `LOAD DATA INFILE`, you need to create an empty table beforehand
 
 ```
@@ -109,3 +109,18 @@ SELECT xxx.* FROM
     LIMIT 50
 )xxx
 ```
+
+## Join
+
+* Performance comparison [here](https://qiita.com/k_kind/items/76299127cf6c7531f700)
+
+## Measuring time
+
+* [here](https://haracane.github.io/2015/03/26/mysql-time/),[here](https://qiita.com/dai-y/items/cd803efa77bd0eaf1690), [here](https://dba.stackexchange.com/questions/268535/how-can-i-only-get-the-query-execution-time-on-the-command-line-without-waiting)
+
+
+## Misc
+
+### `/dev/null`
+
+* A virtual null device used to discard any output redirected to it
