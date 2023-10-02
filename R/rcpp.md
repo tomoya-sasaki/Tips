@@ -56,3 +56,63 @@ vec2mat(v, 3, 3)
 vec2mat2(v, 3, 3)
 */
 ```
+
+### Select columns
+
+
+```
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+
+// [[Rcpp::export]]
+arma::mat matrix_subset_idx(const arma::mat& x,
+                            const arma::uvec& y) {
+
+    // y must be an integer between 0 and columns - 1
+    // Allows for repeated draws from same columns.
+    return x.cols( y );
+}
+
+
+// [[Rcpp::export]]
+arma::mat matrix_subset_logical(const arma::mat& x,
+                                const arma::vec& y) {
+    // Assumes that y is 0/1 coded.
+    // find() retrieves the integer index when y is equivalent 1.
+    return x.cols( arma::find(y == 1) );
+}
+
+
+/*** R
+x <- matrix(1:15, ncol = 5)
+matrix_subset_logical(x, c(0, 1, 0, 0, 1))
+matrix_subset_idx(x, c(1, 3))
+
+*/
+
+```
+
+
+* Without `Armadillo`
+
+```
+#include <Rcpp.h>
+
+// [[Rcpp::export]]
+Rcpp::NumericMatrix matrix_subset_idx_rcpp(
+        Rcpp::NumericMatrix x, Rcpp::IntegerVector y) {
+
+    // Determine the number of observations
+    int n_cols_out = y.size();
+
+    // Create an output matrix
+    Rcpp::NumericMatrix out = Rcpp::no_init(x.nrow(), n_cols_out);
+
+    // Loop through each column and copy the data.
+    for(unsigned int z = 0; z < n_cols_out; ++z) {
+        out(Rcpp::_, z) = x(Rcpp::_, y[z]);
+    }
+
+    return out;
+}
+```
