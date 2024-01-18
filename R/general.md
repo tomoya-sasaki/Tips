@@ -195,6 +195,13 @@ askYesNo(msg = "Do you like R?")
 askYesNo(msg = "Do you like R?", prompts = "1/2/3")
 ```
 
+## Installing `units` package
+* You need to specify both `--with-udunits2-include` and `--with-udunits2-lib`
+
+```
+install.packages("units", configure.args = c("--with-udunits2-include=/opt/homebrew/Cellar/udunits/2.2.28/include", "--with-udunits2-lib=/opt/homebrew/Cellar/udunits/2.2.28/lib"))
+```
+
 # Update
 * Use `https://cloud.r-project.org/bin/macosx/base/` to find binariles of R builds for macOS
 * Remove existing R and RStudio before upgrading R
