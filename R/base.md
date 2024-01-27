@@ -47,6 +47,10 @@ df %>%
   split(f = as.factor(.$Cluster))
 ```
 
+## `rowSums` and `colSums`
+* `rowSums`is slower than `colSums`
+
+
 # vector
 ## Convert one row/column of dataframe into vector
 ```
