@@ -5,6 +5,44 @@
 5. [pipe](#pipe)
 
 # base
+
+## Misc
+
+```
+# More precise than log when x is close to 1
+log1p(x)
+
+# same as any(is.na(x)) as slightly faster
+anyNA(x)
+
+# weighted mean, x is the data, w is the weight
+weighted.mean(x, w)
+
+# remove duplicated strings in a vector
+abbreviate(c("Fukushima", "Fukuoka", "Kyoto")) # "Fksh" "Fukk" "Kyot"
+
+# all.equal or ==
+# all.equal is less precise
+# e.g., 0.3-0.2==0.1 returns FALSE but all.equal(0.3-0.2, 0.1) returns TRUE
+
+# append an elment to a vector
+append(x, value, after = length(x)) # append value after the last element of x
+append(x, value, 5) # append value after the 5th element of x
+
+# Map can be applied to multiple list, similar to purrr::map2
+
+# combn returns all combinations of the elements of x taken m at a time
+combn(x, m) # m is the number of elements in each combination
+combn(c("a", "b", "c"), 2) # return (a, b) (a, c) (b, c)
+
+permutations(3) # return (1,2,3) (1,3,2) (2,1,3) (2,3,1) (3,1,2) (3,2,1)
+
+any(c(TRUE, NA)) # return TRUE
+any(c(FALSE, NA)) # return NA
+
+Nippon::wareki2AD("昭和38年") # return 1963
+```
+
 ## table
 ### Add column- and row-sums to table
 
@@ -22,8 +60,6 @@ addmargins(table(df$Company,df$Marital), 1)
 table(vec, useNA = "always") # always displays the number of missing values
 table(vec, useNA = "ifany") # only displays the number of missing values if there are some
 ```
-
-
 ## binning
 * Age etc
 

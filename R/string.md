@@ -1,5 +1,12 @@
 # String in R
 
+## `as.roman`
+
+```
+as.roman(24)
+# XXIV
+```
+
 ## sprintf
 ### basic format
 * `sprintf("%f", int)`: Count and print the string from left (from right if negative) until a decimal point, default number is 6. If the string is more than 6, it keep the string and if less it create 0 or space.
