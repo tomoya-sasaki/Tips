@@ -3,6 +3,38 @@
 ## Install
 * Check [general.md](general.md) for `Makevars` file
 
+## Setup
+
+https://rpubs.com/Kibalnikov/776164
+
+* Change the path to llvm if you are using Intel
+* Set path in .zshrc as brew suggests
+
+Not sure needed: Set path in .Renviron as Yiqing suggests: https://yiqingxu.org/public/BigSurError.pdf
+
+### .zshrc
+
+```
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+```
+
+### Makevars
+
+```
+# if you downloaded llvm manually above, replace with your chosen NEW_PATH/clang
+LLVM_LOC = /usr/local/opt/llvm
+CC=$(LLVM_LOC)/bin/clang -fopenmp
+CXX=$(LLVM_LOC)/bin/clang++ -fopenmp
+# -O3 should be faster than -O2 (default) level optimisation ..
+CFLAGS=-g -O3 -Wall -pedantic -std=gnu99 -mtune=native -pipe
+CXXFLAGS=-g -O3 -Wall -pedantic -std=c++11 -mtune=native -pipe
+LDFLAGS=-L/opt/homebrew/opt/gettext/lib -L$(LLVM_LOC)/lib -Wl,-rpath,$(LLVM_LOC)/lib
+CPPFLAGS=-I/opt/homebrew/opt/gettext/include -I$(LLVM_LOC)/include
+```
+
+
 ## Create a grouping variable
 * Use `.GRP`
 
