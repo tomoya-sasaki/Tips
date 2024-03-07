@@ -111,7 +111,7 @@ $ git add .
 # commit_hash is the hash of the commit you want to fix
 $ git commit --fixup <commit_hash>
 # commit_hash2 is the hash of the commit you want to rebase on
-$ git rebase -i --autosquash <commit_hash2>
+$ git rebase -i --autosquash <commit_hash2> # or `git rebase -i --autosquash master` if you want to rebase on master
 ```
 
 # Errors
