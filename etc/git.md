@@ -22,9 +22,9 @@ Branch newsletter set up to track remote branch newsletter from origin.
 Switched to a new branch 'newsletter'
 
 # show all branches including remotes
-git branch -a 
+git branch -a
 
-# or do simply 
+# or do simply
 git reset HEAD
 ```
 
@@ -43,7 +43,7 @@ $ git clone git$@github.com:username/reponame.git
 ```
 git remote add origin <REMOTE URL>
 # verifies the remote URL
-git remote -v 
+git remote -v
 # if you have only done `git init` in the second step
 git branch -M main
 # pushes the changes in your local repo to remote repo
@@ -73,7 +73,6 @@ $ git rm $(git ls-files --deleted)
 $ git add -u
 ```
 
-
 ## Variety of `git add`
 * see [here][1]
 * According to the explanation above,
@@ -97,11 +96,29 @@ $ git add .
 $ git rm -r --cached [file_name]
 ```
 
+## How to fix previous commits
+
+* If you want to change the last commit
+```
+$ git commit --amend
+```
+
+* If you want to change the commit before the last one
+* What `git commit --fixup` does is to create a new commit with the same message as the commit you want to fix, but with the prefix "fixup!". Then, you can rebase the commit on the commit you want to rebase on with `git rebase -i --autosquash`. This will automatically move the "fixup!" commit to the right place.
+
+```
+$ git add .
+# commit_hash is the hash of the commit you want to fix
+$ git commit --fixup <commit_hash>
+# commit_hash2 is the hash of the commit you want to rebase on
+$ git rebase -i --autosquash <commit_hash2>
+```
+
 # Errors
 
 ## Cannot pull
 * Following error
- 
+
 ```
 There is no tracking information for the current branch.
 Please specify which branch you want to merge with.
