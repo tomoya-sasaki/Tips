@@ -1,7 +1,7 @@
 # Moving
 ## Notify change of address
 * Family
-* Banks (BoA, Chase)
+* Banks
 * Credit card
 * Immigration
 * School (Websis)
