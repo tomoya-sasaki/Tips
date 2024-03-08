@@ -73,6 +73,40 @@ $ git rm $(git ls-files --deleted)
 $ git add -u
 ```
 
+## Update a forked repo
+
+```
+# Add the remote, call it "upstream":
+git remote add upstream https://github.com/whoever/whatever.git
+
+# Fetch all the branches of that remote into remote-tracking branches
+git fetch upstream
+
+# Make sure that you're on your master branch:
+git checkout main
+
+# Rewrite your master branch so that any commits of yours that
+# aren't already in upstream/master are replayed on top of that
+# other branch:
+git rebase upstream/main
+
+# push with updated branch and repo
+git push -f origina main
+```
+
+* Suppose you checkout to a branch that is included in the updated forked repo
+
+```
+# after git rebase
+git checkout -b new_branch --track origin/new_branch
+
+# push to the remote repo (mine, not the original one)
+git push -u origin new_branch
+# maybe this is also fine
+git push -f origin new_branch
+```
+
+
 ## Variety of `git add`
 * see [here][1]
 * According to the explanation above,
