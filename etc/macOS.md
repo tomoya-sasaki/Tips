@@ -33,10 +33,19 @@ R
 [here](https://discussions.apple.com/thread/253442218)
 
 If you had Pages/Numbers/Keynote installed prior to the upgrade to Catalina, you might be able to get the latest compatible version for Catalina.
-Launch the Mac App Store with the same Apple ID as you used to obtain these applications previously. Press <kbd>cmd</kbd>+<kbd>0</kbd> (zero) to open the Purchased panel. 
+Launch the Mac App Store with the same Apple ID as you used to obtain these applications previously. Press <kbd>cmd</kbd>+<kbd>0</kbd> (zero) to open the Purchased panel.
 If the above method does not work, there will be no means to get Pages v10.2 - v11.1 for Catalina, and you will need to use Pages for iCloud, or compatible Pages for your iOS/iPadOS installation.
 
 
 # External devices
 ## Anker bluetooth keyboard
 * Pairing: <kbd>fn</kbd> + <kbd>z</kbd>
+
+# Misc
+
+## How to prevent creation of .DS_Store files on network volumes
+* After running the following command, reboot your Mac to apply the changes
+
+```
+$ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+```
