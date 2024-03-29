@@ -77,6 +77,17 @@ df |>
   mutate(across(v1:v3, mean, .names = "{col}_mean"))
 ```
 
+### Dynamically renaming columns
+
+```
+i <- 1
+# rename column
+d |> rename("a.{i}" := a)
+# create new column
+d |> mutate("a.{i}" := a)
+```
+
+
 ### `misc`
 
 #### `between`
