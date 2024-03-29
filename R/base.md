@@ -329,6 +329,38 @@ sweep (M, 1, c(1:4), "+")
 [4,]    8   12   16
 ```
 
+### Matrix -> Vector
+* By default, the vector is filled column-wise
+
+```
+> M <- matrix(1:12, nrow = 3)
+> M
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+
+> as.vector(M)
+[1]  1  2  3  4  5  6  7  8  9 10 11 12
+> as.vector(t(M))
+[1] 1  4  7 10  2  5  8 11  3  6  9 12
+```
+
+### Vector -> Matrix
+* By default, the matrix is filled column-wise
+
+```
+> v <- 1:12
+> matrix(v, nrow = 3)
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+```
+
+
+
 # dataframe
 ## Create a new column with
 You can add a sequence of numbers very easily with
