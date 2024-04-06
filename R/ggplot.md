@@ -223,13 +223,13 @@ theme(legend.spacing.x = unit(1.0, 'cm'),
 Remove legend for a particular aesthetic (fill):
 
 ```
-bp  + guides(fill=FALSE)
+bp  + guides(fill="none")
 ```
 
 It can also be done when specifying the scale:
 
 ```
-bp + scale_fill_discrete(guide=FALSE)
+bp + scale_fill_discrete(guide="none")
 ```
 
 This removes all legends:

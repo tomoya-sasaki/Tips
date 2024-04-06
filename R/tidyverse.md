@@ -207,6 +207,34 @@ list_of_dfs %>%
   map(~ .x %>% filter(alpha != 0 & delta != 0))
 ```
 
+### Add ID to each dataframe in a list
+
+```
+l <- list(
+  tibble(x = 1:3, y = rev(x)),
+  tibble(a = 3:1, b = rev(a))
+)
+
+imap(l, ~ bind_cols(.x, pos = .y))
+
+#> [[1]]
+#> # A tibble: 3 x 3
+#>       x     y   pos
+#>   <int> <int> <int>
+#> 1     1     3     1
+#> 2     2     2     1
+#> 3     3     1     1
+#>
+#> [[2]]
+#> # A tibble: 3 x 3
+#>       a     b   pos
+#>   <int> <int> <int>
+#> 1     3     1     2
+#> 2     2     2     2
+#> 3     1     3     2
+```
+
+
 ## `magrittr`
 
 ### Conditionally applying pipleline step
