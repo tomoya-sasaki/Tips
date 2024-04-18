@@ -9,6 +9,13 @@ d %>%
 	form1
 ```
 
+## A histogram
+
+* `geom_histogram` sometimes removes observations within the limit, because of the roudning error.
+* Two ways to fix this
+  * Use `coord_cartesian` to set the limit: e.g., `coord_cartesian(xlim = c(0, 100))`
+  * Use `oob = scales::squish` in `scale_x_continuous` or `scale_y_continuous`: e.g., `scale_x_continuous(oob = scales::squish, limits = xlim)`
+
 ## A probability density graph overlaid on a histogram
 ```{r, warning=FALSE, message=FALSE, fig.align='center'}
 d %>%
