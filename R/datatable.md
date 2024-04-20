@@ -34,7 +34,6 @@ LDFLAGS=-L/opt/homebrew/opt/gettext/lib -L$(LLVM_LOC)/lib -Wl,-rpath,$(LLVM_LOC)
 CPPFLAGS=-I/opt/homebrew/opt/gettext/include -I$(LLVM_LOC)/include
 ```
 
-
 ## Create a grouping variable
 * Use `.GRP`
 
@@ -62,4 +61,16 @@ dt <- data.table(a = 1:3, b = 1:3, d = 1:3)
 cols <- c("a", "b")
 # multiply by -1
 for (j in cols) set(dt, j = j, value = -dt[[j]])
+```
+
+## Comparisons with `dplyr`
+
+* [ref](https://stackoverflow.com/questions/38236499/what-is-the-equivalent-of-dplyr-mutate-and-summarise-in-data-table)
+
+```
+# equivalent to dplyr::mutate by group
+MT[, max_mpg := max(mpg), by = cyl]
+
+# equivalent to dplyr::summarise by group
+MT[, .(max_mpg = max(mpg)), by = cyl]
 ```
