@@ -45,3 +45,7 @@ df
 #4 2007-11-25     D     1
 #5 2007-11-28     E     1
 ```
+
+## Compute inflation rate
+
+* [priceR](https://github.com/stevecondylios/priceR)
