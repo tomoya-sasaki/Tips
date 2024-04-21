@@ -70,6 +70,17 @@ df %>%
   filter(na > 0)
 ```
 
+### Remove rows with NA
+
+```
+df %>%
+ select(where(~ any(. != 0)))
+
+df %>%
+  filter_all(any_vars(!is.na(.)))
+```
+
+
 ### `across` and create new name
 
 ```
