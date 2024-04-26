@@ -273,5 +273,12 @@
     }
 ],
 "git.openRepositoryInParentFolders": "always",
-"window.zoomLevel": -2
+"window.zoomLevel": -1,
+"github.copilot.advanced": {
+  "editor.inlineSuggest.enabled": true
+},
+"github.copilot.enable": {
+  "*": true
+},
+"latex-workshop.latex.recipe.default": "lastUsed"
 }
