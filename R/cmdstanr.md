@@ -19,7 +19,7 @@ install_cmdstan(cores = 2)
 
 ## Save draws
 
-* Make sure to save draws after you fit the model. 
+* Make sure to save draws after you fit the model.
 * `in order to save a fitted model object containing all of the posterior draws and sampler diagnostics you should either make sure to call fit$draws() and fit$sampler_diagnostics() before saving the object fit, or use the special $save_object() method provided by CmdStanR, which will ensure that everything has been read into R before saving the object using saveRDS()`
 
 

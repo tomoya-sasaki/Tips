@@ -1,4 +1,5 @@
 # ggplot
+
 ## A barplot
 ```{r, warning=FALSE, message=FALSE, fig.align='center'}
 d %>%
@@ -98,7 +99,6 @@ ggplot(data, aes(x = exp_A)) + scale_x_continuous(trans="log")
 * `theme(axis.text.x = element_text(angle = 45, hjust = 1))`
 
 
-
 ## color
 ### make grey gradation
 * `scale_fill_grey(start = 0, end = 1, name = "Type")`
@@ -172,7 +172,7 @@ theme(panel.border = element_blank())
 ### Remove grid and background
 
 ```
-panel.border = element_rect(fill = NA, linewidth = 0.8),
+panel.border = element_rect(fill = NA, linewidth = 0.8), # add surrounding lines
           panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
           panel.background = element_blank())
@@ -270,6 +270,16 @@ theme(
 )
 ```
 
+### Control the size and margins of the strips
+
+* Control the size and margins of the spaces around the strip text when using facet_wrap() or facet_grid().
+
+```
+theme(strip.text = element_text(size = 8, margin = margin( b = 0, t = 0) ) )
+```
+
+
+
 ## Setting panel size
 * Use `ggh4x`
 
@@ -291,9 +301,21 @@ mt_short %>%
                    cols = unit(3, "in"))
 ```
 
+## Minor tips
 
-## Small tips
-## Finish with `NULL`
+### Control the space between the data and the axes
+
+* `mult`: vector of multiplicative range expansion factors. If length 1, both the lower and upper limits of the scale are expanded outwards by mult. If length 2, the lower limit is expanded by `mult[1]` and the upper limit by `mult[2]`.
+
+* `add`:  vector of additive range expansion constants. If length 1, both the lower and upper limits of the scale are expanded outwards by add units. If length 2, the lower limit is expanded by `add[1]` and the upper limit by `add[2]`.
+
+```
+scale_y_continuous(expand = expansion(mult = c(0, .1)))
+scale_x_discrete(expand = expansion(add = 2))
+```
+
+
+### Finish with `NULL`
 
 ```
 ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
