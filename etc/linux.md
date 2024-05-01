@@ -18,11 +18,21 @@ $ wc -l <filename>
 $ ls | wc -l
 ```
 
+## Find items
+
+```
+# find files ending with .log
+find . -name '*.log'
+
+# delete files ending with .log
+find . -name '*.log' -delete
+```
+
 ## Open Finder
 
 * Open home directory
 ```
-$ open ~ 
+$ open ~
 ```
 
 * Open current directory
@@ -62,7 +72,7 @@ When you use directory with space, you have to add `\` before the space.
 
 ## Set Global PATH
 
-1. open and edit `.bash_profile` 
+1. open and edit `.bash_profile`
 e.g. `sudo emacs .bash_profile` or `sudo vi .bash_profile`
 2. add the PATH
 e.g. `export PATH=$PATH:[PATH you want to add]`
@@ -75,7 +85,7 @@ PATH=$PATH:~/.local/bin
 ```
 
 3. when you use emacs, use `command + x` and `command + c` to finish editing and save
-4. then don't forget to put `source ~/.bash_profile` 
+4. then don't forget to put `source ~/.bash_profile`
 5. check PATH with `printenv PATH`
 
 ## Reference
@@ -119,7 +129,7 @@ create directory and set sty file (e.g. STYLE.sty)
 * You can also change name of file by `mv`: `$ mv -v "old location" "new location"`
 * double dots to move up the directory: `$ cd ..`
 * double dots to move directory part 2
- 
+
 ```
 - home
 	- sub1 - sub1_1
@@ -137,7 +147,7 @@ To move from `sub2_1` to `sub1_1`
 ~/sub2_1 $ cd ../../sub1/sub1_1
 ```
 
-### "flatten" directory. 
+### "flatten" directory.
 * Move files in subdirectories to its parent directories
 * When you want to move from this (or `ParentDirectory $ find . -type f`)
 
@@ -185,7 +195,7 @@ unzip ~/Repairedversion.zip -d ~/whereunzipfilegoes
 * How to connect
 ```
 $ usrname@ipaddress
-or 
+or
 $ usrname@hostname
 ```
 
@@ -205,9 +215,9 @@ local $ ssh-keygen
 # example
 ~ $ ssh-keygen -t rsa -b 4096
 Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/tomoyasasaki/.ssh/id_rsa): 
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter file in which to save the key (/Users/tomoyasasaki/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
 Your identification has been saved in /Users/tomoyasasaki/.ssh/id_rsa.
 Your public key has been saved in /Users/tomoyasasaki/.ssh/id_rsa.pub.
 The key fingerprint is:
@@ -228,7 +238,7 @@ local $ scp ~/.ssh/id_rsa.pub remote-user-name@address:~/.ssh
 remote $ cat ~/id_rsa.pub >> .ssh/authorized_keys
 
 # 2-2. or copy and paste the contents off id_rsa.pub manually
-local $ less .ssh/id_rsa.pub 
+local $ less .ssh/id_rsa.pub
 remote $ touch .ssh/authorized_keys
 remote $ vim .ssh/authorized_keys
 ```
@@ -244,14 +254,14 @@ ssh -v remote-user-name@address
 ### How to transfer files
 
 ```
-# Syntax 
+# Syntax
 scp [options] username1@source_host:directory1/filename1 username2@destination_host:directory2/filename2
 
 # Example
-# you can skip the account of the host computer 
+# you can skip the account of the host computer
 # if you are logged in
-scp usrname@host:/moving/file/path /local/path 
-scp /local/path user@remoteHost:/home/user/test.txt 
+scp usrname@host:/moving/file/path /local/path
+scp /local/path user@remoteHost:/home/user/test.txt
 
 # moving whole directory
 scp -r user@remoteHost:/remote/dir /local/dir
@@ -299,7 +309,7 @@ screen -S ID.oldname -X sessionname newname
 
 ### Run multiple screen sessions
 
-* `-d`: Do not start screen, but instead detach a screen session running elsewhere (see Detach). There is also `-D`, which 
+* `-d`: Do not start screen, but instead detach a screen session running elsewhere (see Detach). There is also `-D`, which
 * `-m`: Tell screen to ignore the $STY environment variable. When this option is used, a new session will always be created, regardless of whether screen is being called from within another screen session or not. This flag has a special meaning in connection with the ‘-d’ option:
 * `-dm`: Start screen in detached mode. This creates a new session but doesn’t attach to it. This is useful for system startup scripts.
 * `-Dm`: This also starts screen in detached mode, but doesn’t fork a new process. The command exits if the session terminates.
@@ -390,7 +400,7 @@ ls -laR /var/run/screen/
 ### Change screen name
 
 1. Attached to the session
-2. Press <kbd>Ctrl</kbd>+<kbd>a</kbd> 
+2. Press <kbd>Ctrl</kbd>+<kbd>a</kbd>
 3. Type `:sessionname new_session_name`
 4. <kbd>Enter</kbd>
 
@@ -454,7 +464,7 @@ echo $name
 
 for j in a b c d e f; do
   echo $j
-done 
+done
 
 ## declare an array variable
 declare -a arr=("element1" "element2" "element3")
