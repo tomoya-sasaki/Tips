@@ -1,8 +1,17 @@
 {
-  "editor.wordWrap": "on",
+  "editor.wordWrap": "on", // "off" | "on" | "wordWrapColumn" | "bounded"
+  // "editor.wordWrapColumn": 70,
 
   // Wraps after 70 characters
   "rewrap.wrappingColumn": 70,
+
+  // terminal scrollback
+  "terminal.integrated.scrollback": 10000,
+
+  "[quarto]": {
+    // "editor.wordWrap": "bounded",
+    // "editor.rulers": [70]
+  },
 
   "workbench.colorTheme": "Monokai",
   "security.workspace.trust.untrustedFiles": "open",
@@ -225,7 +234,8 @@
     "latex",
     "plaintext",
     "rsweave",
-    "quarto"
+    "quarto",
+    "Quarto"
   ],
   "spellright.parserByClass": {
     "rsweave": {
@@ -278,8 +288,52 @@
   "editor.inlineSuggest.enabled": true
 },
 "github.copilot.enable": {
+  "quarto": true,
   "*": true
 },
 "latex-workshop.latex.recipe.default": "lastUsed",
-"files.trimTrailingWhitespace": true
+"files.trimTrailingWhitespace": true,
+"github.copilot.editor.enableAutoCompletions": true,
+"cSpell.enabledLanguageIds": [
+  "asciidoc",
+  "c",
+  "cpp",
+  "csharp",
+  "css",
+  "elixir",
+  "erlang",
+  "git-commit",
+  "go",
+  "graphql",
+  "handlebars",
+  "haskell",
+  "html",
+  "jade",
+  "java",
+  "javascript",
+  "javascriptreact",
+  "json",
+  "jsonc",
+  "jupyter",
+  "latex",
+  "less",
+  "markdown",
+  "php",
+  "plaintext",
+  "python",
+  "pug",
+  "restructuredtext",
+  "rust",
+  "scala",
+  "scss",
+  "scminput",
+  "swift",
+  "text",
+  "typescript",
+  "typescriptreact",
+  "vue",
+  "yaml",
+  "yml",
+  "quarto"
+]
 }
