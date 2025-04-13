@@ -211,6 +211,22 @@ pip freeze > /path/to/requirements.txt
 pip install -r /path/to/requirements.txt
 ```
 
+#### Using Jupyter Kernel for R
+
+* Install `Jupyter` with `pip install jupyter` in the Python environment with `pip`
+* Switch to the environment
+* Start R in the environment and install `IRkernel` in R
+* Then, the R kernel will be available in Jupyter (including VS Code)
+
+```
+$ pyenv activate [envname]
+$ pip install jupyter
+$ R
+> install.packages('IRkernel')
+```
+
+
+
 ### Tex
 * Old procedure (still works though)
 	* Install ghostscript with brew `brew install ghostscript`
