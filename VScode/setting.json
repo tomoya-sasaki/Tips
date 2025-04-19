@@ -1,9 +1,9 @@
 {
-  "editor.wordWrap": "on", // "off" | "on" | "wordWrapColumn" | "bounded"
+  // "editor.wordWrap": "on", // "off" | "on" | "wordWrapColumn" | "bounded"
   // "editor.wordWrapColumn": 70,
 
   // Wraps after 70 characters
-  "rewrap.wrappingColumn": 70,
+  // "rewrap.wrappingColumn": 70,
 
   // terminal scrollback
   "terminal.integrated.scrollback": 10000,
@@ -53,6 +53,22 @@
           "args": [
             "%DOCFILE%"
           ],
+          "env": {}
+        },
+        {
+          "name": "platex",
+          "command": "platex",
+          // "args": [
+          //   "%DOCFILE%"
+          // ],
+          "env": {}
+        },
+        {
+          "name": "dvipdfmx",
+          "command": "dvipdfmx",
+          // "args": [
+          //   "%DOCFILE%"
+          // ],
           "env": {}
         },
       {
@@ -194,8 +210,29 @@
             "pdflatex",
             "pdflatex"
           ]
+        },
+        {
+          "name": "Rnw with xelatex",
+          "tools": [
+            "rnw2tex",
+            "xelatex"
+          ]
+        },
+        {
+          "name": "Rnw with lualatex",
+          "tools": [
+            "rnw2tex",
+            "lualatex"
+          ]
+        },
+        {
+          "name": "Rnw with platex -> dvipdfmx",
+          "tools": [
+            "rnw2tex",
+            "platex",
+            "dvipdfmx"
+          ]
         }
-
   ],
 
   "C_Cpp.commentContinuationPatterns": [
@@ -217,7 +254,7 @@
   "editor.detectIndentation": false,
   "editor.minimap.enabled": false,
 
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   "terminal.integrated.confirmOnExit": "always",
   "terminal.integrated.cwd": "${fileDirname}",
   "terminal.integrated.defaultLocation": "editor",
