@@ -278,6 +278,22 @@ theme(
 theme(strip.text = element_text(size = 8, margin = margin( b = 0, t = 0) ) )
 ```
 
+### Facet with text labels
+
+```
+data_text <- data.frame(
+  x = c(1, 2, 3),
+  y = c(1, 2, 3),
+  label = c("A", "B", "C"),
+  group = c("A", "B", "C")
+)
+ggplot(data, aes(x = x, y = y)) +
+  geom_point() +
+  geom_text(data = data_text,
+        aes(x = x. y = y, label = label), size = 5) +
+  facet_wrap(~ group) +
+  theme(strip.text = element_blank())
+```
 
 
 ## Setting panel size
