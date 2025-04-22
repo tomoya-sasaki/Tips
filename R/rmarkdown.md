@@ -8,6 +8,7 @@
 * Times New Roman
 * 12pt font
 * Centered section titles
+* Compile with xelatex
 
 ```
 output:
@@ -25,3 +26,5 @@ abstract:
   \noindent
   Abstract text here.
 ```
+
+* Other reference [1](https://svmiller.com/blog/2016/02/svm-r-markdown-manuscript/)
