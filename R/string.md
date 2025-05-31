@@ -17,8 +17,24 @@
 [1] 1 3
 ```
 
-* You can vectorize the `pattern` aergument in `agrep` to match multiple patterns at once with `Vectorize` function.
+* You can vectorize the `pattern` aergument in `agrep` to match multiple patterns at once with `Vectorize` function. Then, you can use it with `mutate` for example.
 
+
+```r
+df <- tibble::tribble(
+  ~bad_name,  ~expected,
+  "newyork", "New York",
+  "alabama",  "Alabama"
+)
+
+vagrep <- Vectorize(agrep, "pattern")
+vagrep(df$bad_name, state.name, max.distance = 3, value = TRUE)
+#> $newyork
+#> [1] "New York"
+#>
+#> $alabama
+#> [1] "Alabama"  "Oklahoma"
+```
 
 ## `as.roman`
 
