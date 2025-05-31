@@ -1,5 +1,25 @@
 # String in R
 
+## Fuzzy matching with `agrep`
+
+* Fuzzy matching
+
+```r
+> agrep("lasy", "1 lazy 2")
+[1] 1
+> agrep("lasy", c(" 1 lazy 2", "1 lasy 2"), max = list(sub = 0))
+[1] 2
+> agrep("laysy", c("1 lazy", "1", "1 LAZY"), max = 2)
+[1] 1
+> agrep("laysy", c("1 lazy", "1", "1 LAZY"), max = 2, value = TRUE)
+[1] "1 lazy"
+> agrep("laysy", c("1 lazy", "1", "1 LAZY"), max = 2, ignore.case = TRUE)
+[1] 1 3
+```
+
+* You can vectorize the `pattern` aergument in `agrep` to match multiple patterns at once with `Vectorize` function.
+
+
 ## `as.roman`
 
 ```
